@@ -2,8 +2,6 @@
 
 public class ColorStrip : MonoBehaviour {
 
-    private static Color[] colors = { Color.red, Color.blue, Color.yellow };
-
     public Color myColor { get; private set; }
     SpriteRenderer sprite;
 
@@ -24,7 +22,7 @@ public class ColorStrip : MonoBehaviour {
 
     private void ResetColor()
     {
-        myColor = colors[Random.Range(0, 10000) % colors.Length];
+        myColor = Colors.GameColors[Random.Range(0, 10000) % ControllerGame.Instance.ColorsToUse];
         sprite.color = myColor;
     }
 

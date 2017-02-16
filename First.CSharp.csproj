@@ -76,10 +76,13 @@
     <Compile Include="Assets\Commons\Scripts\MonoSingleton.cs" />
     <Compile Include="Assets\Commons\Scripts\Singleton.cs" />
     <Compile Include="Assets\Commons\Scripts\ZoomUtil.cs" />
+    <Compile Include="Assets\Scripts\Colors\Colors.cs" />
     <Compile Include="Assets\Scripts\Enemies\ColorStrip.cs" />
     <Compile Include="Assets\Scripts\Enemies\ControllerEnemies.cs" />
+    <Compile Include="Assets\Scripts\Game\ControllerGame.cs" />
     <Compile Include="Assets\Scripts\Game\ControllerMainMenu.cs" />
     <Compile Include="Assets\Scripts\Game\ControllerScore.cs" />
+    <Compile Include="Assets\Scripts\Game\LevelCleared.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

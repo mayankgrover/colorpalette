@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    private static Color[] colors = { Color.red, Color.blue, Color.yellow };
-
     new Rigidbody2D rigidbody;
     int myColorIndex = 0;
     SpriteRenderer sprite;
 
-    float playerSpeed = 0.5f;
-    float playerSpeedInc = 0.1f;
+    float defPlayerSpeed = 0.5f;
+    float playerSpeedInc = 0.025f;
     Vector3 startPos;
 
 	void Start () {
@@ -20,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 
         ControllerMainMenu.Instance.GameStarted += StartGame;
         ControllerMainMenu.Instance.GameEnded += EndGame;
-        ControllerEnemies.Instance.ClearedLevel += ClearedLevel;
+        ControllerEnemies.Instance.ClearedLevel += ResetPlayerSpeed;
 	}
 
     void Update () {
@@ -36,7 +34,12 @@ public class PlayerController : MonoBehaviour {
         }
 	}
 
-    private void ClearedLevel()
+    private void ResetPlayerSpeed()
+    {
+        rigidbody.velocity = Vector3.up * defPlayerSpeed;
+    }
+
+    private void IncreasePlayerSpeed()
     {
         Vector3 currSpeed = rigidbody.velocity;
         currSpeed.y += playerSpeedInc;
@@ -46,14 +49,14 @@ public class PlayerController : MonoBehaviour {
     private void StartGame()
     {
         transform.position = startPos;
-        rigidbody.velocity = Vector3.up * playerSpeed;
         myColorIndex = 0;
         UpdateColor();
+        ResetPlayerSpeed();
     }
 
     private void EndGame()
     {
-        //transform.position = startPos;
+        transform.position = startPos;
         rigidbody.velocity = Vector3.zero;
     }
 
@@ -61,22 +64,29 @@ public class PlayerController : MonoBehaviour {
     {
         if(collider.gameObject.CompareTag("ColorStrip")) {
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
-            if (strip.myColor == colors[myColorIndex]) {
+            if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 ControllerScore.Instance.AddScore();
             } else {
                 ControllerMainMenu.Instance.EndGame();
             }
         }
     }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("ColorStrip")) {
+            IncreasePlayerSpeed();
+        }
+    }
         
 
     private void ChangeColor() {
-        myColorIndex = (myColorIndex + 1) % colors.Length;
+        myColorIndex = (myColorIndex + 1) % ControllerGame.Instance.ColorsToUse;
         UpdateColor();
     }
 
     private void UpdateColor() {
         //Debug.Log("Setting color to: " + myColorIndex);
-        sprite.color = colors[myColorIndex];
+        sprite.color = Colors.GameColors[myColorIndex];
     }
 }

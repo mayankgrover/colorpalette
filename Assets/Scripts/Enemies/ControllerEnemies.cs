@@ -6,7 +6,7 @@ using System;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
-    private float nextPosition = 8;
+    private float nextPosition;
 
     private List<ColorStrip> strips = new List<ColorStrip>();
 
@@ -16,7 +16,13 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     {
         base.Start();
 
+        ControllerMainMenu.Instance.GameStarted += GameStarted;
         ControllerMainMenu.Instance.GameEnded += GameEnded;
+    }
+
+    private void GameStarted()
+    {
+        nextPosition = strips.Count + 2;
     }
 
     private void GameEnded()
@@ -41,9 +47,10 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         if(strips.Count > 0 &&
            strips.Where(strip => strip.isCrossedByPlayer == false).Count() == 0)
         {
+            //Debug.Log("Level cleared");
+            if (ClearedLevel != null) ClearedLevel();
             MoveStrips(nextPosition);
             ResetStrips();
-            if (ClearedLevel != null) ClearedLevel();
         }
     }
 
@@ -56,6 +63,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void ResetStrips()
     {
+        //Debug.Log("Colors to use: " + ControllerGame.Instance.ColorsToUse);
         strips.ForEach(strip => strip.ResetStrip());
     }
 }
