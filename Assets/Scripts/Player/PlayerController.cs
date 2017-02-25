@@ -7,9 +7,10 @@ public class PlayerController : MonoBehaviour {
     int myColorIndex = 0;
     SpriteRenderer sprite;
 
-    float defPlayerSpeed = 0.5f;
+    float defPlayerSpeed = 0.50f;
     float playerSpeedInc = 0.025f;
     Vector3 startPos;
+    bool ignoreTouch = false;
 
 	void Start () {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -24,9 +25,13 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         if (Input.touchCount > 0) {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Ended) {
-                ChangeColor();
+            if(touch.phase == TouchPhase.Moved) {
+                ignoreTouch = true;
             }
+            else if (touch.phase == TouchPhase.Ended) {
+                if(!ignoreTouch) ChangeColor();
+                ignoreTouch = false;
+            } 
         }
 
         if (Input.GetKeyDown(KeyCode.Space)){
@@ -69,6 +74,8 @@ public class PlayerController : MonoBehaviour {
             } else {
                 ControllerMainMenu.Instance.EndGame();
             }
+        } else if(collider.gameObject.CompareTag("ObstacleBlock")) {
+            ControllerMainMenu.Instance.EndGame();
         }
     }
 

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ColorStrip
+  - ObstacleBlock
   layers:
   - Default
   - TransparentFX

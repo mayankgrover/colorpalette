@@ -6,8 +6,7 @@ public static class Colors
         Color.magenta,
         Color.blue,
         Color.yellow,
-        Color.cyan,
-        Color.green,
         Color.red,
+        Color.green
     };
 }

@@ -9,20 +9,20 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private float nextPosition;
 
     private List<ColorStrip> strips = new List<ColorStrip>();
+    private List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
 
     public Action ClearedLevel;
 
     protected override void Start()
     {
         base.Start();
-
         ControllerMainMenu.Instance.GameStarted += GameStarted;
         ControllerMainMenu.Instance.GameEnded += GameEnded;
     }
 
     private void GameStarted()
     {
-        nextPosition = strips.Count + 2;
+        nextPosition = strips.Count + childStrips.Count;
     }
 
     private void GameEnded()
@@ -38,14 +38,24 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         }
     }
 
+    public void AddChildStrip(ChildColorStrip strip)
+    {
+        if(!childStrips.Contains(strip)) {
+            childStrips.Add(strip);
+        }
+
+    }
+
     void Update() {
         CheckAndMoveIfAllStripsCrossed();
     }
 
     private void CheckAndMoveIfAllStripsCrossed()
     {
-        if(strips.Count > 0 &&
-           strips.Where(strip => strip.isCrossedByPlayer == false).Count() == 0)
+        if((strips.Count > 0 &&
+            strips.Where(strip => strip.isCrossedByPlayer == false).Count() == 0) && 
+           (childStrips.Count > 0 &&
+           childStrips.Where(strip => strip.isCrossedByPlayer == false).Count() == 0))
         {
             //Debug.Log("Level cleared");
             if (ClearedLevel != null) ClearedLevel();
