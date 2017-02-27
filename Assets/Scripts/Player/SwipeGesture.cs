@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
-using Commons.Singleton;
 
-public class SwipeGesture : MonoSingleton<SwipeGesture>
+public class SwipeGesture : MonoBehaviour
 {
     private Vector2 startPosition;
     private float startTime;
+    private PlayerController player;
 
     private int myPlayerPosition = 0;
-    private float maxPosition = 0.4f;
-    private float incPosition = 0.2f;
+    private float maxPosition = 0.3f;
+    private float incPosition = 0.3f;
+
+    void Awake()
+    {
+        player = GetComponent<PlayerController>();
+    }
 
     void Update()
     {
@@ -36,12 +41,21 @@ public class SwipeGesture : MonoSingleton<SwipeGesture>
                     SwipeLeft();
                 }
             }
-            else Debug.Log("[NoSwipe] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
+            else {
+                Debug.Log("[NoSwipe] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
+                player.ChangeColor();
+            }
         }
 
         if (Input.touchCount > 0  && Input.GetTouch(0).phase == TouchPhase.Began) {
             startPosition = Input.GetTouch(0).position;
             startTime = Time.time;
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftArrow)) {
+            SwipeLeft();
+        } else if(Input.GetKeyDown(KeyCode.RightArrow)) {
+            SwipeRight();
         }
     }
 

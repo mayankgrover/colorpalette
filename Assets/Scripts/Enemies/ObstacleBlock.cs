@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObstacleBlock: MonoBehaviour
 {
-    private float showProbability   = 0.20f;
-    private float incShowProbablity = 0.05f;
+    private float showProbability   = 0.1f; //0.20f;
+    private float incShowProbablity = 0f; //0.05f;
     private float maxShowProbabilty = 0.35f;
 
     private SpriteRenderer sprite;
@@ -26,6 +26,15 @@ public class ObstacleBlock: MonoBehaviour
     {
         showProbability += incShowProbablity;
         showProbability = Mathf.Min(showProbability, maxShowProbabilty);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.CompareTag("Player")) {
+            ControllerScore.Instance.AddScore(5);
+            ControllerScore.Instance.BonusScore(gameObject.transform.position);
+            gameObject.SetActive(false);
+        }
     }
 
     internal void Reset()

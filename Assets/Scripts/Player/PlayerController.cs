@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
     private void StartGame()
     {
         transform.position = startPos;
-        myColorIndex = 0;
+        myColorIndex = UnityEngine.Random.Range(0, ControllerGame.Instance.ColorsToUse - 1);
         UpdateColor();
         ResetPlayerSpeed();
     }
@@ -72,11 +72,12 @@ public class PlayerController : MonoBehaviour {
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 ControllerScore.Instance.AddScore();
             } else {
-                ControllerMainMenu.Instance.EndGame();
+                //ControllerMainMenu.Instance.EndGame();
             }
-        } else if(collider.gameObject.CompareTag("ObstacleBlock")) {
-            ControllerMainMenu.Instance.EndGame();
         }
+        //else if(collider.gameObject.CompareTag("ObstacleBlock")) {
+        //    ControllerMainMenu.Instance.EndGame();
+        //}
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour {
     }
         
 
-    private void ChangeColor() {
+    public void ChangeColor() {
         myColorIndex = (myColorIndex + 1) % ControllerGame.Instance.ColorsToUse;
         UpdateColor();
     }
