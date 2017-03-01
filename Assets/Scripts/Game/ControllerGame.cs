@@ -8,6 +8,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     private int minColorsToUse = 3;
     private int incColorsToUse = 1;
 
+    public static int Bonus_Score = 3;
 
     protected override void Start()
     {
