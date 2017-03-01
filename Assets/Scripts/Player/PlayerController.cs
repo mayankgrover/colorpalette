@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 ControllerScore.Instance.AddScore();
             } else {
-                //ControllerMainMenu.Instance.EndGame();
+                ControllerMainMenu.Instance.EndGame();
             }
         }
         //else if(collider.gameObject.CompareTag("ObstacleBlock")) {
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateColor() {
-        //Debug.Log("Setting color to: " + myColorIndex);
+        //Debug.Log("[Player] Setting color to: " + myColorIndex);
         sprite.color = Colors.GameColors[myColorIndex];
     }
 }

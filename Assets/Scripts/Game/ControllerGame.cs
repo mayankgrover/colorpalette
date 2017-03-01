@@ -23,7 +23,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     {
         ColorsToUse += incColorsToUse;
         ColorsToUse = System.Math.Min(ColorsToUse, Colors.GameColors.Length);
-        //Debug.Log("colors to use:" + ColorsToUse);
+        Debug.Log("colors to use:" + ColorsToUse);
     }
 
     private void GameEnded()

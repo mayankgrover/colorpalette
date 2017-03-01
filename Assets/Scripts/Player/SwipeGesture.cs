@@ -10,6 +10,8 @@ public class SwipeGesture : MonoBehaviour
     private float maxPosition = 0.3f;
     private float incPosition = 0.3f;
 
+    private bool ignoreTouch = true;
+
     void Awake()
     {
         player = GetComponent<PlayerController>();
@@ -17,7 +19,7 @@ public class SwipeGesture : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0  && Input.GetTouch(0).phase == TouchPhase.Ended)
+        if (Input.touchCount > 0  && Input.GetTouch(0).phase == TouchPhase.Ended && !ignoreTouch)
         {
             Vector2 endPosition = Input.GetTouch(0).position;
             Vector2 delta = endPosition - startPosition;
@@ -42,7 +44,7 @@ public class SwipeGesture : MonoBehaviour
                 }
             }
             else {
-                Debug.Log("[NoSwipe] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
+                //Debug.Log("[NoSwipe] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
                 player.ChangeColor();
             }
         }
@@ -50,6 +52,11 @@ public class SwipeGesture : MonoBehaviour
         if (Input.touchCount > 0  && Input.GetTouch(0).phase == TouchPhase.Began) {
             startPosition = Input.GetTouch(0).position;
             startTime = Time.time;
+            ignoreTouch = true;
+        }
+
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved) {
+            ignoreTouch = false;
         }
 
         if(Input.GetKeyDown(KeyCode.LeftArrow)) {
