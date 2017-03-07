@@ -1,4 +1,5 @@
 ﻿using Commons.Singleton;
+using System;
 using UnityEngine;
 
 public class ControllerGame: MonoSingleton<ControllerGame>
@@ -24,7 +25,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     {
         ColorsToUse += incColorsToUse;
         ColorsToUse = System.Math.Min(ColorsToUse, Colors.GameColors.Length);
-        Debug.Log("colors to use:" + ColorsToUse);
+        //Debug.Log("colors to use:" + ColorsToUse);
     }
 
     private void GameEnded()
@@ -34,7 +35,9 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private void GameStarted()
     {
-        Random.seed = (int)Time.realtimeSinceStartup;
+        //Random.seed = (int)Time.realtimeSinceStartup;
+        UnityEngine.Random.seed = (int) DateTime.UtcNow.Date.Ticks;
+        Debug.Log("using seed: " + UnityEngine.Random.seed);
         ColorsToUse = minColorsToUse;
     }
 }

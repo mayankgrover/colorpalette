@@ -72,12 +72,9 @@ public class PlayerController : MonoBehaviour {
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 ControllerScore.Instance.AddScore();
             } else {
-                ControllerMainMenu.Instance.EndGame();
+                //ControllerMainMenu.Instance.EndGame();
             }
         }
-        //else if(collider.gameObject.CompareTag("ObstacleBlock")) {
-        //    ControllerMainMenu.Instance.EndGame();
-        //}
     }
 
     void OnTriggerExit2D(Collider2D collider)

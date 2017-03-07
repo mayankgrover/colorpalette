@@ -3,17 +3,13 @@ using UnityEngine;
 
 public class ChildColorStrip: ColorStrip
 {
-    protected override void Start()
-    {
-        ControllerEnemies.Instance.AddChildStrip(this);
-        RegisterEvents();
+    protected override void Awake() {
+        base.Awake();
+        childStrips.Remove(this);
     }
 
-    protected override void RegisterEvents()
-    {
-        ControllerMainMenu.Instance.GameStarted += () => {
-            isCrossedByPlayer = false;
-        };
+    protected override void RegisterEvents() {
+        enemyGroup.AddChildStrip(this);
     }
 
     protected override void ResetColor(int colorIndex = -1)

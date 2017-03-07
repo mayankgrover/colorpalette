@@ -7,27 +7,26 @@ public class ColorStrip : MonoBehaviour {
     public bool isCrossedByPlayer { get; protected set; }
     public Color myColor { get; private set; }
 
+    protected ControllerEnemiesGroup enemyGroup;
+    protected List<ChildColorStrip> childStrips;
+
     private SpriteRenderer sprite;
     private int myColorIndex;
-    private List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
     private ObstacleBlock obstacle;
 
-    void Awake() {
+    protected virtual void Awake() {
         sprite = GetComponent<SpriteRenderer>();
         obstacle = transform.GetChild(0).GetComponent<ObstacleBlock>();
-    }
-
-	protected virtual void Start () {
+        enemyGroup = GetComponentInParent<ControllerEnemiesGroup>();
         childStrips = GetComponentsInChildren<ChildColorStrip>().ToList();
-        ControllerEnemies.Instance.AddStrip(this);
         RegisterEvents();
-	}
+    }
 
     protected virtual void RegisterEvents() {
-        ControllerMainMenu.Instance.GameStarted += ResetStrip;
+        enemyGroup.AddStrip(this);
     }
 
-    public void ResetStrip() {
+    public virtual void ResetStrip() {
         isCrossedByPlayer = false;
         ResetColor();
     }

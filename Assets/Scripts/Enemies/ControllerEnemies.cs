@@ -1,28 +1,50 @@
 ﻿using Commons.Singleton;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using System;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
+    private int enemyGroupIndex = -1;
     private float nextPosition;
 
-    private List<ColorStrip> strips = new List<ColorStrip>();
-    private List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
-
     public Action ClearedLevel;
+
+    private ControllerEnemiesGroup activeGroup;
+    private ControllerEnemiesGroup[] enemyGroups;
 
     protected override void Start()
     {
         base.Start();
         ControllerMainMenu.Instance.GameStarted += GameStarted;
         ControllerMainMenu.Instance.GameEnded += GameEnded;
+        LoadAllEnemyGroups();
     }
 
     private void GameStarted()
     {
-        nextPosition = strips.Count + childStrips.Count;
+        SelectNextGroup();
+        ResetStrips();
+        ShowActiveGroup();
+    }
+
+    private void ShowActiveGroup()
+    {
+        if (activeGroup != null) activeGroup.Show();
+    }
+
+    private void LoadAllEnemyGroups()
+    {
+        enemyGroups = Resources.LoadAll<ControllerEnemiesGroup>("Waves/");
+        for(int i = 0; i < enemyGroups.Length; i++) {
+            enemyGroups[i] = GameObject.Instantiate<ControllerEnemiesGroup>(enemyGroups[i]);
+            enemyGroups[i].Initialize(Vector3.zero, this.transform);
+            enemyGroups[i].Hide();
+        }
+    }
+
+    private void UpdateNextPosition()
+    {
+        nextPosition = activeGroup.GroupLength + 1;
     }
 
     private void GameEnded()
@@ -31,37 +53,34 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         ResetStrips();
     }
 
-    public void AddStrip(ColorStrip strip)
-    {
-        if (!strips.Contains(strip)) {
-            strips.Add(strip);
-        }
-    }
-
-    public void AddChildStrip(ChildColorStrip strip)
-    {
-        if(!childStrips.Contains(strip)) {
-            childStrips.Add(strip);
-        }
-
-    }
-
     void Update() {
-        CheckAndMoveIfAllStripsCrossed();
+        CheckAndMoveIfLevelCleared();
     }
 
-    private void CheckAndMoveIfAllStripsCrossed()
+    private void CheckAndMoveIfLevelCleared()
     {
-        if((strips.Count > 0 &&
-            strips.Where(strip => strip.isCrossedByPlayer == false).Count() == 0) && 
-           (childStrips.Count > 0 &&
-           childStrips.Where(strip => strip.isCrossedByPlayer == false).Count() == 0))
+        if(activeGroup != null && activeGroup.IsGroupCleared)
         {
             //Debug.Log("Level cleared");
-            if (ClearedLevel != null) ClearedLevel();
+            activeGroup.Hide();
+            if (ClearedLevel != null) {
+                ClearedLevel();
+            }
+
             MoveStrips(nextPosition);
+            SelectNextGroup();
             ResetStrips();
+            ShowActiveGroup();
         }
+    }
+
+    private void SelectNextGroup()
+    {
+        enemyGroupIndex++;
+        enemyGroupIndex %= enemyGroups.Length;
+        activeGroup = enemyGroups[enemyGroupIndex];
+        UpdateNextPosition();
+        Debug.Log("next activeGroup: " + enemyGroupIndex);
     }
 
     private void MoveStrips(float nextPosition)
@@ -74,6 +93,6 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private void ResetStrips()
     {
         //Debug.Log("Colors to use: " + ControllerGame.Instance.ColorsToUse);
-        strips.ForEach(strip => strip.ResetStrip());
+        if (activeGroup != null) activeGroup.ResetStrips();
     }
 }
