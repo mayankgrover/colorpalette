@@ -2,6 +2,8 @@
 using Commons.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
+using Commons.Ads;
+using UnityEngine.Advertisements;
 
 public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
 {
@@ -27,5 +29,12 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
     {
         if (GameEnded != null) GameEnded();
         Enable();
+
+        //ServiceAds.Instance.ShowRewardableVideo(RewardableVideoResult);
+    }
+
+    private void RewardableVideoResult(ShowResult rewardableVideoResult)
+    {
+        Debug.Log("RewardableVideoResult: " + rewardableVideoResult);
     }
 }
