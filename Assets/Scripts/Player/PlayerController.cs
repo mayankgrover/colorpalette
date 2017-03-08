@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 ControllerScore.Instance.AddScore();
             } else {
-                //ControllerMainMenu.Instance.EndGame();
+                ControllerMainMenu.Instance.EndGame();
             }
         }
     }
