@@ -35,7 +35,6 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private void GameStarted()
     {
-        //Random.seed = (int)Time.realtimeSinceStartup;
         UnityEngine.Random.seed = (int) DateTime.UtcNow.Date.Ticks;
         Debug.Log("using seed: " + UnityEngine.Random.seed);
         ColorsToUse = minColorsToUse;

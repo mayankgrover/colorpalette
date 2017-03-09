@@ -6,13 +6,14 @@ using UnityEngine;
 public class ControllerEnemiesGroup: MonoBehaviour
 {
     [SerializeField]
-    public int GroupLength;
+    public float GroupLength;
 
     public bool IsGroupCleared { get { return CheckIfAllStripsCrossed(); } }
     public int StripCount { get { return strips.Count + childStrips.Count; } }
 
-    List<ColorStrip> strips = new List<ColorStrip>();
-    List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
+    private List<ColorStrip> strips = new List<ColorStrip>();
+    private List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
+    private float showStarProbability   = 0.30f; 
 
     private bool CheckIfAllStripsCrossed()
     {
@@ -47,6 +48,11 @@ public class ControllerEnemiesGroup: MonoBehaviour
     public void ResetStrips()
     {
         strips.ForEach(strip => strip.ResetStrip());
+        float rand = Random.value;
+        Debug.Log("[Star] rand: " + rand + " prob: " + showStarProbability);
+        if(rand < showStarProbability) {
+            strips[Random.Range(0, strips.Count)].SetObstacle(true);
+        }
     }
 
     public void Show()

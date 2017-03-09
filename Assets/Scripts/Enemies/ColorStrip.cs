@@ -29,12 +29,13 @@ public class ColorStrip : MonoBehaviour {
     public virtual void ResetStrip() {
         isCrossedByPlayer = false;
         ResetColor();
+        SetObstacle(false);
     }
 
-    protected virtual void ResetObstacle()
+    public void SetObstacle(bool status)
     {
         if(obstacle != null) {
-            obstacle.Reset();
+            obstacle.SetStatus(status);
         }
     }
 

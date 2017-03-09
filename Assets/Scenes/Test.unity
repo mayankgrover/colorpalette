@@ -516,7 +516,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1008622674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.607358, y: 10.14285, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -594,7 +594,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1331317443
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +635,7 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 1525144263}
+  - 4: {fileID: 1525144263}
   - 114: {fileID: 1525144262}
   m_Layer: 0
   m_Name: Obstacles
@@ -655,24 +655,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf45ddd14513ba4cb56875abcd3368e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1525144263
-RectTransform:
+--- !u!4 &1525144263
+Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1525144261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.5}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_RootOrder: 5
 --- !u!1 &1525408509
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,11 +770,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 451718, guid: 16ead0e21e7efbf41953357f1fb38c62, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 451718, guid: 16ead0e21e7efbf41953357f1fb38c62, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 451718, guid: 16ead0e21e7efbf41953357f1fb38c62, type: 2}
       propertyPath: m_LocalPosition.z
@@ -902,7 +897,7 @@ RectTransform:
   - {fileID: 139571870}
   - {fileID: 1331317444}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}

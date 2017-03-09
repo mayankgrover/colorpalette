@@ -17,6 +17,6 @@ public class ChildColorStrip: ColorStrip
         //Debug.Log("setting child color:" + colorIndex, gameObject);
         base.ResetColor(colorIndex);
         isCrossedByPlayer = false;
-        ResetObstacle();
+        SetObstacle(false); // TODO currently stars won't ever be displayed on child strips! 
     }
 }

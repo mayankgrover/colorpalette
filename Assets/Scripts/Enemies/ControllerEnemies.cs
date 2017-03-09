@@ -44,7 +44,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void UpdateNextPosition()
     {
-        nextPosition = activeGroup.GroupLength + 1;
+        nextPosition = activeGroup.GroupLength;
     }
 
     private void GameEnded()
@@ -77,10 +77,14 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private void SelectNextGroup()
     {
         enemyGroupIndex++;
-        enemyGroupIndex %= enemyGroups.Length;
-        activeGroup = enemyGroups[enemyGroupIndex];
+        int nextGroupIndex = enemyGroupIndex;
+        //enemyGroupIndex %= enemyGroups.Length;
+        if(enemyGroupIndex >= enemyGroups.Length) {
+            nextGroupIndex = UnityEngine.Random.Range(1, enemyGroups.Length);
+        }
+        activeGroup = enemyGroups[nextGroupIndex];
         UpdateNextPosition();
-        Debug.Log("next activeGroup: " + enemyGroupIndex);
+        Debug.Log("[Enemies] next activeGroup: " + nextGroupIndex);
     }
 
     private void MoveStrips(float nextPosition)

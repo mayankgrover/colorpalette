@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     int myColorIndex = 0;
     SpriteRenderer sprite;
 
-    float defPlayerSpeed = 0.50f;
+    float defPlayerSpeed = 0.55f;
     float playerSpeedInc = 0.025f;
     Vector3 startPos;
     bool ignoreTouch = false;
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 ControllerScore.Instance.AddScore();
             } else {
-                ControllerMainMenu.Instance.EndGame();
+                //ControllerMainMenu.Instance.EndGame();
             }
         }
     }
