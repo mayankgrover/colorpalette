@@ -49,7 +49,7 @@ public class ControllerEnemiesGroup: MonoBehaviour
     {
         strips.ForEach(strip => strip.ResetStrip());
         float rand = Random.value;
-        Debug.Log("[Star] rand: " + rand + " prob: " + showStarProbability);
+        //Debug.Log("[Star] rand: " + rand + " prob: " + showStarProbability);
         if(rand < showStarProbability) {
             strips[Random.Range(0, strips.Count)].SetObstacle(true);
         }

@@ -4,7 +4,8 @@ using System;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
-    private int enemyGroupIndex = -1;
+    private const int defaultGroupIndex = -1;
+    private int enemyGroupIndex = defaultGroupIndex;
     private float nextPosition;
 
     public Action ClearedLevel;
@@ -32,6 +33,11 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         if (activeGroup != null) activeGroup.Show();
     }
 
+    private void HideActiveGroup()
+    {
+        if (activeGroup != null) activeGroup.Hide();
+    }
+
     private void LoadAllEnemyGroups()
     {
         enemyGroups = Resources.LoadAll<ControllerEnemiesGroup>("Waves/");
@@ -49,6 +55,8 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void GameEnded()
     {
+        HideActiveGroup();
+        enemyGroupIndex = defaultGroupIndex;
         MoveStrips(-transform.position.y);
         ResetStrips();
     }
@@ -78,13 +86,12 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     {
         enemyGroupIndex++;
         int nextGroupIndex = enemyGroupIndex;
-        //enemyGroupIndex %= enemyGroups.Length;
         if(enemyGroupIndex >= enemyGroups.Length) {
             nextGroupIndex = UnityEngine.Random.Range(1, enemyGroups.Length);
         }
         activeGroup = enemyGroups[nextGroupIndex];
         UpdateNextPosition();
-        Debug.Log("[Enemies] next activeGroup: " + nextGroupIndex);
+        //Debug.Log("[Enemies] next activeGroup: " + nextGroupIndex);
     }
 
     private void MoveStrips(float nextPosition)

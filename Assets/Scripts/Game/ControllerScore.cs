@@ -5,53 +5,77 @@ using System;
 
 public class ControllerScore : MonoSingleton<ControllerScore> {
 
-    [SerializeField]
-    private Text score;
-    [SerializeField]
-    private Text highScore;
-    [SerializeField]
-    private Text bonusScore;
+    [SerializeField] private Text score;
+    [SerializeField] private Text highScore;
+    [SerializeField] private Text bonusScore;
+    [SerializeField] private Text coins;
+    [SerializeField] private Text deaths;
 
-    private int currentScore = 0;
-    private Camera camera;
+    private float currentScore = 0;
+    private new Camera camera;
 
     private const string High_Score = "High_Score";
+
+    bool isGameActive = false;
 
     protected override void Start()
     {
         base.Start();
         camera = Camera.main;
-        UpdateHighScore(PlayerPrefs.GetInt(High_Score, 0));
-        ControllerMainMenu.Instance.GameStarted += ResetScore;
+
+        UpdateScoreView();
+        UpdateHighScore();
+        UpdateCoins();
+        UpdateDeaths();
+
+        ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnd;
+
+        PlayerProfile.Instance.OnBestScoreUpdated += UpdateHighScore;
+        PlayerProfile.Instance.OnDeathsUpdated += UpdateDeaths;
+        PlayerProfile.Instance.OnCoinsUpdated += UpdateCoins;
+    }
+
+    void FixedUpdate()
+    {
+        if (isGameActive) {
+            currentScore += Time.fixedDeltaTime;
+            UpdateScoreView();
+        }
+    }
+
+    private void UpdateCoins()
+    {
+        coins.text = "Coins: " + PlayerProfile.Instance.Coins;
+    }
+
+    private void UpdateDeaths()
+    {
+        deaths.text = "Deaths: " + PlayerProfile.Instance.Deaths;
     }
 
     private void OnGameEnd()
     {
-        int prevHigh = PlayerPrefs.GetInt(High_Score, 0);
-        Debug.Log("Prev: " + prevHigh + " current:" + currentScore);
-        if(currentScore > prevHigh) {
-            UpdateHighScore(currentScore);
-        }
+        isGameActive = false;
+        PlayerProfile.Instance.UpdateBestScore(currentScore);
         highScore.gameObject.SetActive(true);
     }
 
-    private void UpdateHighScore(int currentScore)
+    private void UpdateHighScore()
     {
-        PlayerPrefs.SetInt(High_Score, currentScore);
-        highScore.text = "High Score: " + currentScore;
+        highScore.text = "BEST: " + PlayerProfile.Instance.BestScore.ToString("0.00") + "s";
     }
 
     public void AddScore(int score = 1)
     {
         currentScore += score;
-        UpdateView();
+        UpdateScoreView();
     }
 
     public void BonusScore(Vector3 position)
     {
         Vector3 screenPos = camera.WorldToScreenPoint(position);
-        bonusScore.text = "+" + ControllerGame.Bonus_Score;
+        bonusScore.text = "+" + ControllerGame.Bonus_Coins + "c";
         bonusScore.transform.position = screenPos;
         bonusScore.gameObject.SetActive(true);
         Invoke("DisableBonusScore", 1f);
@@ -62,16 +86,17 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         bonusScore.gameObject.SetActive(false);
     }
 
-    public void ResetScore()
+    private void OnGameStarted()
     {
-        currentScore = 0;
+        isGameActive = true;
+        currentScore = 0f;
         highScore.gameObject.SetActive(false);
-        UpdateView();
+        UpdateScoreView();
     }
 
-    private void UpdateView()
+    private void UpdateScoreView()
     {
-        score.text = "Score: " + currentScore;
+        score.text = currentScore.ToString("0.00 s");
     }
 
 }

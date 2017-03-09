@@ -27,14 +27,16 @@ public class ObstacleBlock: MonoBehaviour
     //    showProbability = Mathf.Min(showProbability, maxShowProbabilty);
     //}
 
-    //private void OnTriggerEnter2D(Collider2D collider)
-    //{
-    //    if(collider.gameObject.CompareTag("Player")) {
-    //        ControllerScore.Instance.AddScore(ControllerGame.Bonus_Score);
-    //        ControllerScore.Instance.BonusScore(gameObject.transform.position);
-    //        gameObject.SetActive(false);
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            //ControllerScore.Instance.AddScore(ControllerGame.Bonus_Score);
+            PlayerProfile.Instance.UpdateCoins(ControllerGame.Bonus_Coins);
+            ControllerScore.Instance.BonusScore(gameObject.transform.position);
+            gameObject.SetActive(false);
+        }
+    }
 
     //internal void Reset()
     //{
