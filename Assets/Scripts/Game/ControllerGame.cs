@@ -9,7 +9,6 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     private int minColorsToUse = 3;
     private int incColorsToUse = 1;
 
-    public static int Bonus_Coins = 3;
 
     protected override void Start()
     {
@@ -36,7 +35,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     private void GameStarted()
     {
         //UnityEngine.Random.seed = (int) DateTime.UtcNow.Date.Ticks;
-        Debug.Log("using seed: " + UnityEngine.Random.seed);
+        //Debug.Log("using seed: " + UnityEngine.Random.seed);
         ColorsToUse = minColorsToUse;
     }
 }

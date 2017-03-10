@@ -8,10 +8,15 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     private float best;
     private int coins;
     private int deaths;
+    private long freeGiftTicks;
 
     public Action OnBestScoreUpdated;
     public Action OnCoinsUpdated;
     public Action OnDeathsUpdated;
+
+    public long FreeGiftTick {
+        get { return freeGiftTicks; }
+    }
 
     public float BestScore {
         get { return best; }
@@ -36,6 +41,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         best = PlayerPrefs.GetFloat(StringConstants.BEST_SCORE, 0f);
         coins = PlayerPrefs.GetInt(StringConstants.COINS, 0);
         deaths = PlayerPrefs.GetInt(StringConstants.DEATHS, 0);
+        freeGiftTicks = long.Parse(PlayerPrefs.GetString(StringConstants.FREE_GIFT_TICKS, "" + DateTime.MinValue.Ticks));
     }
 
     public void UpdateBestScore(float score)
@@ -49,12 +55,16 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
 
     public void UpdateCoins(int coins)
     {
-        //if(this.coins != coins)
-        {
-            this.coins = coins;
-            SaveCoins();
-            if (OnCoinsUpdated != null) OnCoinsUpdated();
-        }
+        this.coins += coins;
+        SaveCoins();
+        if (OnCoinsUpdated != null) OnCoinsUpdated();
+    }
+
+    public void UpdateFreeGiftTimestamp(long ticks)
+    {
+        freeGiftTicks = ticks;
+        PlayerPrefs.SetString(StringConstants.FREE_GIFT_TICKS, ticks.ToString());
+        PlayerPrefs.Save();
     }
 
     public void IncrementDeaths()
@@ -67,15 +77,18 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     private void SaveDeaths()
     {
         PlayerPrefs.SetInt(StringConstants.DEATHS, deaths);
+        PlayerPrefs.Save();
     }
 
     private void SaveCoins()
     {
         PlayerPrefs.SetInt(StringConstants.COINS, coins);
+        PlayerPrefs.Save();
     }
 
     private void SaveBestScore()
     {
         PlayerPrefs.SetFloat(StringConstants.BEST_SCORE, best);
+        PlayerPrefs.Save();
     }
 }

@@ -8,6 +8,9 @@ namespace Commons.Ads
 {
     public class ServiceAds: MonoSingleton<ServiceAds>
     {
+        public bool IsRewardableAdReady() { return Advertisement.IsReady(rewardedVideo); }
+        public bool IsNonRewardableAdReady() { return Advertisement.IsReady(nonrewardVideo); }
+
         private static string rewardedVideo = "rewardedVideo";
         private static string nonrewardVideo = "video";
 

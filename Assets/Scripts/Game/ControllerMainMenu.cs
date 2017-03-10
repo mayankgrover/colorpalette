@@ -29,8 +29,6 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
     {
         if (GameEnded != null) GameEnded();
         Enable();
-
-        //ServiceAds.Instance.ShowRewardableVideo(RewardableVideoResult);
     }
 
     private void RewardableVideoResult(ShowResult rewardableVideoResult)

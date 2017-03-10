@@ -32,8 +32,8 @@ public class ObstacleBlock: MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             //ControllerScore.Instance.AddScore(ControllerGame.Bonus_Score);
-            PlayerProfile.Instance.UpdateCoins(ControllerGame.Bonus_Coins);
-            ControllerScore.Instance.BonusScore(gameObject.transform.position);
+            PlayerProfile.Instance.UpdateCoins(NumericConstants.COINS_FOR_STAR);
+            ControllerScore.Instance.BonusScore(gameObject.transform.position, NumericConstants.COINS_FOR_STAR);
             gameObject.SetActive(false);
         }
     }

@@ -14,8 +14,6 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     private float currentScore = 0;
     private new Camera camera;
 
-    private const string High_Score = "High_Score";
-
     bool isGameActive = false;
 
     protected override void Start()
@@ -72,13 +70,13 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         UpdateScoreView();
     }
 
-    public void BonusScore(Vector3 position)
+    public void BonusScore(Vector3 position, int reward)
     {
         Vector3 screenPos = camera.WorldToScreenPoint(position);
-        bonusScore.text = "+" + ControllerGame.Bonus_Coins + "c";
+        bonusScore.text = "+" + reward + "c";
         bonusScore.transform.position = screenPos;
         bonusScore.gameObject.SetActive(true);
-        Invoke("DisableBonusScore", 1f);
+        Invoke("DisableBonusScore", 1.5f);
     }
 
     private void DisableBonusScore()
