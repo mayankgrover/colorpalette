@@ -13,6 +13,12 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private ControllerEnemiesGroup activeGroup;
     private ControllerEnemiesGroup[] enemyGroups;
 
+    public int WavesCleared { get; private set; }
+    public int StarsCollected { get; private set; }
+    public int StarsSpawned { get; private set; }
+    public Wave DeathWave { get; set; }
+    public Strip DeathStrip { get; set; }
+
     protected override void Start()
     {
         base.Start();
@@ -23,9 +29,24 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void GameStarted()
     {
+        ResetAnalyticsStats();
         SelectNextGroup();
         ResetStrips();
         ShowActiveGroup();
+    }
+
+    private void ResetAnalyticsStats()
+    {
+        WavesCleared = 0;
+        StarsCollected = 0;
+        StarsSpawned = 1;
+        DeathWave = Wave.None;
+        DeathStrip = Strip.None;
+    }
+
+    internal void StarCollected()
+    {
+        StarsCollected++;
     }
 
     private void ShowActiveGroup()
@@ -55,25 +76,29 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void GameEnded()
     {
+        DeathWave = activeGroup.wave;
         HideActiveGroup();
         enemyGroupIndex = defaultGroupIndex;
         MoveStrips(-transform.position.y);
         ResetStrips();
     }
 
-    void Update() {
-        CheckAndMoveIfLevelCleared();
+    void Update()
+    {
+        if (!ControllerGame.Instance.IsGamePaused) {
+            CheckAndMoveIfLevelCleared();
+        }
     }
 
     private void CheckAndMoveIfLevelCleared()
     {
         if(activeGroup != null && activeGroup.IsGroupCleared)
         {
-            //Debug.Log("Level cleared");
+            WavesCleared++;
+            StarsSpawned++;
+
             activeGroup.Hide();
-            if (ClearedLevel != null) {
-                ClearedLevel();
-            }
+            if (ClearedLevel != null) ClearedLevel();
 
             MoveStrips(nextPosition);
             SelectNextGroup();
@@ -90,6 +115,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             nextGroupIndex = UnityEngine.Random.Range(1, enemyGroups.Length);
         }
         activeGroup = enemyGroups[nextGroupIndex];
+        DeathWave = activeGroup.wave; // hack
         UpdateNextPosition();
         //Debug.Log("[Enemies] next activeGroup: " + nextGroupIndex);
     }

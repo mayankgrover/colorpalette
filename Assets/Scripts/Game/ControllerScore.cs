@@ -11,10 +11,8 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     [SerializeField] private Text coins;
     [SerializeField] private Text deaths;
 
-    private float currentScore = 0;
+    public float currentScore { get; private set; }
     private new Camera camera;
-
-    bool isGameActive = false;
 
     protected override void Start()
     {
@@ -29,6 +27,9 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnd;
 
+        //ControllerGame.Instance.GamePaused += OnGamePaused;
+        //ControllerGame.Instance.GameResumed += OnGameResumed;
+
         PlayerProfile.Instance.OnBestScoreUpdated += UpdateHighScore;
         PlayerProfile.Instance.OnDeathsUpdated += UpdateDeaths;
         PlayerProfile.Instance.OnCoinsUpdated += UpdateCoins;
@@ -36,7 +37,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     void FixedUpdate()
     {
-        if (isGameActive) {
+        if (ControllerGame.Instance.IsGameOnGoing && !ControllerGame.Instance.IsGamePaused) {
             currentScore += Time.fixedDeltaTime;
             UpdateScoreView();
         }
@@ -52,9 +53,18 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         deaths.text = "Deaths: " + PlayerProfile.Instance.Deaths;
     }
 
+    //private void OnGamePaused()
+    //{
+    //    throw new NotImplementedException();
+    //}
+
+    //private void OnGameResumed()
+    //{
+    //    throw new NotImplementedException();
+    //}
+
     private void OnGameEnd()
     {
-        isGameActive = false;
         PlayerProfile.Instance.UpdateBestScore(currentScore);
         highScore.gameObject.SetActive(true);
     }
@@ -86,7 +96,6 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     private void OnGameStarted()
     {
-        isGameActive = true;
         currentScore = 0f;
         highScore.gameObject.SetActive(false);
         UpdateScoreView();

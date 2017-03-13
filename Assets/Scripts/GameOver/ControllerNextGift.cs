@@ -7,10 +7,7 @@ public class ControllerNextGift: ControllerBaseGameOverElement
     private TimeSpan freeGiftDuration;
     private DateTime nextFreeGift;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+    private bool isGiftReadyButNotClaimed = false;
 
     protected override void Start()
     {
@@ -28,10 +25,17 @@ public class ControllerNextGift: ControllerBaseGameOverElement
         button.onClick.AddListener(OnClaimFreeGift);
     }
 
+    public override void Hide()
+    {
+        base.Hide();
+        if (isGiftReadyButNotClaimed) ServiceAnalytics.Instance.ReportClaimFreeReward(false);
+    }
+
     public override void Show()
     {
         base.Show();
         if(IsFreeGiftAvailable()) {
+            isGiftReadyButNotClaimed = true;
             text.text = StringConstants.FREE_GIFT_AVAILABLE;
             button.gameObject.SetActive(true);
         } else {
@@ -53,12 +57,14 @@ public class ControllerNextGift: ControllerBaseGameOverElement
 
     private void OnClaimFreeGift()
     {
+        isGiftReadyButNotClaimed = false;
         int reward = UnityEngine.Random.Range(NumericConstants.MIN_REWARD_FREE_GIFT, NumericConstants.MAX_REWARD_FREE_GIFT);
         //Debug.Log("[NextGift] Reward: " + reward + "c");
         //Debug.Log("[NextGift] now: " + DateTime.Now);
         PlayerProfile.Instance.UpdateCoins(reward);
         PlayerProfile.Instance.UpdateFreeGiftTimestamp(DateTime.Now.Ticks);
         ControllerScore.Instance.BonusScore(Vector3.zero, reward);
+        ServiceAnalytics.Instance.ReportClaimFreeReward(true);
         nextFreeGift = DateTime.Now + freeGiftDuration;
         Hide();
     }

@@ -3,10 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum Wave
+{
+    None,
+    Wave1,
+    Wave2,
+    Wave3,
+    Wave4,
+    Wave5,
+    Wave6,
+    Wave7,
+    Wave8,
+    Wave9,
+    Wave10,
+}
+
 public class ControllerEnemiesGroup: MonoBehaviour
 {
-    [SerializeField]
-    public float GroupLength;
+    [SerializeField] public float GroupLength;
+    [SerializeField] public Wave wave;
 
     public bool IsGroupCleared { get { return CheckIfAllStripsCrossed(); } }
     public int StripCount { get { return strips.Count + childStrips.Count; } }

@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
 
     float defPlayerSpeed = 0.55f;
     float playerSpeedInc = 0.025f;
+    float currPlayerSpeed = 0f;
+
     Vector3 startPos;
     bool ignoreTouch = false;
 
@@ -20,22 +22,31 @@ public class PlayerController : MonoBehaviour {
         ControllerMainMenu.Instance.GameStarted += StartGame;
         ControllerMainMenu.Instance.GameEnded += EndGame;
         ControllerEnemies.Instance.ClearedLevel += ResetPlayerSpeed;
+
+        ControllerGame.Instance.GamePaused += OnGamePaused;
+        ControllerGame.Instance.GameResumed += OnGameResumed;
 	}
 
     void Update () {
-        if (Input.touchCount > 0) {
-            Touch touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Moved) {
-                ignoreTouch = true;
+        if (!ControllerGame.Instance.IsGamePaused)
+        {
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    ignoreTouch = true;
+                }
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    if (!ignoreTouch) ChangeColor();
+                    ignoreTouch = false;
+                }
             }
-            else if (touch.phase == TouchPhase.Ended) {
-                if(!ignoreTouch) ChangeColor();
-                ignoreTouch = false;
-            } 
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space)){
-            ChangeColor();
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                ChangeColor();
+            }
         }
 	}
 
@@ -72,8 +83,8 @@ public class PlayerController : MonoBehaviour {
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 //ControllerScore.Instance.AddScore();
             } else {
-                PlayerProfile.Instance.IncrementDeaths();
-                ControllerMainMenu.Instance.EndGame();
+                ControllerEnemies.Instance.DeathStrip = strip.strip;
+                ControllerGame.Instance.PlayerDied();
             }
         }
     }
@@ -95,4 +106,16 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log("[Player] Setting color to: " + myColorIndex);
         sprite.color = Colors.GameColors[myColorIndex];
     }
+
+    private void OnGamePaused()
+    {
+        currPlayerSpeed = rigidbody.velocity.y;
+        rigidbody.velocity = Vector3.zero;
+    }
+
+    private void OnGameResumed()
+    {
+        rigidbody.velocity = Vector3.up * currPlayerSpeed;
+    }
+
 }

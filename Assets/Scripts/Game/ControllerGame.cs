@@ -1,14 +1,22 @@
-﻿using Commons.Singleton;
+﻿using Commons.Ads;
+using Commons.Popups;
+using Commons.Singleton;
 using System;
 using UnityEngine;
 
 public class ControllerGame: MonoSingleton<ControllerGame>
 {
     public int ColorsToUse { get; private set; }
+    public bool IsGamePaused { get; private set; }
+    public bool IsGameOnGoing { get; private set; }
+
+    public Action GamePaused;
+    public Action GameResumed;
 
     private int minColorsToUse = 3;
     private int incColorsToUse = 1;
 
+    private bool playerAlreadyRevived = false;
 
     protected override void Start()
     {
@@ -27,15 +35,47 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         //Debug.Log("colors to use:" + ColorsToUse);
     }
 
+    internal void PlayerRevived()
+    {
+        playerAlreadyRevived = true;
+    }
+
     private void GameEnded()
     {
+        IsGamePaused = false;
+        IsGameOnGoing = false;
         ColorsToUse = minColorsToUse;
+    }
+
+    internal void ResumeGame()
+    {
+        IsGamePaused = false;
+        if (GameResumed != null) GameResumed();
     }
 
     private void GameStarted()
     {
         //UnityEngine.Random.seed = (int) DateTime.UtcNow.Date.Ticks;
         //Debug.Log("using seed: " + UnityEngine.Random.seed);
+        playerAlreadyRevived = false;
+        IsGameOnGoing = true;
         ColorsToUse = minColorsToUse;
+    }
+
+    public void PlayerDied()
+    {
+        if(!playerAlreadyRevived && ServiceAds.Instance.IsRewardableAdReady()) {
+            PauseGame();
+            ControllerPopupManager.Instance.ShowPopup<ControllerPopupRevive>();
+        } else {
+            ControllerMainMenu.Instance.EndGame();
+            ServiceAnalytics.Instance.ReportPlayerDied();
+        }
+    }
+
+    private void PauseGame()
+    {
+        IsGamePaused = true;
+        if (GamePaused != null) GamePaused();
     }
 }

@@ -681,6 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e579e0132c538140b35b97dee33f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strip: 5
 --- !u!114 &11404656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -704,6 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroupLength: 7.5
+  wave: 1
 --- !u!114 &11444280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -726,6 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e579e0132c538140b35b97dee33f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strip: 1
 --- !u!114 &11454342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,6 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e579e0132c538140b35b97dee33f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strip: 2
 --- !u!114 &11463084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -781,6 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e579e0132c538140b35b97dee33f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strip: 4
 --- !u!114 &11486418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -803,6 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e579e0132c538140b35b97dee33f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strip: 0
 --- !u!114 &11499032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -814,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e579e0132c538140b35b97dee33f5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strip: 3
 --- !u!212 &21200380
 SpriteRenderer:
   m_ObjectHideFlags: 1

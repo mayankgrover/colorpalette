@@ -2,7 +2,35 @@
 using System.Linq;
 using UnityEngine;
 
+public enum Strip
+{
+    Strip1, 
+    Strip2,
+    Strip3,
+    Strip4,
+    Strip5,
+    Strip6,
+    Strip7,
+    Strip8,
+    Strip9,
+    Strip10,
+
+    ChildStrip1,
+    ChildStrip2,
+    ChildStrip3,
+    ChildStrip4,
+    ChildStrip5,
+    ChildStrip6,
+    ChildStrip7,
+    ChildStrip8,
+    ChildStrip9,
+    ChildStrip10,
+    None,
+}
+
 public class ColorStrip : MonoBehaviour {
+
+    [SerializeField] public Strip strip;
 
     public bool isCrossedByPlayer { get; protected set; }
     public Color myColor { get; private set; }

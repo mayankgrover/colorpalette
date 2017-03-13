@@ -14,6 +14,12 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public Action OnCoinsUpdated;
     public Action OnDeathsUpdated;
 
+    public override void OnInitialized()
+    {
+        base.OnInitialized();
+        ControllerMainMenu.Instance.GameEnded += IncrementDeaths;
+    }
+
     public long FreeGiftTick {
         get { return freeGiftTicks; }
     }
