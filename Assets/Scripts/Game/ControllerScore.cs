@@ -10,6 +10,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     [SerializeField] private Text bonusScore;
     [SerializeField] private Text coins;
     [SerializeField] private Text deaths;
+    [SerializeField] private Image extraLife;
 
     public float currentScore { get; private set; }
     private new Camera camera;

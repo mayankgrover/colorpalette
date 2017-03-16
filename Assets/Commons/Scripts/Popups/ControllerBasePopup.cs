@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Commons.Popups
 {
     public class ControllerBasePopup : MonoBehaviour
     {
+        [SerializeField] private Button btnClosePopup;
+
         protected virtual void Awake() {
             RegisterClickHandlers();
         }
@@ -12,8 +16,12 @@ namespace Commons.Popups
             Hide();
         }
 
-        protected virtual void RegisterClickHandlers()
-        {
+        protected virtual void RegisterClickHandlers() {
+            if(btnClosePopup != null) btnClosePopup.onClick.AddListener(OnClosePopup);
+        }
+
+        protected virtual void OnClosePopup() {
+            Hide();
         }
 
         internal virtual void Hide()

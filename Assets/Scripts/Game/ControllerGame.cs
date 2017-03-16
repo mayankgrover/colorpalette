@@ -47,7 +47,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         ColorsToUse = minColorsToUse;
     }
 
-    internal void ResumeGame()
+    public void ResumeGame()
     {
         IsGamePaused = false;
         if (GameResumed != null) GameResumed();
@@ -73,7 +73,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         }
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         IsGamePaused = true;
         if (GamePaused != null) GamePaused();

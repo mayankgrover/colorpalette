@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d87e9288dc3890438696140fc2206bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closePopup: {fileID: 0}
   watchAd: {fileID: 11478430}
   countdownTimer: {fileID: 11472098}
 --- !u!114 &11431704
