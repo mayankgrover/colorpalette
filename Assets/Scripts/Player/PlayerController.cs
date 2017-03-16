@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     Vector3 startPos;
     bool ignoreTouch = false;
+    Vector3 levelClearedPos = Vector3.zero;
 
 	void Start () {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -21,11 +22,24 @@ public class PlayerController : MonoBehaviour {
 
         ControllerMainMenu.Instance.GameStarted += StartGame;
         ControllerMainMenu.Instance.GameEnded += EndGame;
-        ControllerEnemies.Instance.ClearedLevel += ResetPlayerSpeed;
+        ControllerEnemies.Instance.ClearedLevel += OnLevelCleared; // ResetPlayerSpeed;
+        ControllerEnemies.Instance.ForceClearedLevel += OnLevelForceCleared; // ResetPlayerSpeed;
 
         ControllerGame.Instance.GamePaused += OnGamePaused;
         ControllerGame.Instance.GameResumed += OnGameResumed;
 	}
+
+    private void OnLevelCleared()
+    {
+        levelClearedPos = transform.position;
+        ResetPlayerSpeed();
+    }
+
+    private void OnLevelForceCleared()
+    {
+        transform.position = levelClearedPos;
+        ResetPlayerSpeed();
+    }
 
     void Update () {
         if (!ControllerGame.Instance.IsGamePaused)

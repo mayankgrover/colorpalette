@@ -24,12 +24,10 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         UpdateHighScore();
         UpdateCoins();
         UpdateDeaths();
+        SetExtraLifeStatus(false);
 
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnd;
-
-        //ControllerGame.Instance.GamePaused += OnGamePaused;
-        //ControllerGame.Instance.GameResumed += OnGameResumed;
 
         PlayerProfile.Instance.OnBestScoreUpdated += UpdateHighScore;
         PlayerProfile.Instance.OnDeathsUpdated += UpdateDeaths;
@@ -54,16 +52,6 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         deaths.text = "Deaths: " + PlayerProfile.Instance.Deaths;
     }
 
-    //private void OnGamePaused()
-    //{
-    //    throw new NotImplementedException();
-    //}
-
-    //private void OnGameResumed()
-    //{
-    //    throw new NotImplementedException();
-    //}
-
     private void OnGameEnd()
     {
         PlayerProfile.Instance.UpdateBestScore(currentScore);
@@ -73,6 +61,12 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     private void UpdateHighScore()
     {
         highScore.text = "BEST: " + PlayerProfile.Instance.BestScore.ToString("0.00") + "s";
+    }
+
+    public void SetExtraLifeStatus(bool status)
+    {
+        Debug.Log("extra life status: " + status);
+        extraLife.gameObject.SetActive(status);
     }
 
     public void AddScore(int score = 1)

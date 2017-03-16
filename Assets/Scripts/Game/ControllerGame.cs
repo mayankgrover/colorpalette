@@ -3,6 +3,7 @@ using Commons.Popups;
 using Commons.Singleton;
 using System;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 public class ControllerGame: MonoSingleton<ControllerGame>
 {
@@ -45,6 +46,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         IsGamePaused = false;
         IsGameOnGoing = false;
         ColorsToUse = minColorsToUse;
+        ControllerScore.Instance.SetExtraLifeStatus(false);
     }
 
     public void ResumeGame()
@@ -60,17 +62,45 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         playerAlreadyRevived = false;
         IsGameOnGoing = true;
         ColorsToUse = minColorsToUse;
+        ControllerScore.Instance.SetExtraLifeStatus(IsExtraLifeAvailable());
+    }
+
+    private bool IsExtraLifeAvailable()
+    {
+        return PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReady();
+             //ServiceAds.Instance.IsRewardableAdReady());
     }
 
     public void PlayerDied()
     {
-        if(!playerAlreadyRevived && ServiceAds.Instance.IsRewardableAdReady()) {
+        if( !playerAlreadyRevived && 
+            ServiceAds.Instance.IsRewardableAdReady() && 
+            PlayerProfile.Instance.AutoWatchAds)
+        {
+            playerAlreadyRevived = true;
+            // force level clear 
+            ControllerEnemies.Instance.ForceWaveClear();
+            // vibrate the device.
+            Handheld.Vibrate();
+            // remove the heart
+            ControllerScore.Instance.SetExtraLifeStatus(false);
             PauseGame();
-            ControllerPopupManager.Instance.ShowPopup<ControllerPopupRevive>();
+            Invoke("ResumeGame", 2f);
+
+            //PauseGame();
+            //ControllerPopupManager.Instance.ShowPopup<ControllerPopupRevive>();
         } else {
             ControllerMainMenu.Instance.EndGame();
             ServiceAnalytics.Instance.ReportPlayerDied();
+            if (PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReady()) {
+                ServiceAds.Instance.ShowRewardableVideo(WatchAdAfterGameFinished);
+            }
         }
+    }
+
+    private void WatchAdAfterGameFinished(ShowResult result)
+    {
+        Debug.Log("[ReviveAd] result: " + result);
     }
 
     public void PauseGame()

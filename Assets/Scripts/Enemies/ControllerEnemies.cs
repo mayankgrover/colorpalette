@@ -9,6 +9,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private float nextPosition;
 
     public Action ClearedLevel;
+    public Action ForceClearedLevel;
 
     private ControllerEnemiesGroup activeGroup;
     private ControllerEnemiesGroup[] enemyGroups;
@@ -88,6 +89,16 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         if (!ControllerGame.Instance.IsGamePaused) {
             CheckAndMoveIfLevelCleared();
         }
+    }
+
+    public void ForceWaveClear()
+    {
+        if (activeGroup != null) activeGroup.Hide();
+        //MoveStrips(nextPosition);
+        //SelectNextGroup();
+        ResetStrips();
+        ShowActiveGroup();
+        if (ForceClearedLevel != null) ForceClearedLevel();
     }
 
     private void CheckAndMoveIfLevelCleared()

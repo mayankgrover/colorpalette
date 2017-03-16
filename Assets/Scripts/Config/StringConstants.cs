@@ -5,7 +5,9 @@ public static class StringConstants
     public static string BEST_SCORE = "Best_Score";
     public static string COINS = "Player_Coins";
     public static string DEATHS = "Player_Deaths";
+    public static string GAMES_PLAYED = "Games_Played";
     public static string FREE_GIFT_TICKS = "Free_Gift_Ticks";
+    public static string AUTO_WATCH_AD = "Auto_Watch_Ad";
 
     // UI Strings 
     public static string GAMEOVER_WATCH_AD = "Free Coins ";

@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\Game\ControllerMainMenu.cs" />
     <Compile Include="Assets\Scripts\Game\ControllerPause.cs" />
     <Compile Include="Assets\Scripts\Game\ControllerScore.cs" />
+    <Compile Include="Assets\Scripts\Game\ControllerSettings.cs" />
     <Compile Include="Assets\Scripts\Game\LevelCleared.cs" />
     <Compile Include="Assets\Scripts\GameOver\ControllerBaseGameOverElement.cs" />
     <Compile Include="Assets\Scripts\GameOver\ControllerGameOver.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerProfile.cs" />
     <Compile Include="Assets\Scripts\Player\SwipeGesture.cs" />
+    <Compile Include="Assets\Scripts\Popups\ControllerPopupPromise.cs" />
     <Compile Include="Assets\Scripts\Popups\ControllerPopupRevive.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

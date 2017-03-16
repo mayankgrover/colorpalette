@@ -10,4 +10,6 @@
     public static int MAX_REWARD_FREE_GIFT = 20;
 
     public static float REVIVE_COUNTDOWN_SECONDS = 5;
+
+    public static int MIN_GAMES_FOR_WATCHING_ADS = 3;
 }
