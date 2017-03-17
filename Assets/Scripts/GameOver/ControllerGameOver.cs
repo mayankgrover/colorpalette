@@ -36,9 +36,12 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
 
     private void OnGameEnded()
     {
-        controllerNextGift.Show();
-        if(ServiceAds.Instance.IsRewardableAdReady()) {
-            controllerWatchAd.Show();
+        //controllerNextGift.Show();
+        //if(ServiceAds.Instance.IsRewardableAdReady()) {
+        //    controllerWatchAd.Show();
+        //}
+        if(PlayerProfile.Instance.GamesPlayed % 4 == 0) {
+            controllerRateUs.Show();
         }
     }
 }

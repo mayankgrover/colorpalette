@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C530BDBF-FE4B-DF4E-F2C5-99BD6AF39072}</ProjectGuid>
+    <ProjectGuid>{46F0ED3E-C0D2-C8B5-9BDC-2FF51E16666C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.5f1</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -52,59 +52,66 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.EditorTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.EditorTestsRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleE">
+      <HintPath>Assets\Plugins\ConsoleE\Editor\ConsoleE.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Commons\Scripts\IView.cs" />
-    <Compile Include="Assets\Commons\Scripts\LoadViewUtil.cs" />
-    <Compile Include="Assets\Commons\Scripts\MonoSingleton.cs" />
-    <Compile Include="Assets\Commons\Scripts\Popups\ControllerBasePopup.cs" />
-    <Compile Include="Assets\Commons\Scripts\Popups\ControllerPopupManager.cs" />
-    <Compile Include="Assets\Commons\Scripts\RandomNumber.cs" />
-    <Compile Include="Assets\Commons\Scripts\ServiceAds.cs" />
-    <Compile Include="Assets\Commons\Scripts\Singleton.cs" />
-    <Compile Include="Assets\Commons\Scripts\ZoomUtil.cs" />
-    <Compile Include="Assets\Scripts\Analytics\ServiceAnalytics.cs" />
-    <Compile Include="Assets\Scripts\Camera\LookAtPlayer.cs" />
-    <Compile Include="Assets\Scripts\Colors\Colors.cs" />
-    <Compile Include="Assets\Scripts\Config\NumericConstants.cs" />
-    <Compile Include="Assets\Scripts\Config\StringConstants.cs" />
-    <Compile Include="Assets\Scripts\Enemies\ChildColorStrip.cs" />
-    <Compile Include="Assets\Scripts\Enemies\ColorStrip.cs" />
-    <Compile Include="Assets\Scripts\Enemies\ControllerEnemies.cs" />
-    <Compile Include="Assets\Scripts\Enemies\ControllerEnemiesGroup.cs" />
-    <Compile Include="Assets\Scripts\Enemies\ObstacleBlock.cs" />
-    <Compile Include="Assets\Scripts\Game\ControllerGame.cs" />
-    <Compile Include="Assets\Scripts\Game\ControllerMainMenu.cs" />
-    <Compile Include="Assets\Scripts\Game\ControllerPause.cs" />
-    <Compile Include="Assets\Scripts\Game\ControllerScore.cs" />
-    <Compile Include="Assets\Scripts\Game\ControllerSettings.cs" />
-    <Compile Include="Assets\Scripts\Game\LevelCleared.cs" />
-    <Compile Include="Assets\Scripts\GameOver\ControllerBaseGameOverElement.cs" />
-    <Compile Include="Assets\Scripts\GameOver\ControllerGameOver.cs" />
-    <Compile Include="Assets\Scripts\GameOver\ControllerNextGift.cs" />
-    <Compile Include="Assets\Scripts\GameOver\ControllerRateUs.cs" />
-    <Compile Include="Assets\Scripts\GameOver\ControllerUnlockGift.cs" />
-    <Compile Include="Assets\Scripts\GameOver\ControllerWatchAd.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerProfile.cs" />
-    <Compile Include="Assets\Scripts\Player\SwipeGesture.cs" />
-    <Compile Include="Assets\Scripts\Popups\ControllerPopupPromise.cs" />
-    <Compile Include="Assets\Scripts\Popups\ControllerPopupRevive.cs" />
+    <ProjectReference Include="First.CSharp.csproj">
+      <Project>{C530BDBF-FE4B-DF4E-F2C5-99BD6AF39072}</Project>
+      <Name>First.CSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Commons\Editor\Scripts\EditorPlayerPrefs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

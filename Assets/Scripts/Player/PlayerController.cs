@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     int myColorIndex = 0;
     SpriteRenderer sprite;
 
-    float defPlayerSpeed = 0.55f;
+    float defPlayerSpeed = 0.50f;
     float playerSpeedInc = 0.025f;
     float currPlayerSpeed = 0f;
 
@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour {
     private void StartGame()
     {
         transform.position = startPos;
+        levelClearedPos = startPos;
         myColorIndex = UnityEngine.Random.Range(0, ControllerGame.Instance.ColorsToUse - 1);
         UpdateColor();
         ResetPlayerSpeed();
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour {
     private void EndGame()
     {
         transform.position = startPos;
+        levelClearedPos = startPos;
         rigidbody.velocity = Vector3.zero;
     }
 
