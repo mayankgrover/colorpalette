@@ -18,4 +18,5 @@ public static class StringConstants
     public static string ANALYTICS_GAME_OVER = "Game_Over";
     public static string ANALYTICS_REVIVE_PLAYER = "Revive_Player";
     public static string ANALYTICS_CLAIM_FREE_REWARD = "Claim_Free_Reward";
+    public static string ANALYTICS_AUTO_WATCH_POPUP = "Auto_Ad_Popup";
 }

@@ -19,11 +19,12 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
                 { "waves_cleared", ControllerEnemies.Instance.WavesCleared },
                 { "stars_collected", ControllerEnemies.Instance.StarsCollected },
                 { "stars_spawned", ControllerEnemies.Instance.StarsSpawned },
-                { "death_wave", ControllerEnemies.Instance.DeathWave },
-                { "death_strip", ControllerEnemies.Instance.DeathStrip }
+                { "death_wave", ControllerEnemies.Instance.DeathWave.ToString() },
+                { "death_strip", ControllerEnemies.Instance.DeathStrip.ToString() }
         };
-        Debug.Log("[Analytic-WatchAd] " + DebugPrint(param));
-        Analytics.CustomEvent(StringConstants.ANALYTICS_REVIVE_PLAYER, param);
+        //Debug.Log("[Analytic-WatchAd] " + DebugPrint(param));
+        AnalyticsResult result = Analytics.CustomEvent(StringConstants.ANALYTICS_REVIVE_PLAYER, param);
+        //Debug.Log("Result: " + result);
     }
 
     public void ReportPlayerDied()
@@ -33,11 +34,12 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
                 { "waves_cleared", ControllerEnemies.Instance.WavesCleared },
                 { "stars_collected", ControllerEnemies.Instance.StarsCollected },
                 { "stars_spawned", ControllerEnemies.Instance.StarsSpawned },
-                { "death_wave", ControllerEnemies.Instance.DeathWave },
-                { "death_strip", ControllerEnemies.Instance.DeathStrip }
+                { "death_wave", ControllerEnemies.Instance.DeathWave.ToString() },
+                { "death_strip", ControllerEnemies.Instance.DeathStrip.ToString() }
         };
-        Debug.Log("[Analytic-PlayerDied] " + DebugPrint(param));
-        Analytics.CustomEvent(StringConstants.ANALYTICS_GAME_OVER, param);
+        //Debug.Log("[Analytic-PlayerDied] " + DebugPrint(param));
+        AnalyticsResult result = Analytics.CustomEvent(StringConstants.ANALYTICS_GAME_OVER, param);
+        //Debug.Log("Result: " + result);
     }
 
     public void ReportClaimFreeReward(bool status)
@@ -47,6 +49,14 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
             new Dictionary<string, object> {
                 { "claim_free_reward", status }
         });
+    }
+
+    public void ReportAutoWatchAds(bool status)
+    {
+        Analytics.CustomEvent(StringConstants.ANALYTICS_AUTO_WATCH_POPUP,
+            new Dictionary<string, object> {
+                { "auto_watch_ad_popup", status }
+            });
     }
 
     private string DebugPrint(Dictionary<string, object> dict)

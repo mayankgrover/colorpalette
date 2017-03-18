@@ -83,7 +83,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         games++;
         PlayerPrefs.SetInt(StringConstants.GAMES_PLAYED, games);
         PlayerPrefs.Save();
-        Debug.Log("Games played:" + games);
+        //Debug.Log("Games played:" + games);
     }
 
     public void IncrementDeaths()

@@ -30,6 +30,7 @@ public class ControllerPopupPromise: ControllerBasePopup
     private void OnClickPromise()
     {
         PlayerProfile.Instance.UpdateAutoWatchAds(true);
+        ServiceAnalytics.Instance.ReportAutoWatchAds(true);
         Hide();
     }
 
@@ -37,5 +38,6 @@ public class ControllerPopupPromise: ControllerBasePopup
     {
         base.OnClosePopup();
         PlayerProfile.Instance.UpdateAutoWatchAds(false);
+        ServiceAnalytics.Instance.ReportAutoWatchAds(false);
     }
 }

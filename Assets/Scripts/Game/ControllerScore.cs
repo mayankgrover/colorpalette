@@ -65,7 +65,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     public void SetExtraLifeStatus(bool status)
     {
-        Debug.Log("extra life status: " + status);
+        //Debug.Log("extra life status: " + status);
         extraLife.gameObject.SetActive(status);
     }
 
