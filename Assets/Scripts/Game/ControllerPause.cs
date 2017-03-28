@@ -31,13 +31,13 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void OnGameEnded()
     {
-        gameObject.SetActive(false);
+        Disable();
     }
 
     private void OnGameStarted()
     {
         Reset();
-        gameObject.SetActive(true);
+        Enable();
     }
 
     private void OnClickPause()

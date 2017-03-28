@@ -12,7 +12,7 @@ public class ControllerRateUs: ControllerBaseGameOverElement
     private void OnClickRateUs()
     {
 #if UNITY_ANDROID
-        Application.OpenURL("market://details?q=pname:" + Application.bundleIdentifier + "/");
+        Application.OpenURL("market://details?id=" + Application.bundleIdentifier + "/");
 #endif
     }
 }

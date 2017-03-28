@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour {
 
         ControllerMainMenu.Instance.GameStarted += StartGame;
         ControllerMainMenu.Instance.GameEnded += EndGame;
-        ControllerEnemies.Instance.ClearedLevel += OnLevelCleared; // ResetPlayerSpeed;
-        ControllerEnemies.Instance.ForceClearedLevel += OnLevelForceCleared; // ResetPlayerSpeed;
+        ControllerEnemies.Instance.ClearedLevel += OnLevelCleared;
+        ControllerEnemies.Instance.ForceClearedLevel += OnLevelForceCleared;
 
         ControllerGame.Instance.GamePaused += OnGamePaused;
         ControllerGame.Instance.GameResumed += OnGameResumed;
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour {
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
+                    Debug.Log("[Player] changing color");
                     if (!ignoreTouch) ChangeColor();
                     ignoreTouch = false;
                 }

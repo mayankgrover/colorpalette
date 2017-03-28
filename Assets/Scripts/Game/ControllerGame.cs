@@ -88,7 +88,6 @@ public class ControllerGame: MonoSingleton<ControllerGame>
             ControllerPause.Instance.Disable();
             Invoke("ResumeGameWithExtraLife", 2f);
 
-            //PauseGame();
             //ControllerPopupManager.Instance.ShowPopup<ControllerPopupRevive>();
         } else {
             ControllerMainMenu.Instance.EndGame();

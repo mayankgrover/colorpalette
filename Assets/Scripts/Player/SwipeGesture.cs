@@ -44,7 +44,7 @@ public class SwipeGesture : MonoBehaviour
                 }
             }
             else {
-                //Debug.Log("[NoSwipe] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
+                Debug.Log("[NoSwipe] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
                 player.ChangeColor();
             }
         }
