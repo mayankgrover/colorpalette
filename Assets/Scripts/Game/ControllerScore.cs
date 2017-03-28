@@ -44,12 +44,12 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     private void UpdateCoins()
     {
-        coins.text = "Coins: " + PlayerProfile.Instance.Coins;
+        coins.text = "COINS: " + PlayerProfile.Instance.Coins;
     }
 
     private void UpdateDeaths()
     {
-        deaths.text = "Deaths: " + PlayerProfile.Instance.Deaths;
+        deaths.text = "DEATHS: " + PlayerProfile.Instance.Deaths;
     }
 
     private void OnGameEnd()

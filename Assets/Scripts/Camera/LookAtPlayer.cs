@@ -9,7 +9,7 @@ public class LookAtPlayer: MonoBehaviour
     private bool lookAtY = true;
 
     private float offsetX = 0f;
-    private float offsetY = 0.5f;
+    private float offsetY = 0.65f;
 
     void Update()
     {
