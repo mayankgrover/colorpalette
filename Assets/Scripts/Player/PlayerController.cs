@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour {
         if(collider.gameObject.CompareTag("ColorStrip")) {
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
-                //ControllerScore.Instance.AddScore();
+                ControllerScore.Instance.AddScore();
             } else {
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
                 ControllerGame.Instance.PlayerDied();

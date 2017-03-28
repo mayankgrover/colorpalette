@@ -36,10 +36,10 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     void FixedUpdate()
     {
-        if (ControllerGame.Instance.IsGameOnGoing && !ControllerGame.Instance.IsGamePaused) {
-            currentScore += Time.fixedDeltaTime;
-            UpdateScoreView();
-        }
+        //if (ControllerGame.Instance.IsGameOnGoing && !ControllerGame.Instance.IsGamePaused) {
+        //    currentScore += Time.fixedDeltaTime;
+        //    UpdateScoreView();
+        //}
     }
 
     private void UpdateCoins()
@@ -60,7 +60,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     private void UpdateHighScore()
     {
-        highScore.text = "BEST: " + PlayerProfile.Instance.BestScore.ToString("0.00") + "s";
+        highScore.text = "BEST: " + PlayerProfile.Instance.BestScore.ToString(); // "0.00") + "s";
     }
 
     public void SetExtraLifeStatus(bool status)
@@ -78,7 +78,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     public void BonusScore(Vector3 position, int reward)
     {
         Vector3 screenPos = camera.WorldToScreenPoint(position);
-        bonusScore.text = "+" + reward + "s";
+        bonusScore.text = "+" + reward; // + "s";
         bonusScore.transform.position = screenPos;
         bonusScore.gameObject.SetActive(true);
         Invoke("DisableBonusScore", 1.5f);
@@ -98,7 +98,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     private void UpdateScoreView()
     {
-        score.text = currentScore.ToString("0.00 s");
+        score.text = currentScore.ToString(); // "0.00 s");
     }
 
 }
