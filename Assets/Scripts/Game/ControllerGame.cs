@@ -85,7 +85,8 @@ public class ControllerGame: MonoSingleton<ControllerGame>
             // remove the heart
             ControllerScore.Instance.SetExtraLifeStatus(false);
             PauseGame();
-            Invoke("ResumeGame", 2f);
+            ControllerPause.Instance.Disable();
+            Invoke("ResumeGameWithExtraLife", 2f);
 
             //PauseGame();
             //ControllerPopupManager.Instance.ShowPopup<ControllerPopupRevive>();
@@ -96,6 +97,12 @@ public class ControllerGame: MonoSingleton<ControllerGame>
                 ServiceAds.Instance.ShowRewardableVideo(WatchAdAfterGameFinished);
             }
         }
+    }
+
+    private void ResumeGameWithExtraLife()
+    {
+        ResumeGame();
+        ControllerPause.Instance.Enable();
     }
 
     private void WatchAdAfterGameFinished(ShowResult result)

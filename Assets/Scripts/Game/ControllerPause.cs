@@ -1,9 +1,10 @@
 ﻿
+using Commons.Singleton;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControllerPause: MonoBehaviour
+public class ControllerPause: MonoSingleton<ControllerPause>
 {
     [SerializeField] private Button btnPause;
     [SerializeField] private Sprite imgPause;
@@ -12,14 +13,16 @@ public class ControllerPause: MonoBehaviour
     private Image image;
     private bool isPaused = false;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         image = GetComponent<Image>();
         btnPause.onClick.AddListener(OnClickPause);
     }
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
         UpdateUI();
