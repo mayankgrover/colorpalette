@@ -12,5 +12,5 @@
 
     public static float REVIVE_COUNTDOWN_SECONDS = 5;
 
-    public static int MIN_GAMES_FOR_WATCHING_ADS = 3;
+    public static int MIN_GAMES_FOR_WATCHING_ADS = 4;
 }

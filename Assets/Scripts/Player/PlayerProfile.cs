@@ -15,6 +15,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public Action OnBestScoreUpdated;
     public Action OnCoinsUpdated;
     public Action OnDeathsUpdated;
+    public Action OnAutoWatchAdsUpdated;
 
     public override void OnInitialized()
     {
@@ -53,6 +54,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         autoWatchAds = status ? 1 : 0;
         PlayerPrefs.SetInt(StringConstants.AUTO_WATCH_AD, autoWatchAds);
         PlayerPrefs.Save();
+        if (OnAutoWatchAdsUpdated != null) OnAutoWatchAdsUpdated();
     }
 
     public void UpdateBestScore(float score)

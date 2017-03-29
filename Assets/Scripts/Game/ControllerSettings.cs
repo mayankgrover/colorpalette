@@ -18,6 +18,14 @@ public class ControllerSettings: MonoSingleton<ControllerSettings>
         base.OnInitialized();
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
+        PlayerProfile.Instance.OnAutoWatchAdsUpdated += OnAutoWatchAdUpdated;
+    }
+
+    private void OnAutoWatchAdUpdated()
+    {
+        autoWatchAd.onValueChanged.RemoveListener(OnClickAutoWatchAd);
+        UpdateUI(PlayerProfile.Instance.AutoWatchAds);
+        autoWatchAd.onValueChanged.AddListener(OnClickAutoWatchAd);
     }
 
     private void OnGameEnded()
@@ -32,6 +40,7 @@ public class ControllerSettings: MonoSingleton<ControllerSettings>
 
     private void OnClickAutoWatchAd(bool status)
     {
+        Debug.Log("auto watch on click event");
         //UpdateUI(status);
         PlayerProfile.Instance.UpdateAutoWatchAds(status);
     }
