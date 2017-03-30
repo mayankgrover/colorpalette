@@ -8,8 +8,8 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
     protected override void Start()
     {
         base.Start();
-        Debug.Log("[Analytic-UserId] ID: " + SystemInfo.deviceUniqueIdentifier);
-        Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
+        //Debug.Log("[Analytic-UserId] ID: " + SystemInfo.deviceUniqueIdentifier);
+        //Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
     }
 
     public void ReportClickWatchAdToRevive(bool status)

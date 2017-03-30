@@ -67,8 +67,10 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private bool IsExtraLifeAvailable()
     {
-        return PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReady();
-             //ServiceAds.Instance.IsRewardableAdReady());
+        bool status = PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReady();
+        Debug.Log("IsExtraLifeAvailable: " +  status + " AutoWatch:" + PlayerProfile.Instance.AutoWatchAds + 
+            " AdReady:" + ServiceAds.Instance.IsRewardableAdReady());
+        return status;
     }
 
     public void PlayerDied()

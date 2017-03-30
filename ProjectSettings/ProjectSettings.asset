@@ -9,8 +9,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: MayankGrover
-  productName: First Game
+  companyName: Unforgiving Games
+  productName: Unforgiving Colors
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -89,7 +89,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.game.first
+  bundleIdentifier: com.unforgiving.colors
   bundleVersion: 1.0.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
@@ -160,8 +160,8 @@ PlayerSettings:
   AndroidTargetDevice: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Stuff/Projects/1/firstgame.keystore
-  AndroidKeyaliasName: firstgame
+  AndroidKeystoreName: D:/Stuff/Projects/1/unforgivingcolors.keystore
+  AndroidKeyaliasName: unforgivingcolors
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   androidEnableBanner: 1
@@ -459,7 +459,7 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  cloudProjectId: 258640e5-bf1b-4337-bdea-8d950cf27388
-  projectName: First Game (1)
-  organizationId: knayam
+  cloudProjectId: f5892f21-2539-47d2-9bcf-4c1fbf0ef356
+  projectName: Unforgiving Colors
+  organizationId: unforgivinggames
   cloudEnabled: 0

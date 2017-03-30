@@ -12,7 +12,8 @@ public class ControllerRateUs: ControllerBaseGameOverElement
     private void OnClickRateUs()
     {
 #if UNITY_ANDROID
-        Application.OpenURL("market://details?id=" + Application.bundleIdentifier + "/");
+        Application.OpenURL("market://details?id=" + Application.bundleIdentifier);
+        //Application.OpenURL("market://details?id=com.yodo1.crossyroad");
 #endif
     }
 }
