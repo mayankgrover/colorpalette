@@ -44,20 +44,20 @@ public class PlayerController : MonoBehaviour {
     void Update () {
         if (!ControllerGame.Instance.IsGamePaused)
         {
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Moved)
-                {
-                    ignoreTouch = true;
-                }
-                else if (touch.phase == TouchPhase.Ended)
-                {
-                    Debug.Log("[Player] changing color");
-                    if (!ignoreTouch) ChangeColor();
-                    ignoreTouch = false;
-                }
-            }
+            //if (Input.touchCount > 0)
+            //{
+            //    Touch touch = Input.GetTouch(0);
+            //    if (touch.phase == TouchPhase.Moved)
+            //    {
+            //        ignoreTouch = true;
+            //    }
+            //    else if (touch.phase == TouchPhase.Ended)
+            //    {
+            //        Debug.Log("[Player] changing color");
+            //        if (!ignoreTouch) ChangeColor();
+            //        ignoreTouch = false;
+            //    }
+            //}
 
             if (Input.GetKeyDown(KeyCode.Space)) {
                 ChangeColor();
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour {
                 ControllerScore.Instance.AddScore();
             } else {
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
-                ControllerGame.Instance.PlayerDied();
+                //ControllerGame.Instance.PlayerDied();
             }
         }
     }
