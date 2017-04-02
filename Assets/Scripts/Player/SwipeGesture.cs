@@ -34,12 +34,12 @@ public class SwipeGesture : MonoBehaviour
             if (dist > 20 && angle < 40 && speed > 100) {
                 // Left to Right swipe
                 if (startPosition.x < endPosition.x) {
-                    //Debug.Log("[LtR] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
+                    Debug.Log("[LtR] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
                     SwipeRight();
                 }
                 // Right to Left swipe
                 else if (startPosition.x > endPosition.x) {
-                    //Debug.Log("[RtL] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
+                    Debug.Log("[RtL] Distance: " + dist + " Angle: " + angle + " Speed: " + speed);
                     SwipeLeft();
                 }
             }

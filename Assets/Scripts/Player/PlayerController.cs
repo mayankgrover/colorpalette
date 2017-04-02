@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour {
                 ControllerScore.Instance.AddScore();
             } else {
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
-                //ControllerGame.Instance.PlayerDied();
+                ControllerGame.Instance.PlayerDied();
             }
         }
     }
@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour {
         }
     }
         
-
     public void ChangeColor() {
         myColorIndex = (myColorIndex + 1) % ControllerGame.Instance.ColorsToUse;
         UpdateColor();
