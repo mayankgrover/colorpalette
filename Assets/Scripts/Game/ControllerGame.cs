@@ -1,5 +1,6 @@
 ﻿using Commons.Ads;
 using Commons.Popups;
+using Commons.SideScrolling;
 using Commons.Singleton;
 using System;
 using UnityEngine;
