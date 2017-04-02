@@ -15,4 +15,6 @@
     public static int MIN_GAMES_FOR_WATCHING_ADS = 4;
 
     public static int GAMES_FOR_RATE_US_REMINDER = 3;
+
+    public static float SHOW_STAR_PROBABILITY = 0.75f;
 }

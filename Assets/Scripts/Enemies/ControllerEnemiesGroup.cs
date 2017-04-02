@@ -28,7 +28,6 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     private List<ColorStrip> strips = new List<ColorStrip>();
     private List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
-    private float showStarProbability   = 0.30f; 
 
     private bool CheckIfAllStripsCrossed()
     {
@@ -64,9 +63,13 @@ public class ControllerEnemiesGroup: MonoBehaviour
     {
         strips.ForEach(strip => strip.ResetStrip());
         float rand = Random.value;
-        //Debug.Log("[Star] rand: " + rand + " prob: " + showStarProbability);
-        if(rand < showStarProbability) {
+        if(rand < NumericConstants.SHOW_STAR_PROBABILITY)
+        {
             strips[Random.Range(0, strips.Count)].SetObstacle(true);
+            strips[Random.Range(0, strips.Count)].SetObstacle(true);
+            if (childStrips.Count > 0) {
+                childStrips[Random.Range(0, childStrips.Count)].SetObstacle(true);
+            }
         }
     }
 
