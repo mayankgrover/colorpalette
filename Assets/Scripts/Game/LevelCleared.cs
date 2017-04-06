@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelCleared: MonoBehaviour
@@ -19,14 +15,14 @@ public class LevelCleared: MonoBehaviour
 
     private void ForceClearMsg()
     {
-        levelCleared.text = "Extra Life!";
+        levelCleared.text = "EXTRA LIFE!";
         levelCleared.enabled = true;
         Invoke("DisableLevelClearedMsg" , 2.5f);
     }
 
     private void LevelClearMsg()
     {
-        levelCleared.text = "Wave Cleared!";
+        levelCleared.text = "WAVE CLEARED!";
         levelCleared.enabled = true;
         Invoke("DisableLevelClearedMsg" , 2f);
     }

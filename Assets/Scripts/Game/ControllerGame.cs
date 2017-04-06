@@ -90,8 +90,6 @@ public class ControllerGame: MonoSingleton<ControllerGame>
             PauseGame();
             ControllerPause.Instance.Disable();
             Invoke("ResumeGameWithExtraLife", 2f);
-
-            //ControllerPopupManager.Instance.ShowPopup<ControllerPopupRevive>();
         } else {
             ControllerMainMenu.Instance.EndGame();
             ServiceAnalytics.Instance.ReportPlayerDied();
