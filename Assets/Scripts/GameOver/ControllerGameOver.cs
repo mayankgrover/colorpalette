@@ -40,7 +40,9 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         //if(ServiceAds.Instance.IsRewardableAdReady()) {
         //    controllerWatchAd.Show();
         //}
-        if(PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0) {
+        if(PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 && 
+            controllerRateUs.IsAlreadyRated == false)
+        {
             controllerRateUs.Show();
         }
     }
