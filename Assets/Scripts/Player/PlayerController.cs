@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour {
                 ControllerScore.Instance.AddScore();
             } else {
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
-                //ControllerGame.Instance.PlayerDied();
+                ControllerGame.Instance.PlayerDied();
             }
         }
     }
