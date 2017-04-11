@@ -34,13 +34,13 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         PlayerProfile.Instance.OnCoinsUpdated += UpdateCoins;
     }
 
-    void FixedUpdate()
-    {
-        //if (ControllerGame.Instance.IsGameOnGoing && !ControllerGame.Instance.IsGamePaused) {
-        //    currentScore += Time.fixedDeltaTime;
-        //    UpdateScoreView();
-        //}
-    }
+    //void FixedUpdate()
+    //{
+    //if (ControllerGame.Instance.IsGameOnGoing && !ControllerGame.Instance.IsGamePaused) {
+    //    currentScore += Time.fixedDeltaTime;
+    //    UpdateScoreView();
+    //}
+    //}
 
     private void UpdateCoins()
     {
@@ -65,7 +65,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     public void SetExtraLifeStatus(bool status)
     {
-        Debug.Log("extra life status: " + status);
+        //Debug.Log("extra life status: " + status);
         extraLife.gameObject.SetActive(status);
     }
 
