@@ -26,8 +26,8 @@ public class PlayerInput: MonoBehaviour, IPointerClickHandler//, IDragHandler, I
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log("[PlayerInput] OnPointerClick dragging:" + eventData.dragging + 
-        //    " eligibleClick:" + eventData.eligibleForClick);
+        Debug.Log("[PlayerInput] OnPointerClick dragging:" + eventData.dragging +
+            " eligibleClick:" + eventData.eligibleForClick);
         if (!ControllerGame.Instance.IsGamePaused && !eventData.dragging) {
             player.ChangeColor();
         }

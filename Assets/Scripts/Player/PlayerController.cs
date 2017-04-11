@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour {
 
     private void OnLevelForceCleared()
     {
-        transform.position = levelClearedPos;
+        Vector2 newPosition = transform.position;
+        newPosition.y = levelClearedPos.y;
+        transform.position = newPosition;
         ResetPlayerSpeed();
     }
 
