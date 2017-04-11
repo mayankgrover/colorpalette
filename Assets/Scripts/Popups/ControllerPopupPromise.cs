@@ -2,6 +2,7 @@
 using Commons.Popups;
 using UnityEngine;
 using UnityEngine.UI;
+using Commons.Services;
 
 public class ControllerPopupPromise: ControllerBasePopup
 {
@@ -33,6 +34,7 @@ public class ControllerPopupPromise: ControllerBasePopup
     private void OnClickPromise()
     {
         PlayerProfile.Instance.UpdateAutoWatchAds(true);
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ServiceAnalytics.Instance.ReportAutoWatchAds(true);
         Hide();
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commons.Services;
+using System;
 using UnityEngine;
 
 public class ControllerRateUs: ControllerBaseGameOverElement
@@ -17,6 +18,7 @@ public class ControllerRateUs: ControllerBaseGameOverElement
 
     public void OnClickRateUs()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
 #if UNITY_ANDROID
         Application.OpenURL("market://details?id=" + Application.bundleIdentifier);
         PlayerPrefs.SetString(StringConstants.RATE_US, Application.version);

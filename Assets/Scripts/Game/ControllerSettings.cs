@@ -3,15 +3,11 @@ using System;
 using Commons.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
+using Commons.Services;
 
 public class ControllerSettings: MonoSingleton<ControllerSettings>
 {
     [SerializeField] private Toggle autoWatchAd;
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
     public override void OnInitialized()
     {
@@ -40,8 +36,9 @@ public class ControllerSettings: MonoSingleton<ControllerSettings>
 
     private void OnClickAutoWatchAd(bool status)
     {
-        Debug.Log("auto watch on click event");
+        //Debug.Log("auto watch on click event");
         //UpdateUI(status);
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         PlayerProfile.Instance.UpdateAutoWatchAds(status);
     }
 

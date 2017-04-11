@@ -1,6 +1,7 @@
 ﻿using Commons.Singleton;
 using UnityEngine;
 using System;
+using Commons.Services;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
@@ -109,7 +110,10 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             StarsSpawned++;
 
             activeGroup.Hide();
-            if (ClearedLevel != null) ClearedLevel();
+            if (ClearedLevel != null) {
+                ClearedLevel();
+                ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Level_Cleared);
+            }
 
             MoveStrips(nextPosition);
             SelectNextGroup();

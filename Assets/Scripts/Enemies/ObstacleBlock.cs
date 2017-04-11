@@ -1,4 +1,5 @@
 ﻿
+using Commons.Services;
 using UnityEngine;
 
 public class ObstacleBlock: MonoBehaviour
@@ -13,6 +14,7 @@ public class ObstacleBlock: MonoBehaviour
             ControllerEnemies.Instance.StarCollected();
             //PlayerProfile.Instance.UpdateCoins(NumericConstants.COINS_FOR_STAR);
             ControllerScore.Instance.BonusScore(gameObject.transform.position, NumericConstants.COINS_FOR_STAR);
+            ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Bonus);
             gameObject.SetActive(false);
         }
     }

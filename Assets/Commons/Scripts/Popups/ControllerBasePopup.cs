@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commons.Services;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ namespace Commons.Popups
         }
 
         protected virtual void OnClosePopup() {
+            ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
             Hide();
         }
 

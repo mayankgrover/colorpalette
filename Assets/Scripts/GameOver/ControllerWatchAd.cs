@@ -1,4 +1,5 @@
 ﻿using Commons.Ads;
+using Commons.Services;
 using System;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -19,6 +20,7 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
 
     private void OnClickWatchRewardableAd()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ServiceAds.Instance.ShowRewardableVideo(RewardableAdResult);
     }
 

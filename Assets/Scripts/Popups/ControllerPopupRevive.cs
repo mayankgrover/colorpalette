@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
+using Commons.Services;
 
 public class ControllerPopupRevive: ControllerBasePopup
 {
@@ -42,6 +43,7 @@ public class ControllerPopupRevive: ControllerBasePopup
     private void OnClickWatchAd()
     {
         StopCountdownTimer();
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ServiceAnalytics.Instance.ReportClickWatchAdToRevive(true);
         ControllerGame.Instance.PlayerRevived();
         ControllerGame.Instance.ResumeGame();

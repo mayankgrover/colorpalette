@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commons.Services;
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -87,10 +88,11 @@ public class PlayerController : MonoBehaviour {
         if(collider.gameObject.CompareTag("ColorStrip")) {
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
+                ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
             } else {
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
-                //ControllerGame.Instance.PlayerDied();
+                ControllerGame.Instance.PlayerDied();
             }
         }
     }

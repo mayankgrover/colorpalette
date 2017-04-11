@@ -1,5 +1,6 @@
 ﻿using Commons.Ads;
 using Commons.Popups;
+using Commons.Services;
 using Commons.SideScrolling;
 using Commons.Singleton;
 using System;
@@ -76,16 +77,14 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     public void PlayerDied()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);
         if( !playerAlreadyRevived && 
             ServiceAds.Instance.IsRewardableAdReady() && 
             PlayerProfile.Instance.AutoWatchAds)
         {
             playerAlreadyRevived = true;
-            // force level clear 
             ControllerEnemies.Instance.ForceWaveClear();
-            // vibrate the device.
             Handheld.Vibrate();
-            // remove the heart
             ControllerScore.Instance.SetExtraLifeStatus(false);
             PauseGame();
             ControllerPause.Instance.Disable();

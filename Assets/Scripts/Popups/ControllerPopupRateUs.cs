@@ -4,6 +4,7 @@ using System;
 using Commons.Popups;
 using UnityEngine;
 using UnityEngine.UI;
+using Commons.Services;
 
 public class ControllerPopupRateUs: ControllerBasePopup
 {
@@ -23,6 +24,6 @@ public class ControllerPopupRateUs: ControllerBasePopup
 
     private void OnClickRate()
     {
-        throw new NotImplementedException();
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
     }
 }

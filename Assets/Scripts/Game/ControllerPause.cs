@@ -1,4 +1,5 @@
 ﻿
+using Commons.Services;
 using Commons.Singleton;
 using System;
 using UnityEngine;
@@ -43,6 +44,7 @@ public class ControllerPause: MonoSingleton<ControllerPause>
     private void OnClickPause()
     {
         isPaused = !isPaused;
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         if (isPaused) GamePaused();
         else GameResumed();
     }

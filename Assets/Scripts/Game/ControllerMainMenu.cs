@@ -2,8 +2,8 @@
 using Commons.Singleton;
 using UnityEngine;
 using UnityEngine.UI;
-using Commons.Ads;
 using UnityEngine.Advertisements;
+using Commons.Services;
 
 public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
 {
@@ -21,6 +21,7 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
 
     private void OnPlayClick()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         if (GameStarted != null) GameStarted();
         Disable();
     }

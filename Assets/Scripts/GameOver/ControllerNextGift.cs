@@ -1,4 +1,5 @@
 ﻿
+using Commons.Services;
 using System;
 using UnityEngine;
 
@@ -57,6 +58,7 @@ public class ControllerNextGift: ControllerBaseGameOverElement
 
     private void OnClaimFreeGift()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         isGiftReadyButNotClaimed = false;
         int reward = UnityEngine.Random.Range(NumericConstants.MIN_REWARD_FREE_GIFT, NumericConstants.MAX_REWARD_FREE_GIFT);
         //Debug.Log("[NextGift] Reward: " + reward + "c");
