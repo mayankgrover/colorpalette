@@ -216,7 +216,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445414, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -35
+      value: -126
       objectReference: {fileID: 0}
     - target: {fileID: 22445414, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
       propertyPath: m_SizeDelta.x
@@ -1066,7 +1066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1406948343
 RectTransform:
   m_ObjectHideFlags: 0
