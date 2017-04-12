@@ -21,6 +21,12 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private bool playerAlreadyRevived = false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        Input.backButtonLeavesApp = true;
+    }
+
     protected override void Start()
     {
         base.Start();
