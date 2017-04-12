@@ -1,5 +1,6 @@
 ﻿using Commons.Services;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -91,10 +92,18 @@ public class PlayerController : MonoBehaviour {
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
             } else {
+                ServiceSharing.Instance.CaptureScreenshotNow();
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
-                ControllerGame.Instance.PlayerDied();
+                //ControllerGame.Instance.PlayerDied();
+                StartCoroutine(DelayPlayerDeath());
             }
         }
+    }
+
+    IEnumerator DelayPlayerDeath()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        ControllerGame.Instance.PlayerDied();
     }
 
     void OnTriggerExit2D(Collider2D collider)

@@ -20,4 +20,7 @@ public static class StringConstants
     public static string ANALYTICS_REVIVE_PLAYER = "Revive_Player";
     public static string ANALYTICS_CLAIM_FREE_REWARD = "Claim_Free_Reward";
     public static string ANALYTICS_AUTO_WATCH_POPUP = "Auto_Ad_Popup";
+
+    // Sharing
+    public static string SHARE_TEXT = "Check out my score: {0} in Unforgiving Colors. Can you beat that? {1}";
 }
