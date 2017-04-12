@@ -11,7 +11,9 @@ namespace Commons.Services
         Game_Success,
         Game_Bonus,
         Game_Level_Cleared,
-        Game_Over
+        Game_Over,
+        Game_PlayerClick,
+        Game_PlayerSwipe,
     }
 
     [Serializable]

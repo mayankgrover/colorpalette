@@ -157,6 +157,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8713918d0f185704c96921dfef714cdd, type: 3}
   - effect: 4
     clip: {fileID: 8300000, guid: 55542835306786045a2973dda8e286c4, type: 3}
+  - effect: 5
+    clip: {fileID: 8300000, guid: c4ef4340f2c02184688dfea5567f44b3, type: 3}
+  - effect: 6
+    clip: {fileID: 8300000, guid: 4dc18aa139344f242b0f29e082297005, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

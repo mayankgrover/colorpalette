@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Commons.Services;
+using UnityEngine;
 
 public class SwipeGesture : MonoBehaviour
 {
@@ -80,11 +81,13 @@ public class SwipeGesture : MonoBehaviour
 
     private void SwipeLeft()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_PlayerSwipe);
         MovePlayer(-1 * incPosition);
     }
 
     private void SwipeRight()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_PlayerSwipe);
         MovePlayer(incPosition);
     }
 

@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour {
     }
         
     public void ChangeColor() {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_PlayerClick);
         myColorIndex = (myColorIndex + 1) % ControllerGame.Instance.ColorsToUse;
         UpdateColor();
     }
