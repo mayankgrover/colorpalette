@@ -55,7 +55,7 @@ public class ColorStrip : MonoBehaviour {
 
     private void SetupStripView()
     {
-        stripView = new GameObject(); //GameObject.Instantiate(gameObject, Vector3.zero, Quaternion.identity, transform);
+        stripView = new GameObject();
         stripView.transform.SetParent(transform);
         stripView.transform.localPosition = Vector3.zero;
         stripView.transform.localScale = Vector3.one;
