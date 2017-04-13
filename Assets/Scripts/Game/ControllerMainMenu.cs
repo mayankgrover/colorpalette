@@ -7,8 +7,8 @@ using Commons.Services;
 
 public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
 {
-    [SerializeField]
-    private Button playButton;
+    [SerializeField] private Button playButton;
+    [SerializeField] private GameObject playerStatsGroup;
 
     public Action GameStarted;
     public Action GameEnded;

@@ -15,8 +15,12 @@ namespace Commons.Services
         public void Share(string text = "", string screenShotPath = "")
         {
             text = text != string.Empty ? text :
-                string.Format(StringConstants.SHARE_TEXT, PlayerProfile.Instance.BestScore, storeLink);
+                string.Format(
+                    StringConstants.SHARE_TEXT, ControllerScore.Instance.currentScore, 
+                    PlayerProfile.Instance.BestScore, storeLink
+                );
 
+            Debug.Log("Sharing: " + text);
             nativeShare.ShareScreenshotWithText(text, screenShotPath);
         }
 
