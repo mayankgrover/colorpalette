@@ -13,14 +13,26 @@ public class PlayerController : MonoBehaviour {
     float playerSpeedInc = 0.025f;
     float currPlayerSpeed = 0f;
 
+    TrailRenderer trail;
     Vector3 startPos;
+    Vector3 startScale;
     bool ignoreTouch = false;
     Vector3 levelClearedPos = Vector3.zero;
+    LookAtPlayer camera;
 
-	void Start () {
+    private void Awake()
+    {
+        iTween.Init(gameObject);
+    }
+
+    private void Start ()
+    {
         rigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         startPos = transform.position;
+        startScale = transform.localScale;
+        trail = GetComponentInChildren<TrailRenderer>();
+        camera = Camera.main.gameObject.GetComponent<LookAtPlayer>();
 
         ControllerMainMenu.Instance.GameStarted += StartGame;
         ControllerMainMenu.Instance.GameEnded += EndGame;
@@ -42,6 +54,7 @@ public class PlayerController : MonoBehaviour {
         Vector2 newPosition = transform.position;
         newPosition.y = levelClearedPos.y;
         transform.position = newPosition;
+        UnShrinkPlayer();
         ResetPlayerSpeed();
     }
 
@@ -73,6 +86,7 @@ public class PlayerController : MonoBehaviour {
         transform.position = startPos;
         levelClearedPos = startPos;
         myColorIndex = UnityEngine.Random.Range(0, ControllerGame.Instance.ColorsToUse - 1);
+        UnShrinkPlayer();
         UpdateColor();
         ResetPlayerSpeed();
     }
@@ -91,19 +105,39 @@ public class PlayerController : MonoBehaviour {
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
+                strip.ShrinkStrip();
             } else {
-                ServiceSharing.Instance.CaptureScreenshotNow();
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
-                //ControllerGame.Instance.PlayerDied();
                 StartCoroutine(DelayPlayerDeath());
             }
         }
     }
 
-    IEnumerator DelayPlayerDeath()
+    private IEnumerator DelayPlayerDeath()
     {
+        //camera.ShakeCamera();
         yield return new WaitForSecondsRealtime(0.1f);
+        ServiceSharing.Instance.CaptureScreenshotNow();
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);
+        Handheld.Vibrate();
+        yield return new WaitForSecondsRealtime(0.1f);
+        ShrinkPlayer();
+        yield return new WaitForSecondsRealtime(0.75f);
         ControllerGame.Instance.PlayerDied();
+    }
+
+    private void ShrinkPlayer()
+    {
+        iTween.ScaleTo(gameObject, Vector3.zero, 0.5f);
+        rigidbody.velocity = Vector3.zero;
+        trail.enabled = false;
+    }
+
+    private void UnShrinkPlayer()
+    {
+        transform.localScale = Vector3.zero;
+        iTween.ScaleTo(gameObject, startScale, 1f);
+        trail.enabled = true;
     }
 
     void OnTriggerExit2D(Collider2D collider)

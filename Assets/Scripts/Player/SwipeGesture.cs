@@ -1,4 +1,5 @@
 ﻿using Commons.Services;
+using System.Collections;
 using UnityEngine;
 
 public class SwipeGesture : MonoBehaviour
@@ -12,10 +13,17 @@ public class SwipeGesture : MonoBehaviour
     private float incPosition = 0.3f;
 
     private bool ignoreTouch = true;
+    private Hashtable tweenOptions;
+    private Vector3 lastTweenPos;
+
+    [SerializeField] private iTween.EaseType easeType;
 
     void Awake()
     {
         player = GetComponent<PlayerController>();
+        tweenOptions = new Hashtable();
+        iTween.Init(gameObject);
+        lastTweenPos = transform.position;
     }
 
     void Update()
@@ -93,17 +101,19 @@ public class SwipeGesture : MonoBehaviour
 
     private void MovePlayer(float change)
     {
-        Vector2 pos = transform.position;
+        Vector2 pos = lastTweenPos; // transform.position;
+        lastTweenPos.y = transform.position.y;
+        lastTweenPos.z = transform.position.z;
+        transform.position = lastTweenPos;
         pos.x += change;
-        if (Mathf.Abs(pos.x) <= maxPosition) {
-            transform.position = pos;
+        if (Mathf.Abs(pos.x) <= maxPosition)
+        {
+            lastTweenPos = pos;
+            tweenOptions["x"] = change;
+            tweenOptions["time"] = 0.3f;
+            tweenOptions["easetype"] = easeType;
+            iTween.MoveBy(gameObject, tweenOptions);
         }
-    }
-
-    private void ResetPlayer()
-    {
-        Vector2 pos = transform.position;
-        pos.x = 0;
-        transform.position = pos;
+        else Debug.Log("cant move: " + pos.x);
     }
 }

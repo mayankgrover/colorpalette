@@ -42,12 +42,32 @@ public class ColorStrip : MonoBehaviour {
     private int myColorIndex;
     private ObstacleBlock obstacle;
 
+    protected GameObject stripView;
+
     protected virtual void Awake() {
         sprite = GetComponent<SpriteRenderer>();
         obstacle = transform.GetChild(0).GetComponent<ObstacleBlock>();
         enemyGroup = GetComponentInParent<ControllerEnemiesGroup>();
         childStrips = GetComponentsInChildren<ChildColorStrip>().ToList();
+        SetupStripView();
         RegisterEvents();
+    }
+
+    private void SetupStripView()
+    {
+        stripView = new GameObject(); //GameObject.Instantiate(gameObject, Vector3.zero, Quaternion.identity, transform);
+        stripView.transform.SetParent(transform);
+        stripView.transform.localPosition = Vector3.zero;
+        stripView.transform.localScale = Vector3.one;
+
+        SpriteRenderer childSprite = stripView.AddComponent<SpriteRenderer>();
+        childSprite.sprite = sprite.sprite;
+        childSprite.color = sprite.color;
+        childSprite.material = sprite.material;
+        childSprite.sortingLayerID = sprite.sortingLayerID;
+        childSprite.sortingOrder = sprite.sortingOrder;
+        sprite.enabled = false; //Destroy(sprite); 
+        sprite = childSprite;
     }
 
     protected virtual void RegisterEvents() {
@@ -56,8 +76,14 @@ public class ColorStrip : MonoBehaviour {
 
     public virtual void ResetStrip() {
         isCrossedByPlayer = false;
+        stripView.transform.localScale = Vector3.one;
         ResetColor();
         SetObstacle(false);
+    }
+
+    public void ShrinkStrip()
+    {
+        iTween.ScaleTo(stripView, Vector3.zero, 0.5f);
     }
 
     public void SetObstacle(bool status)

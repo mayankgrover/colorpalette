@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.2f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -81,9 +79,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Common">
-      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Common.dll</HintPath>
-    </Reference>
     <Reference Include="Editor">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Editor.dll</HintPath>
     </Reference>
@@ -102,15 +97,21 @@
     <Reference Include="winrt">
       <HintPath>Assets\Plugins\UnityPurchasing\winrt\winrt.dll</HintPath>
     </Reference>
+    <Reference Include="Purchasing.Common">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Purchasing.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\NativeShare.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\MoveSample.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\RotateSample.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\SampleInfo.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\iTween.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\ComboBox.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\Demo\DemoInventory.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\IAPButton.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\IAPDemo.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\PurchasingCheck.cs" />
-    <Compile Include="Assets\Plugins\UnityPurchasing\script\UnibillDemo.cs" />
     <Compile Include="Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
     <Compile Include="Assets\Standard Assets\2D\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Standard Assets\2D\Scripts\Platformer2DUserControl.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Plugins\ToonShaderPackage\Shaders\TSF.shader" />
     <None Include="Assets\Plugins\ToonShaderPackage\Shaders\TSFOutline.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />

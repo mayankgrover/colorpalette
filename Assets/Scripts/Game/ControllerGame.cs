@@ -83,14 +83,12 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     public void PlayerDied()
     {
-        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);
         if( !playerAlreadyRevived && 
             ServiceAds.Instance.IsRewardableAdReady() && 
             PlayerProfile.Instance.AutoWatchAds)
         {
             playerAlreadyRevived = true;
             ControllerEnemies.Instance.ForceWaveClear();
-            Handheld.Vibrate();
             ControllerScore.Instance.SetExtraLifeStatus(false);
             PauseGame();
             ControllerPause.Instance.Disable();
