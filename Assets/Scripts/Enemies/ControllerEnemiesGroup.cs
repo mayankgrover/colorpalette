@@ -63,16 +63,16 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     public void ResetStrips()
     {
-        CancelTweens();
+        //CancelTweens();
         StarsSpawned = 0;
         strips.ForEach(strip => strip.ResetStrip());
         SpawnStars();
     }
 
-    private void CancelTweens()
-    {
-        strips.ForEach(strip => strip.CancelTweens());
-    }
+    //private void CancelTweens()
+    //{
+    //    strips.ForEach(strip => strip.CancelTweens());
+    //}
 
     private void SpawnStars()
     {

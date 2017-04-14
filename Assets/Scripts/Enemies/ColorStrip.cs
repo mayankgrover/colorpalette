@@ -74,9 +74,9 @@ public class ColorStrip : MonoBehaviour {
 
     public void CancelTweens()
     {
-        tween = GetComponent<iTween>();
+        tween = stripView.GetComponent<iTween>();
         if(tween != null && tween.isRunning) {
-            Debug.Log("[Strip] Tween group:" + enemyGroup.wave + " strip: " + strip, gameObject);
+            //Debug.Log("[Strip] Tween group:" + enemyGroup.wave + " strip: " + strip, gameObject);
             Destroy(tween);
         }
     }
@@ -87,6 +87,7 @@ public class ColorStrip : MonoBehaviour {
 
     public virtual void ResetStrip() {
         //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
+        CancelTweens();
         isCrossedByPlayer = false;
         stripView.transform.localScale = Vector3.one;
         ResetColor();

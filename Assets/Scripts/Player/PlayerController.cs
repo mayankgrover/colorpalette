@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour {
         if(collider.gameObject.CompareTag("ColorStrip")) {
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
-                //strip.ShrinkStrip();
                 strip.PlayerMatchedColor();
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
