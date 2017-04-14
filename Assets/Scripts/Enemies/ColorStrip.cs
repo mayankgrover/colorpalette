@@ -122,14 +122,6 @@ public class ColorStrip : MonoBehaviour {
         isCrossedByPlayer = true;
     }
 
-    //void OnTriggerExit2D(Collider2D collider)
-    //{
-    //    if(collider.gameObject.CompareTag("Player")) {
-    //        isCrossedByPlayer = true;
-    //        //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " status:" + isCrossedByPlayer, gameObject);
-    //    }
-    //}
-
     private void ResetChildColor()
     {
         if(childStrips.Count > 0) {

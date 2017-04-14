@@ -18,21 +18,19 @@ public class PlayerController : MonoBehaviour {
     Vector3 startScale;
     bool ignoreTouch = false;
     Vector3 levelClearedPos = Vector3.zero;
-    LookAtPlayer camera;
 
     private void Awake()
     {
         iTween.Init(gameObject);
+        startPos = transform.position;
+        startScale = transform.localScale;
     }
 
     private void Start ()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        startPos = transform.position;
-        startScale = transform.localScale;
         trail = GetComponentInChildren<TrailRenderer>();
-        camera = Camera.main.gameObject.GetComponent<LookAtPlayer>();
 
         ControllerMainMenu.Instance.GameStarted += StartGame;
         ControllerMainMenu.Instance.GameEnded += EndGame;
@@ -101,6 +99,7 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.CompareTag("ColorStrip")) {
+            //Debug.LogError("player hit strip");
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
                 strip.PlayerMatchedColor();
@@ -115,11 +114,12 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator DelayPlayerDeath()
     {
-        yield return new WaitForSecondsRealtime(0.1f);
+        //yield return new WaitForSecondsRealtime(0.1f);
         ServiceSharing.Instance.CaptureScreenshotNow();
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);
         Handheld.Vibrate();
         yield return new WaitForSecondsRealtime(0.1f);
+        rigidbody.velocity = Vector3.zero;
         ShrinkPlayer();
         yield return new WaitForSecondsRealtime(0.75f);
         ControllerGame.Instance.PlayerDied();
