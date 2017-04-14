@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     public bool IsGroupCleared { get { return CheckIfAllStripsCrossed(); } }
     public int StripCount { get { return strips.Count + childStrips.Count; } }
+    public int StarsSpawned { get; private set; }
 
     private List<ColorStrip> strips = new List<ColorStrip>();
     private List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
@@ -61,27 +63,45 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     public void ResetStrips()
     {
+        CancelTweens();
+        StarsSpawned = 0;
         strips.ForEach(strip => strip.ResetStrip());
-        float rand = Random.value;
-        //if(rand < NumericConstants.SHOW_STAR_PROBABILITY)
-        {
-            strips[Random.Range(0, strips.Count)].SetObstacle(true);
-            strips[Random.Range(0, strips.Count)].SetObstacle(true);
-            if (childStrips.Count > 0) {
-                childStrips[Random.Range(0, childStrips.Count)].SetObstacle(true);
-            }
-        }
+        SpawnStars();
     }
 
-    public void Show()
+    private void CancelTweens()
     {
-        Debug.Log("Showing group:" + wave);
+        strips.ForEach(strip => strip.CancelTweens());
+    }
+
+    private void SpawnStars()
+    {
+        int firstStar = GetRandomStarIndex();
+        int secondStar = GetRandomStarIndex();
+        while (secondStar == firstStar) secondStar = GetRandomStarIndex();
+
+        strips[firstStar].SetObstacle(true);
+        strips[secondStar].SetObstacle(true);
+        StarsSpawned = 2;
+
+        if (childStrips.Count > 0) {
+            childStrips[UnityEngine.Random.Range(0, childStrips.Count)].SetObstacle(true);
+            StarsSpawned++;
+        }
+        //Debug.Log("[Stars] first:" + firstStar + " second:" + secondStar + " total:" + StarsSpawned);
+    }
+
+    private int GetRandomStarIndex() {
+        return UnityEngine.Random.Range(0, strips.Count);
+    }
+
+    public void Show() {
+        //Debug.Log("Showing group:" + wave);
         gameObject.SetActive(true);
     }
 
-    public void Hide()
-    {
-        Debug.Log("Hiding group:" + wave);
+    public void Hide() {
+        //Debug.Log("Hiding group:" + wave);
         gameObject.SetActive(false);
     }
 }

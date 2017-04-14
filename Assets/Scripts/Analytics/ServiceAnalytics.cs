@@ -5,13 +5,6 @@ using UnityEngine.Analytics;
 
 public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
 {
-    protected override void Start()
-    {
-        base.Start();
-        //Debug.Log("[Analytic-UserId] ID: " + SystemInfo.deviceUniqueIdentifier);
-        //Analytics.SetUserId(SystemInfo.deviceUniqueIdentifier);
-    }
-
     public void ReportClickWatchAdToRevive(bool status)
     {
         Dictionary<string, object> param = new Dictionary<string, object> {
@@ -30,7 +23,7 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
     public void ReportPlayerDied()
     {
         Dictionary<string, object> param = new Dictionary<string, object> {
-                { "score", ControllerScore.Instance.currentScore },
+                { "score", GetScoreCategory(ControllerScore.Instance.currentScore) },
                 { "waves_cleared", ControllerEnemies.Instance.WavesCleared },
                 { "stars_collected", ControllerEnemies.Instance.StarsCollected },
                 { "stars_spawned", ControllerEnemies.Instance.StarsSpawned },
@@ -66,5 +59,14 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
             msg += "{" + pair.Key + ":" + pair.Value + "}";
         }
         return msg;
+    }
+
+    private string GetScoreCategory(float score)
+    {
+        if (score <= 5) return "0-5";
+        else if (score <= 10) return "6-10";
+        else if (score <= 15) return "11-15";
+        else if (score <= 25) return "16-25";
+        else return "25+";
     }
 }

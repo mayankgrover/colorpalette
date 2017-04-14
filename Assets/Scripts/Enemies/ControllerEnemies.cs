@@ -42,25 +42,23 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     {
         WavesCleared = 0;
         StarsCollected = 0;
-        StarsSpawned = 1;
+        StarsSpawned = 0;
         DeathWave = Wave.None;
         DeathStrip = Strip.None;
     }
 
-    internal void StarCollected()
+    public void StarCollected()
     {
         StarsCollected++;
     }
 
     private void ShowActiveGroup()
     {
-        if (activeGroup != null) activeGroup.Show();
+        if (activeGroup != null) {
+            activeGroup.Show();
+            StarsSpawned += activeGroup.StarsSpawned;
+        }
     }
-
-    //private void HideActiveGroup()
-    //{
-    //    if (activeGroup != null) activeGroup.Hide();
-    //}
 
     private void LoadAllEnemyGroups()
     {
@@ -97,8 +95,6 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     public void ForceWaveClear()
     {
         if (activeGroup != null) activeGroup.Hide();
-        //MoveStrips(nextPosition);
-        //SelectNextGroup();
         ResetStrips();
         ShowActiveGroup();
         if (ForceClearedLevel != null) ForceClearedLevel();
@@ -109,8 +105,6 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         if(activeGroup != null && activeGroup.IsGroupCleared)
         {
             WavesCleared++;
-            StarsSpawned++;
-
             StartCoroutine(HideActiveGroupWithDelay(activeGroup));
             if (ClearedLevel != null) {
                 ClearedLevel();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -41,6 +42,7 @@ public class ColorStrip : MonoBehaviour {
     private SpriteRenderer sprite;
     private int myColorIndex;
     private ObstacleBlock obstacle;
+    private iTween tween;
 
     protected GameObject stripView;
 
@@ -70,6 +72,15 @@ public class ColorStrip : MonoBehaviour {
         sprite = childSprite;
     }
 
+    public void CancelTweens()
+    {
+        tween = GetComponent<iTween>();
+        if(tween != null && tween.isRunning) {
+            Debug.Log("[Strip] Tween group:" + enemyGroup.wave + " strip: " + strip, gameObject);
+            Destroy(tween);
+        }
+    }
+
     protected virtual void RegisterEvents() {
         enemyGroup.AddStrip(this);
     }
@@ -96,7 +107,7 @@ public class ColorStrip : MonoBehaviour {
 
     protected virtual void ResetColor(int colorIndex = -1)
     {
-        colorIndex = colorIndex != -1 ? colorIndex : Random.Range(0, 10000) % ControllerGame.Instance.ColorsToUse;
+        colorIndex = colorIndex != -1 ? colorIndex : UnityEngine.Random.Range(0, 10000) % ControllerGame.Instance.ColorsToUse;
         //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " color:" + colorIndex, gameObject);
         myColorIndex = colorIndex;
         myColor = Colors.GameColors[colorIndex];
