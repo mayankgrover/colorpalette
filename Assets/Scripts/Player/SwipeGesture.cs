@@ -110,7 +110,7 @@ public class SwipeGesture : MonoBehaviour
         {
             lastTweenPos = pos;
             tweenOptions["x"] = change;
-            tweenOptions["time"] = 0.3f;
+            tweenOptions["time"] = 0.15f;
             tweenOptions["easetype"] = easeType;
             iTween.MoveBy(gameObject, tweenOptions);
         }

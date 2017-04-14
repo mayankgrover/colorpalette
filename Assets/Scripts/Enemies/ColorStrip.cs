@@ -93,7 +93,7 @@ public class ColorStrip : MonoBehaviour {
         SetObstacle(false);
     }
 
-    public void ShrinkStrip()
+    private void ShrinkStrip()
     {
         iTween.ScaleTo(stripView, Vector3.zero, 0.5f);
     }
@@ -115,13 +115,19 @@ public class ColorStrip : MonoBehaviour {
         ResetChildColor();
     }
 
-    void OnTriggerExit2D(Collider2D collider)
+    internal void PlayerMatchedColor()
     {
-        if(collider.gameObject.CompareTag("Player")) {
-            isCrossedByPlayer = true;
-            //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " status:" + isCrossedByPlayer, gameObject);
-        }
+        ShrinkStrip();
+        isCrossedByPlayer = true;
     }
+
+    //void OnTriggerExit2D(Collider2D collider)
+    //{
+    //    if(collider.gameObject.CompareTag("Player")) {
+    //        isCrossedByPlayer = true;
+    //        //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " status:" + isCrossedByPlayer, gameObject);
+    //    }
+    //}
 
     private void ResetChildColor()
     {

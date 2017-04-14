@@ -78,11 +78,16 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private void GameEnded()
     {
         DeathWave = activeGroup.wave;
-        //HideActiveGroup();
-        StartCoroutine(HideActiveGroupWithDelay(activeGroup));
+        HideActiveGroup();
+        //StartCoroutine(HideActiveGroupWithDelay(activeGroup));
         enemyGroupIndex = defaultGroupIndex;
         MoveStrips(-transform.position.y);
         ResetStrips();
+    }
+
+    private void HideActiveGroup()
+    {
+        if (activeGroup != null) activeGroup.Hide();
     }
 
     void Update()
@@ -94,7 +99,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     public void ForceWaveClear()
     {
-        if (activeGroup != null) activeGroup.Hide();
+        HideActiveGroup();
         ResetStrips();
         ShowActiveGroup();
         if (ForceClearedLevel != null) ForceClearedLevel();
@@ -105,7 +110,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         if(activeGroup != null && activeGroup.IsGroupCleared)
         {
             WavesCleared++;
-            StartCoroutine(HideActiveGroupWithDelay(activeGroup));
+            HideActiveGroup();
             if (ClearedLevel != null) {
                 ClearedLevel();
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Level_Cleared);
@@ -116,12 +121,6 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             ResetStrips();
             ShowActiveGroup();
         }
-    }
-
-    private IEnumerator HideActiveGroupWithDelay(ControllerEnemiesGroup previousGroup)
-    {
-        yield return new WaitForSeconds(1.5f);
-        previousGroup.Hide();
     }
 
     private void SelectNextGroup()

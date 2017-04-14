@@ -15,8 +15,8 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
                 { "death_wave", ControllerEnemies.Instance.DeathWave.ToString() },
                 { "death_strip", ControllerEnemies.Instance.DeathStrip.ToString() }
         };
-        //Debug.Log("[Analytic-WatchAd] " + DebugPrint(param));
         AnalyticsResult result = Analytics.CustomEvent(StringConstants.ANALYTICS_REVIVE_PLAYER, param);
+        //Debug.Log("[Analytic-WatchAd] " + DebugPrint(param));
         //Debug.Log("Result: " + result);
     }
 
@@ -30,8 +30,8 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
                 { "death_wave", ControllerEnemies.Instance.DeathWave.ToString() },
                 { "death_strip", ControllerEnemies.Instance.DeathStrip.ToString() }
         };
-        //Debug.Log("[Analytic-PlayerDied] " + DebugPrint(param));
         AnalyticsResult result = Analytics.CustomEvent(StringConstants.ANALYTICS_GAME_OVER, param);
+        //Debug.Log("[Analytic-PlayerDied] " + DebugPrint(param));
         //Debug.Log("Result: " + result);
     }
 
