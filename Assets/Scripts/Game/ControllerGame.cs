@@ -76,8 +76,8 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     private bool IsExtraLifeAvailable()
     {
         bool status = PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReady();
-        Debug.Log("IsExtraLifeAvailable: " +  status + " AutoWatch:" + PlayerProfile.Instance.AutoWatchAds + 
-            " AdReady:" + ServiceAds.Instance.IsRewardableAdReady());
+        //Debug.Log("IsExtraLifeAvailable: " +  status + " AutoWatch:" + PlayerProfile.Instance.AutoWatchAds + 
+        //    " AdReady:" + ServiceAds.Instance.IsRewardableAdReady());
         return status;
     }
 

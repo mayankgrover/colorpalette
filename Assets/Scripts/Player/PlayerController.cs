@@ -103,9 +103,9 @@ public class PlayerController : MonoBehaviour {
         if(collider.gameObject.CompareTag("ColorStrip")) {
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
             if (strip.myColor == Colors.GameColors[myColorIndex]) {
+                strip.ShrinkStrip();
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
-                strip.ShrinkStrip();
             } else {
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
                 StartCoroutine(DelayPlayerDeath());
@@ -115,7 +115,6 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator DelayPlayerDeath()
     {
-        //camera.ShakeCamera();
         yield return new WaitForSecondsRealtime(0.1f);
         ServiceSharing.Instance.CaptureScreenshotNow();
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);

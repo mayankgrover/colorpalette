@@ -66,7 +66,7 @@ public class ColorStrip : MonoBehaviour {
         childSprite.material = sprite.material;
         childSprite.sortingLayerID = sprite.sortingLayerID;
         childSprite.sortingOrder = sprite.sortingOrder;
-        sprite.enabled = false; //Destroy(sprite); 
+        sprite.enabled = false; 
         sprite = childSprite;
     }
 
@@ -75,6 +75,7 @@ public class ColorStrip : MonoBehaviour {
     }
 
     public virtual void ResetStrip() {
+        //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
         isCrossedByPlayer = false;
         stripView.transform.localScale = Vector3.one;
         ResetColor();
@@ -96,6 +97,7 @@ public class ColorStrip : MonoBehaviour {
     protected virtual void ResetColor(int colorIndex = -1)
     {
         colorIndex = colorIndex != -1 ? colorIndex : Random.Range(0, 10000) % ControllerGame.Instance.ColorsToUse;
+        //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " color:" + colorIndex, gameObject);
         myColorIndex = colorIndex;
         myColor = Colors.GameColors[colorIndex];
         sprite.color = myColor;
@@ -106,6 +108,7 @@ public class ColorStrip : MonoBehaviour {
     {
         if(collider.gameObject.CompareTag("Player")) {
             isCrossedByPlayer = true;
+            //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " status:" + isCrossedByPlayer, gameObject);
         }
     }
 

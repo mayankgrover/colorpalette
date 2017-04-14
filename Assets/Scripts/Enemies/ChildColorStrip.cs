@@ -14,10 +14,10 @@ public class ChildColorStrip: ColorStrip
 
     protected override void ResetColor(int colorIndex = -1)
     {
-        //Debug.Log("setting child color:" + colorIndex, gameObject);
         base.ResetColor(colorIndex);
         isCrossedByPlayer = false;
         stripView.transform.localScale = Vector3.one;
-        SetObstacle(false); // TODO currently stars won't ever be displayed on child strips! 
+        SetObstacle(false); 
+        //Debug.Log("[ChildStrip] group:" + enemyGroup.wave + " strip: " + strip + " ChildColor:" + colorIndex, gameObject);
     }
 }

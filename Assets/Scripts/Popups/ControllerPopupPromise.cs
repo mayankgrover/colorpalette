@@ -23,7 +23,7 @@ public class ControllerPopupPromise: ControllerBasePopup
 
     private void OnGameEnded()
     {
-        Debug.Log("Games played: " + PlayerProfile.Instance.GamesPlayed);
+        //Debug.Log("Games played: " + PlayerProfile.Instance.GamesPlayed);
         if(PlayerProfile.Instance.GamesPlayed % NumericConstants.MIN_GAMES_FOR_WATCHING_ADS == 0 && 
            PlayerProfile.Instance.AutoWatchAds == false)
         {

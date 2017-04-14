@@ -2,6 +2,7 @@
 using UnityEngine;
 using System;
 using Commons.Services;
+using System.Collections;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
@@ -56,10 +57,10 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         if (activeGroup != null) activeGroup.Show();
     }
 
-    private void HideActiveGroup()
-    {
-        if (activeGroup != null) activeGroup.Hide();
-    }
+    //private void HideActiveGroup()
+    //{
+    //    if (activeGroup != null) activeGroup.Hide();
+    //}
 
     private void LoadAllEnemyGroups()
     {
@@ -79,7 +80,8 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private void GameEnded()
     {
         DeathWave = activeGroup.wave;
-        HideActiveGroup();
+        //HideActiveGroup();
+        StartCoroutine(HideActiveGroupWithDelay(activeGroup));
         enemyGroupIndex = defaultGroupIndex;
         MoveStrips(-transform.position.y);
         ResetStrips();
@@ -109,7 +111,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             WavesCleared++;
             StarsSpawned++;
 
-            activeGroup.Hide();
+            StartCoroutine(HideActiveGroupWithDelay(activeGroup));
             if (ClearedLevel != null) {
                 ClearedLevel();
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Level_Cleared);
@@ -120,6 +122,12 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             ResetStrips();
             ShowActiveGroup();
         }
+    }
+
+    private IEnumerator HideActiveGroupWithDelay(ControllerEnemiesGroup previousGroup)
+    {
+        yield return new WaitForSeconds(1.5f);
+        previousGroup.Hide();
     }
 
     private void SelectNextGroup()

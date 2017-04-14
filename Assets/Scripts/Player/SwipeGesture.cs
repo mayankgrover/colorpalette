@@ -114,6 +114,6 @@ public class SwipeGesture : MonoBehaviour
             tweenOptions["easetype"] = easeType;
             iTween.MoveBy(gameObject, tweenOptions);
         }
-        else Debug.Log("cant move: " + pos.x);
+        //else Debug.Log("cant move: " + pos.x);
     }
 }
