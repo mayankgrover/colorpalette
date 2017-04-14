@@ -118,8 +118,8 @@ public class PlayerController : MonoBehaviour {
         ServiceSharing.Instance.CaptureScreenshotNow();
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);
         Handheld.Vibrate();
-        yield return new WaitForSecondsRealtime(0.1f);
         rigidbody.velocity = Vector3.zero;
+        yield return new WaitForSecondsRealtime(0.1f);
         ShrinkPlayer();
         yield return new WaitForSecondsRealtime(0.75f);
         ControllerGame.Instance.PlayerDied();
