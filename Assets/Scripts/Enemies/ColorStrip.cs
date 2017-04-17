@@ -111,7 +111,7 @@ public class ColorStrip : MonoBehaviour {
         colorIndex = colorIndex != -1 ? colorIndex : UnityEngine.Random.Range(0, 10000) % ControllerGame.Instance.ColorsToUse;
         //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " color:" + colorIndex, gameObject);
         myColorIndex = colorIndex;
-        myColor = Colors.GameColors[colorIndex];
+        myColor = Colors.Instance.GameColors[colorIndex];
         sprite.color = myColor;
         ResetChildColor();
     }

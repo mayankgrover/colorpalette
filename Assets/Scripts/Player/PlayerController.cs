@@ -101,7 +101,8 @@ public class PlayerController : MonoBehaviour {
         if(collider.gameObject.CompareTag("ColorStrip")) {
             //Debug.LogError("player hit strip");
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
-            if (strip.myColor == Colors.GameColors[myColorIndex]) {
+            if (strip.myColor == Colors.Instance.GameColors[myColorIndex])
+            {
                 strip.PlayerMatchedColor();
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
@@ -129,14 +130,14 @@ public class PlayerController : MonoBehaviour {
     {
         iTween.ScaleTo(gameObject, Vector3.zero, 0.5f);
         rigidbody.velocity = Vector3.zero;
-        trail.enabled = false;
+        if(trail != null) trail.enabled = false;
     }
 
     private void UnShrinkPlayer()
     {
         transform.localScale = Vector3.zero;
         iTween.ScaleTo(gameObject, startScale, 1f);
-        trail.enabled = true;
+        if(trail != null) trail.enabled = true;
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -154,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateColor() {
         //Debug.Log("[Player] Setting color to: " + myColorIndex);
-        sprite.color = Colors.GameColors[myColorIndex];
+        sprite.color = Colors.Instance.GameColors[myColorIndex];
     }
 
     private void OnGamePaused()

@@ -40,7 +40,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     private void ClearedLevel()
     {
         ColorsToUse += incColorsToUse;
-        ColorsToUse = System.Math.Min(ColorsToUse, Colors.GameColors.Length);
+        ColorsToUse = System.Math.Min(ColorsToUse, Colors.Instance.GameColors.Length);
         //Debug.Log("colors to use:" + ColorsToUse);
     }
 

@@ -1,18 +1,18 @@
-﻿using UnityEngine;
+﻿using Commons.Singleton;
+using UnityEngine;
 
-public static class Colors
+public class Colors: MonoSingleton<Colors>
 {
-    public static Color[] GameColors = 
-    {
-        //Color.magenta,
-        //Color.blue,
-        //Color.cyan,
-        //Color.red,
-        //Color.green
-        new Color(133f/255f, 40f/255f, 40f/255f),
-        new Color(99f/255f,  40f/255f, 133f/255f),
-        new Color(40f/255f,  93f/255f, 133f/255f),
-        new Color(40f/255f,  133f/255f, 75f/255f),
-        new Color(133f/255f, 122f/255f, 40f/255f)
-    };
+    [SerializeField]
+    public Color[] GameColors;
+
+
+    //public static Color[] GameColors = 
+    //{
+    //    new Color(133f/255f, 40f/255f, 40f/255f),
+    //    new Color(99f/255f,  40f/255f, 133f/255f),
+    //    new Color(40f/255f,  93f/255f, 133f/255f),
+    //    new Color(40f/255f,  133f/255f, 75f/255f),
+    //    new Color(133f/255f, 122f/255f, 40f/255f)
+    //};
 }

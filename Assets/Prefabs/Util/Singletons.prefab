@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 11480768}
   - component: {fileID: 114579132654620214}
   - component: {fileID: 114828466858291152}
+  - component: {fileID: 114190348911897604}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Untagged
@@ -77,6 +78,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162566}
   m_IsPrefabParent: 1
+--- !u!114 &114190348911897604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01681406ee225aa4d97f5d644e960766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameColors:
+  - {r: 0.65678924, g: 0.2653693, b: 0.88235295, a: 1}
+  - {r: 0.88235295, g: 0.26205882, b: 0.26205882, a: 1}
+  - {r: 0.26205882, g: 0.88235295, b: 0.49901116, a: 1}
+  - {r: 0.26205888, g: 0.84513533, b: 0.88235295, a: 1}
+  - {r: 0.88235295, g: 0.8091582, b: 0.26205882, a: 1}
 --- !u!114 &114579132654620214
 MonoBehaviour:
   m_ObjectHideFlags: 1

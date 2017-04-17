@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 4}
+  m_Size: {x: 4, y: 4}
 --- !u!114 &11439932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -857852777
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c19c0fb114404c941b9af6ae85d96715, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d59436e8e0a2b0d47948d35feafee426, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4774787173445158
 Transform:
   m_ObjectHideFlags: 1
