@@ -8,17 +8,32 @@ using UnityEngine.UI;
 public class ControllerPause: MonoSingleton<ControllerPause>
 {
     [SerializeField] private Button btnPause;
-    [SerializeField] private Sprite imgPause;
-    [SerializeField] private Sprite imgResume;
+    [SerializeField] private Button btnResume;
+    //[SerializeField] private Sprite imgPause;
+    //[SerializeField] private Sprite imgResume;
 
-    private Image image;
+    private GameObject panelResume;
+
+    //private Image image;
     private bool isPaused = false;
 
     protected override void Awake()
     {
         base.Awake();
-        image = GetComponent<Image>();
+        //image = GetComponent<Image>();
         btnPause.onClick.AddListener(OnClickPause);
+        btnResume.onClick.AddListener(OnClickResume);
+        panelResume = btnResume.transform.parent.gameObject;
+    }
+
+    private void OnClickPause()
+    {
+        OnClick(paused: true);
+    }
+
+    private void OnClickResume()
+    {
+        OnClick(paused: false);
     }
 
     protected override void Start()
@@ -28,6 +43,14 @@ public class ControllerPause: MonoSingleton<ControllerPause>
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
         UpdateUI();
         gameObject.SetActive(false);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if(pause == true) {
+            isPaused = pause;
+            GamePaused();
+        }
     }
 
     private void OnGameEnded()
@@ -41,9 +64,9 @@ public class ControllerPause: MonoSingleton<ControllerPause>
         Enable();
     }
 
-    private void OnClickPause()
+    private void OnClick(bool paused)
     {
-        isPaused = !isPaused;
+        isPaused = paused;
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         if (isPaused) GamePaused();
         else GameResumed();
@@ -57,7 +80,9 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void UpdateUI()
     {
-        image.sprite = isPaused ? imgResume : imgPause;
+        //image.sprite = isPaused ? imgResume : imgPause;
+        btnPause.gameObject.SetActive(isPaused == false);
+        panelResume.gameObject.SetActive(isPaused == true);
     }
 
     private void GamePaused()
