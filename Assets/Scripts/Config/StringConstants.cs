@@ -22,5 +22,5 @@ public static class StringConstants
     public static string ANALYTICS_AUTO_WATCH_POPUP = "Auto_Ad_Popup";
 
     // Sharing
-    public static string SHARE_TEXT = "Scored {0} with high score of {1} in #UnforgivingColors. Can you beat that? {2}";
+    public static string SHARE_TEXT = "Scored:{0} High Score:{1} in #UnforgivingColors. Can you beat that? {2}";
 }

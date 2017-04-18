@@ -14,16 +14,21 @@ public class SwipeGesture : MonoBehaviour
 
     private bool ignoreTouch = true;
     private Hashtable tweenOptions;
-    private Vector3 lastTweenPos;
+    private float lastTweenPosX;
 
     [SerializeField] private iTween.EaseType easeType;
 
     void Awake()
     {
         player = GetComponent<PlayerController>();
+
         tweenOptions = new Hashtable();
+        tweenOptions["space"] = Space.World;
+        tweenOptions["time"] = 0.15f;
+        tweenOptions["easetype"] = easeType;
+
         iTween.Init(gameObject);
-        lastTweenPos = transform.position;
+        lastTweenPosX = transform.position.x;
     }
 
     void Update()
@@ -101,19 +106,31 @@ public class SwipeGesture : MonoBehaviour
 
     private void MovePlayer(float change)
     {
-        Vector2 pos = lastTweenPos; // transform.position;
-        lastTweenPos.y = transform.position.y;
-        lastTweenPos.z = transform.position.z;
-        transform.position = lastTweenPos;
+        if(Mathf.Abs(transform.position.x - lastTweenPosX) > 0.01f) {
+            Debug.Log("Forcing X:" + lastTweenPosX + " pos:" + transform.position.x);
+            Vector3 prevPos = transform.position;
+            prevPos.x = lastTweenPosX;
+            transform.position = prevPos;
+            CancelTween();
+        }
+
+        Vector3 pos = transform.position;
         pos.x += change;
         if (Mathf.Abs(pos.x) <= maxPosition)
         {
-            lastTweenPos = pos;
+            //Debug.Log("Updating X:" + pos.x + " curr:" + transform.position.x);
+            lastTweenPosX = pos.x;
             tweenOptions["x"] = change;
-            tweenOptions["time"] = 0.15f;
-            tweenOptions["easetype"] = easeType;
             iTween.MoveBy(gameObject, tweenOptions);
         }
-        //else Debug.Log("cant move: " + pos.x);
+    }
+
+    private void CancelTween()
+    {
+        iTween tween = transform.GetComponent<iTween>();
+        if (tween != null) {
+            //Debug.Log("killing existing tween while swiping");
+            Destroy(tween);
+        }
     }
 }

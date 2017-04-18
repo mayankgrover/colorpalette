@@ -78,6 +78,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     public void BonusScore(Vector3 position, int reward)
     {
         Vector3 screenPos = camera.WorldToScreenPoint(position);
+        screenPos.y += 40f;
         bonusScore.text = "+" + reward; // + "s";
         bonusScore.transform.position = screenPos;
         bonusScore.gameObject.SetActive(true);

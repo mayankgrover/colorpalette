@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 104902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 1}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_Children:
   - {fileID: 4774787173445158}
   m_Father: {fileID: 0}
@@ -53,7 +53,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!61 &6163256
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 7.5, y: 6}
 --- !u!114 &11439932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -857852777
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d59436e8e0a2b0d47948d35feafee426, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 871c5d498920ebc4cb7e9acadc7fb68d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

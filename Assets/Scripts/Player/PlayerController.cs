@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     float defPlayerSpeed = 0.50f;
     float playerSpeedInc = 0.025f;
     float currPlayerSpeed = 0f;
+    float rotationSpeed = 1f;
 
     TrailRenderer trail;
     Vector3 startPos;
@@ -56,16 +57,15 @@ public class PlayerController : MonoBehaviour {
         ResetPlayerSpeed();
     }
 
-#if UNITY_EDITOR
     void Update () {
-        if (!ControllerGame.Instance.IsGamePaused)
+        iTween.RotateUpdate(gameObject, transform.localRotation.eulerAngles + Vector3.back * rotationSpeed, Time.deltaTime);
+        if (!ControllerGame.Instance.IsGamePaused && ControllerGame.Instance.IsGameOnGoing)
         {
             if (Input.GetKeyDown(KeyCode.Space)) {
                 ChangeColor();
             }
         }
 	}
-#endif
 
     private void ResetPlayerSpeed()
     {
