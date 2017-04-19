@@ -1,6 +1,7 @@
 ﻿using Commons.Services;
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class SwipeGesture : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class SwipeGesture : MonoBehaviour
     private float startTime;
     private PlayerController player;
 
-    private int myPlayerPosition = 0;
     private float maxPosition = 0.3f;
     private float incPosition = 0.3f;
 
@@ -29,6 +29,16 @@ public class SwipeGesture : MonoBehaviour
 
         iTween.Init(gameObject);
         lastTweenPosX = transform.position.x;
+    }
+
+    private void Start()
+    {
+        ControllerMainMenu.Instance.GameEnded += OnGameEnded;
+    }
+
+    private void OnGameEnded()
+    {
+        lastTweenPosX = 0f;
     }
 
     void Update()
@@ -106,13 +116,16 @@ public class SwipeGesture : MonoBehaviour
 
     private void MovePlayer(float change)
     {
-        if(Mathf.Abs(transform.position.x - lastTweenPosX) > 0.01f) {
-            Debug.Log("Forcing X:" + lastTweenPosX + " pos:" + transform.position.x);
-            Vector3 prevPos = transform.position;
-            prevPos.x = lastTweenPosX;
-            transform.position = prevPos;
-            CancelTween();
-        }
+        //if(Mathf.Abs(transform.position.x - lastTweenPosX) > 0.1f) {
+        //    Debug.Log("Forcing X:" + lastTweenPosX + " pos:" + transform.position.x);
+        //    Vector3 prevPos = transform.position;
+        //    prevPos.x = lastTweenPosX;
+        //    transform.position = prevPos;
+        //    CancelTween();
+        //}
+
+        CancelTween();
+        transform.position = new Vector3(lastTweenPosX, transform.position.y, transform.position.z);
 
         Vector3 pos = transform.position;
         pos.x += change;
