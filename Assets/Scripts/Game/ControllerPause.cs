@@ -1,7 +1,6 @@
 ﻿
 using Commons.Services;
 using Commons.Singleton;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,18 +8,13 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 {
     [SerializeField] private Button btnPause;
     [SerializeField] private Button btnResume;
-    //[SerializeField] private Sprite imgPause;
-    //[SerializeField] private Sprite imgResume;
 
     private GameObject panelResume;
-
-    //private Image image;
     private bool isPaused = false;
 
     protected override void Awake()
     {
         base.Awake();
-        //image = GetComponent<Image>();
         btnPause.onClick.AddListener(OnClickPause);
         btnResume.onClick.AddListener(OnClickResume);
         panelResume = btnResume.transform.parent.gameObject;
@@ -47,8 +41,9 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void OnApplicationPause(bool pause)
     {
-        if(pause == true) {
-            isPaused = pause;
+        if(isPaused == false) {
+            //Debug.Log("#pause:" + isPaused);
+            isPaused = true;
             GamePaused();
         }
     }
@@ -80,7 +75,6 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void UpdateUI()
     {
-        //image.sprite = isPaused ? imgResume : imgPause;
         btnPause.gameObject.SetActive(isPaused == false);
         panelResume.gameObject.SetActive(isPaused == true);
     }
