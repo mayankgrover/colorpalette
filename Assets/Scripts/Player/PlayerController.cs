@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     Vector3 startPos;
     Vector3 startScale;
     bool ignoreTouch = false;
+    bool isPlayerDead = false;
     Vector3 levelClearedPos = Vector3.zero;
 
     private void Awake()
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnLevelForceCleared()
     {
+        isPlayerDead = false;
         Vector2 newPosition = transform.position;
         newPosition.y = levelClearedPos.y;
         transform.position = newPosition;
@@ -81,6 +83,7 @@ public class PlayerController : MonoBehaviour {
 
     private void StartGame()
     {
+        isPlayerDead = false;
         transform.position = startPos;
         levelClearedPos = startPos;
         myColorIndex = UnityEngine.Random.Range(0, ControllerGame.Instance.ColorsToUse - 1);
@@ -91,6 +94,7 @@ public class PlayerController : MonoBehaviour {
 
     private void EndGame()
     {
+        isPlayerDead = true;
         transform.position = startPos;
         levelClearedPos = startPos;
         rigidbody.velocity = Vector3.zero;
@@ -107,6 +111,7 @@ public class PlayerController : MonoBehaviour {
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
             } else {
+                isPlayerDead = true;
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
                 StartCoroutine(DelayPlayerDeath());
             }
@@ -148,9 +153,12 @@ public class PlayerController : MonoBehaviour {
     }
         
     public void ChangeColor() {
-        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_PlayerClick);
-        myColorIndex = (myColorIndex + 1) % ControllerGame.Instance.ColorsToUse;
-        UpdateColor();
+        if (isPlayerDead == false) {
+            ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_PlayerClick);
+            myColorIndex = (myColorIndex + 1) % ControllerGame.Instance.ColorsToUse;
+            UpdateColor();
+        }
+        //else Debug.LogWarning("Cannot change color as player is currently dead");
     }
 
     private void UpdateColor() {
