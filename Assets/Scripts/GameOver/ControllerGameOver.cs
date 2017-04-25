@@ -45,13 +45,13 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         //    controllerWatchAd.Show();
         //}
 
+        // TODO only 1 banner will be shown since we are handling both portait and 4:3 mode in one way! 
+        if (PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 &&
+            controllerRateUs.IsAlreadyRated == false) {
+            controllerRateUs.Show();
+        }
+        else if (ServiceSharing.Instance.IsScreenshotAvailable) {
             controllerShare.Show();
-        //if(PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 && 
-        //    controllerRateUs.IsAlreadyRated == false) {
-        //    controllerRateUs.Show();
-        //}
-        //else if (ServiceSharing.Instance.IsScreenshotAvailable) {
-        //    controllerShare.Show();
-        //}
+        }
     }
 }
