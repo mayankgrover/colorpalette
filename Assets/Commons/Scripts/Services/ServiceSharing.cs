@@ -15,7 +15,7 @@ namespace Commons.Services
         private string storeLink =
 #if UNITY_ANDROID
                 storeLinkAndroid;
-#elif UNITY_IPHONE
+#elif UNITY_IOS
                 storeLinkApple;
 #endif
 
