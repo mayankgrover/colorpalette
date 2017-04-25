@@ -144,7 +144,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22495620, guid: 905347bc51db95548a2efdf7a6c0c1d0, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 22495620, guid: 905347bc51db95548a2efdf7a6c0c1d0, type: 2}
       propertyPath: m_AnchorMin.x
@@ -234,7 +234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445414, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -112
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 22445414, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
       propertyPath: m_SizeDelta.x
@@ -242,7 +242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445414, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 22445414, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
       propertyPath: m_AnchorMin.x
@@ -267,10 +267,6 @@ Prefab:
     - target: {fileID: 22445414, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 136826, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28a0d713bb8adbf45af0ee166cd4915a, type: 2}
@@ -456,10 +452,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11416028, guid: 1aae1d8aea250f74782ce394fb6d888b, type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 711153736}
     - target: {fileID: 11496040, guid: 1aae1d8aea250f74782ce394fb6d888b, type: 2}
       propertyPath: highScore
       value: 
@@ -472,10 +464,10 @@ Prefab:
       propertyPath: deaths
       value: 
       objectReference: {fileID: 1995256634}
-    - target: {fileID: 154138, guid: 1aae1d8aea250f74782ce394fb6d888b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 11416028, guid: 1aae1d8aea250f74782ce394fb6d888b, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 711153736}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1aae1d8aea250f74782ce394fb6d888b, type: 2}
   m_IsPrefabParent: 0
@@ -667,7 +659,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22442742, guid: 0952cb64cfd961d45ad90277ac1db896, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22442742, guid: 0952cb64cfd961d45ad90277ac1db896, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1321,9 +1313,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 640, y: 960}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

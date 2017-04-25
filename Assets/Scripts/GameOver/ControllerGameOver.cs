@@ -49,8 +49,7 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
             controllerRateUs.IsAlreadyRated == false) {
             controllerRateUs.Show();
         }
-
-        if (ServiceSharing.Instance.IsScreenshotAvailable) {
+        else if (ServiceSharing.Instance.IsScreenshotAvailable) {
             controllerShare.Show();
         }
     }
