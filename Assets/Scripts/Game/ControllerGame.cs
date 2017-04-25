@@ -68,6 +68,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         //UnityEngine.Random.seed = (int) DateTime.UtcNow.Date.Ticks;
         //Debug.Log("using seed: " + UnityEngine.Random.seed);
         playerAlreadyRevived = false;
+        IsGamePaused = false;
         IsGameOnGoing = true;
         ColorsToUse = minColorsToUse;
         ControllerScore.Instance.SetExtraLifeStatus(IsExtraLifeAvailable());

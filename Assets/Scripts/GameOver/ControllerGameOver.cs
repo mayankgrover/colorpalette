@@ -45,12 +45,13 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         //    controllerWatchAd.Show();
         //}
 
-        if(PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 && 
-            controllerRateUs.IsAlreadyRated == false) {
-            controllerRateUs.Show();
-        }
-        else if (ServiceSharing.Instance.IsScreenshotAvailable) {
             controllerShare.Show();
-        }
+        //if(PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 && 
+        //    controllerRateUs.IsAlreadyRated == false) {
+        //    controllerRateUs.Show();
+        //}
+        //else if (ServiceSharing.Instance.IsScreenshotAvailable) {
+        //    controllerShare.Show();
+        //}
     }
 }

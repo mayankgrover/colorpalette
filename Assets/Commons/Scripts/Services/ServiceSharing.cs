@@ -9,8 +9,16 @@ namespace Commons.Services
 
         public bool IsScreenshotAvailable { get; private set; }
 
-        // TODO add separate link for iOS 
-        private string storeLink = "https://goo.gl/RIyVIB";
+        private static string storeLinkAndroid = "https://goo.gl/RIyVIB";
+        private static string storeLinkApple = "unforgivinggames.com";
+
+        private string storeLink =
+#if UNITY_ANDROID
+                //storeLinkAndroid;
+                storeLinkApple;
+#elif UNITY_IPHONE
+                storeLinkApple;
+#endif
 
         public void Share(string text = "", string screenShotPath = "")
         {
