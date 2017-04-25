@@ -10,7 +10,7 @@ namespace Commons.Services
         public bool IsScreenshotAvailable { get; private set; }
 
         private static string storeLinkAndroid = "https://goo.gl/RIyVIB";
-        private static string storeLinkApple = "unforgivinggames.com";
+        private static string storeLinkApple = "https://goo.gl/LbgyY4";
 
         private string storeLink =
 #if UNITY_ANDROID
@@ -27,7 +27,7 @@ namespace Commons.Services
                     PlayerProfile.Instance.BestScore, storeLink
                 );
 
-            Debug.Log("Sharing: " + text);
+            //Debug.Log("Sharing: " + text);
             nativeShare.ShareScreenshotWithText(text, screenShotPath);
         }
 

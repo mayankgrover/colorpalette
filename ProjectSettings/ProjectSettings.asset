@@ -122,13 +122,13 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.unforgiving.colors
-  bundleVersion: 1.0.4
+  bundleVersion: 1.0.5
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   protectGraphicsMemory: 0
-  AndroidBundleVersionCode: 104
+  AndroidBundleVersionCode: 105
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -136,7 +136,7 @@ PlayerSettings:
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
-  iPhoneBuildNumber: 104
+  iPhoneBuildNumber: 105
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
@@ -503,7 +503,7 @@ PlayerSettings:
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Build: 0
+    Build: 1
     UNet: 1
   cloudProjectId: f5892f21-2539-47d2-9bcf-4c1fbf0ef356
   projectName: Unforgiving Colors
