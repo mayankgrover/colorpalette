@@ -1,4 +1,5 @@
-﻿using Commons.Services;
+﻿using Commons.Effects;
+using Commons.Services;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -120,20 +121,25 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator DelayPlayerDeath()
     {
-        //yield return new WaitForSecondsRealtime(0.1f);
-        ServiceSharing.Instance.CaptureScreenshotNow();
+        EffectExplosion.Instance.PlayExplosionEffect(transform.position, 
+            Colors.Instance.GameColors[myColorIndex]);
+
+        yield return new WaitForSecondsRealtime(0.1f);
+        rigidbody.velocity = Vector3.zero;
+        ShrinkPlayer();
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);
         Handheld.Vibrate();
-        rigidbody.velocity = Vector3.zero;
-        yield return new WaitForSecondsRealtime(0.1f);
-        ShrinkPlayer();
-        yield return new WaitForSecondsRealtime(0.75f);
+
+        yield return new WaitForSecondsRealtime(0.5f);
+        ServiceSharing.Instance.CaptureScreenshotNow();
+
+        yield return new WaitForSecondsRealtime(1f);
         ControllerGame.Instance.PlayerDied();
     }
 
     private void ShrinkPlayer()
     {
-        iTween.ScaleTo(gameObject, Vector3.zero, 0.5f);
+        iTween.ScaleTo(gameObject, Vector3.zero, 0.75f);
         rigidbody.velocity = Vector3.zero;
         if(trail != null) trail.enabled = false;
     }
@@ -158,7 +164,6 @@ public class PlayerController : MonoBehaviour {
             myColorIndex = (myColorIndex + 1) % ControllerGame.Instance.ColorsToUse;
             UpdateColor();
         }
-        //else Debug.LogWarning("Cannot change color as player is currently dead");
     }
 
     private void UpdateColor() {
