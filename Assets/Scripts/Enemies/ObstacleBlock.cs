@@ -10,9 +10,9 @@ public class ObstacleBlock: MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            ControllerScore.Instance.AddScore(NumericConstants.COINS_FOR_STAR);
             ControllerEnemies.Instance.StarCollected();
-            //PlayerProfile.Instance.UpdateCoins(NumericConstants.COINS_FOR_STAR);
+            PlayerProfile.Instance.UpdateCoins(NumericConstants.COINS_FOR_STAR);
+            //ControllerScore.Instance.AddScore(NumericConstants.COINS_FOR_STAR);
             ControllerScore.Instance.BonusScore(gameObject.transform.position, NumericConstants.COINS_FOR_STAR);
             ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Bonus);
             gameObject.SetActive(false);

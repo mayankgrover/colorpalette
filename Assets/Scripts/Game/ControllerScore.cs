@@ -44,7 +44,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     private void UpdateCoins()
     {
-        coins.text = "COINS: " + PlayerProfile.Instance.Coins;
+        coins.text = PlayerProfile.Instance.Coins + "c";
     }
 
     private void UpdateDeaths()
@@ -79,7 +79,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     {
         Vector3 screenPos = camera.WorldToScreenPoint(position);
         screenPos.y += 40f;
-        bonusScore.text = "+" + reward; // + "s";
+        bonusScore.text = "+" + reward + "c";
         bonusScore.transform.position = screenPos;
         bonusScore.gameObject.SetActive(true);
         Invoke("DisableBonusScore", 1.5f);
