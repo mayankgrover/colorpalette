@@ -26,6 +26,11 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
         Disable();
     }
 
+    public void StartGame()
+    {
+        OnPlayClick();
+    }
+
     public void EndGame()
     {
         if (GameEnded != null) GameEnded();

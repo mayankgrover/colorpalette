@@ -1,8 +1,9 @@
 ﻿
 using System;
 using Commons.Singleton;
-using Commons.Ads;
 using Commons.Services;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class ControllerGameOver : MonoSingleton<ControllerGameOver>
 {
@@ -12,9 +13,14 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
     private ControllerNextGift controllerNextGift;
     private ControllerShare controllerShare;
 
+    [SerializeField] private Button playButton;
+    [SerializeField] private Text score;
+    [SerializeField] private Text highScore;
+
     protected override void Awake()
     {
         base.Awake();
+        playButton.onClick.AddListener(OnPlayClick);
         controllerWatchAd = GetComponentInChildren<ControllerWatchAd>(includeInactive: true);
         controllerUnlockGift = GetComponentInChildren<ControllerUnlockGift>(includeInactive: true);
         controllerRateUs = GetComponentInChildren<ControllerRateUs>(includeInactive: true);
@@ -22,11 +28,17 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         controllerShare = GetComponentInChildren<ControllerShare>(includeInactive: true);
     }
 
+    private void OnPlayClick()
+    {
+        ControllerMainMenu.Instance.StartGame();
+    }
+
     protected override void Start()
     {
         base.Start();
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
+        Disable();
     }
 
     private void OnGameStarted()
@@ -36,6 +48,13 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         controllerRateUs.Hide();
         controllerNextGift.Hide();
         controllerShare.Hide();
+        Disable();
+    }
+
+    private void UpdateScores()
+    {
+        score.text = ControllerScore.Instance.currentScore.ToString();
+        highScore.text = PlayerProfile.Instance.BestScore.ToString();
     }
 
     private void OnGameEnded()
@@ -45,13 +64,18 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         //    controllerWatchAd.Show();
         //}
 
-        // TODO only 1 banner will be shown since we are handling both portait and 4:3 mode in one way! 
+        UpdateScores();
         if (PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 &&
             controllerRateUs.IsAlreadyRated == false) {
             controllerRateUs.Show();
         }
-        else if (ServiceSharing.Instance.IsScreenshotAvailable) {
+
+        // SS is now taken when the share button is clicked
+        //if (ServiceSharing.Instance.IsScreenshotAvailable)
+        {
             controllerShare.Show();
         }
+
+        Enable();
     }
 }
