@@ -120,8 +120,6 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator DelayPlayerDeath()
     {
-        //yield return new WaitForSecondsRealtime(0.1f);
-        ServiceSharing.Instance.CaptureScreenshotNow();
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Over);
         Handheld.Vibrate();
         rigidbody.velocity = Vector3.zero;

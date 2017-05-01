@@ -1063,8 +1063,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1525144263}
   - component: {fileID: 1525144262}
+  - component: {fileID: 1525144264}
   m_Layer: 0
-  m_Name: Obstacles
+  m_Name: EnemyWaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1098,6 +1099,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1525144264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1525144261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49fecb8418021dc4eb0d4118654d8a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - type: 0
+    sprite: {fileID: 21300000, guid: 63d52a17ab7dee04aba65104fefb9ff2, type: 3}
+  - type: 1
+    sprite: {fileID: 21300000, guid: e0492c680edfe984bab40af3ebc96682, type: 3}
+  - type: 2
+    sprite: {fileID: 21300000, guid: 04ba42b0a54a7424f9aaf24eccf55988, type: 3}
 --- !u!224 &1525408510 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22494422, guid: 1aae1d8aea250f74782ce394fb6d888b,

@@ -76,7 +76,7 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     private void SpawnStars()
     {
-        int firstStar = GetRandomStarIndex();
+        int firstStar  = GetRandomStarIndex();
         int secondStar = GetRandomStarIndex();
         while (secondStar == firstStar) secondStar = GetRandomStarIndex();
 
