@@ -11,11 +11,13 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     private int games;
     private long freeGiftTicks;
     private int autoWatchAds;
+    private int characterId;
 
     public Action OnBestScoreUpdated;
     public Action OnCoinsUpdated;
     public Action OnDeathsUpdated;
     public Action OnAutoWatchAdsUpdated;
+    public Action OnSelectedCharacterUpdated;
 
     public override void OnInitialized()
     {
@@ -29,13 +31,12 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public float BestScore { get { return best; } }
     public int Coins { get { return coins; } }
     public int Deaths { get { return deaths; } }
+    public int SelectedCharacterId { get { return characterId; } }
     public bool AutoWatchAds { get { return autoWatchAds == 1; } }
 
     protected override void Awake()
     {
         base.Awake();
-        //PlayerPrefs.DeleteKey(StringConstants.GAMES_PLAYED);
-        //PlayerPrefs.DeleteKey(StringConstants.AUTO_WATCH_AD);
         LoadPlayerProfile();
     }
 
@@ -45,8 +46,17 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         coins = PlayerPrefs.GetInt(StringConstants.COINS, 0);
         deaths = PlayerPrefs.GetInt(StringConstants.DEATHS, 0);
         games = PlayerPrefs.GetInt(StringConstants.GAMES_PLAYED, 0);
+        characterId = PlayerPrefs.GetInt(StringConstants.SELECTED_CHARACTER, 1);
         autoWatchAds = PlayerPrefs.GetInt(StringConstants.AUTO_WATCH_AD, 0);
         freeGiftTicks = long.Parse(PlayerPrefs.GetString(StringConstants.FREE_GIFT_TICKS, "" + DateTime.MinValue.Ticks));
+    }
+
+    public void UpdateSelectedCharacter(int id)
+    {
+        characterId = id;
+        PlayerPrefs.SetInt(StringConstants.SELECTED_CHARACTER, characterId);
+        PlayerPrefs.Save();
+        if (OnSelectedCharacterUpdated != null) OnSelectedCharacterUpdated();
     }
 
     public void UpdateAutoWatchAds(bool status)

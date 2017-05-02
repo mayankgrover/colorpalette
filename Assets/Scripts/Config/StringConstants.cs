@@ -9,6 +9,7 @@ public static class StringConstants
     public static string FREE_GIFT_TICKS = "Free_Gift_Ticks";
     public static string AUTO_WATCH_AD = "Auto_Watch_Ad";
     public static string RATE_US = "Rate_Us";
+    public static string SELECTED_CHARACTER = "Selected_Character";
 
     // UI Strings 
     public static string GAMEOVER_WATCH_AD = "Free Coins ";

@@ -12,5 +12,19 @@ namespace Commons.Editor.Scripts
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
         }
+
+        [MenuItem("Extensions/PlayerPref/AddCoins")]
+        public static void AddCoins()
+        {
+            PlayerPrefs.SetInt(StringConstants.COINS, 100);
+            PlayerPrefs.Save();
+        }
+
+        [MenuItem("Extensions/PlayerPref/RemoveCoins")]
+        public static void RemoveCoins()
+        {
+            PlayerPrefs.SetInt(StringConstants.COINS, 0);
+            PlayerPrefs.Save();
+        }
     }
 }

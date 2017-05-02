@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour {
 
     private void StartGame()
     {
+        sprite.sprite = ControllerShop.Instance.GetSelectedPlayerSprite();
         isPlayerDead = false;
         transform.position = startPos;
         levelClearedPos = startPos;
