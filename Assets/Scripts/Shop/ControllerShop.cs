@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ControllerShop: MonoSingleton<ControllerShop>
 {
+    [SerializeField] private Button backButton;
     [SerializeField] private Text Coins;
     [SerializeField] private Transform CharactersContent;
 
@@ -19,8 +20,21 @@ public class ControllerShop: MonoSingleton<ControllerShop>
     protected override void Awake()
     {
         base.Awake();
+        backButton.onClick.AddListener(onBackClick);
         Disable();
     }
+
+    private void onBackClick()
+    {
+        Disable();
+    }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape)) {
+    //        onBackClick();
+    //    }
+    //}
 
     protected override void Start()
     {

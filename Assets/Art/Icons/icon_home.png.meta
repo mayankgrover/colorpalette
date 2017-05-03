@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 84d99a1b7e72b374d9379383c044e37d
-timeCreated: 1489652559
+guid: 937c4c9eab4a4c54b967601e8f06f052
+timeCreated: 1493849786
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -24,11 +24,11 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 13
-  maxTextureSize: 512
+  textureFormat: 1
+  maxTextureSize: 2048
   textureSettings:
     filterMode: 1
-    aniso: 0
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -76,7 +76,7 @@ TextureImporter:
     overridden: 0
   - buildTarget: Android
     maxTextureSize: 256
-    textureFormat: 47
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0

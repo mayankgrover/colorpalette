@@ -8,7 +8,7 @@ using Commons.Services;
 public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
 {
     [SerializeField] private Button playButton;
-    [SerializeField] private GameObject playerStatsGroup;
+    [SerializeField] private Button shopButton;
 
     public Action GameStarted;
     public Action GameEnded;
@@ -16,10 +16,16 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
     protected override void Awake()
     {
         base.Awake();
-        playButton.onClick.AddListener(OnPlayClick);
+        playButton.onClick.AddListener(onClickPlay);
+        shopButton.onClick.AddListener(onClickShop);
     }
 
-    private void OnPlayClick()
+    private void onClickShop()
+    {
+        ControllerShop.Instance.Enable();
+    }
+
+    private void onClickPlay()
     {
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         if (GameStarted != null) GameStarted();
@@ -28,7 +34,7 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
 
     public void StartGame()
     {
-        OnPlayClick();
+        onClickPlay();
     }
 
     public void EndGame()

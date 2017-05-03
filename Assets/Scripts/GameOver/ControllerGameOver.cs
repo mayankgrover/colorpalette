@@ -14,13 +14,18 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
     private ControllerShare controllerShare;
 
     [SerializeField] private Button playButton;
+    [SerializeField] private Button homeButton;
+    [SerializeField] private Button shopButton;
     [SerializeField] private Text score;
     [SerializeField] private Text highScore;
 
     protected override void Awake()
     {
         base.Awake();
-        playButton.onClick.AddListener(OnPlayClick);
+        playButton.onClick.AddListener(onPlayClick);
+        homeButton.onClick.AddListener(onClickHome);
+        shopButton.onClick.AddListener(onClickShop);
+
         controllerWatchAd = GetComponentInChildren<ControllerWatchAd>(includeInactive: true);
         controllerUnlockGift = GetComponentInChildren<ControllerUnlockGift>(includeInactive: true);
         controllerRateUs = GetComponentInChildren<ControllerRateUs>(includeInactive: true);
@@ -28,7 +33,17 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         controllerShare = GetComponentInChildren<ControllerShare>(includeInactive: true);
     }
 
-    private void OnPlayClick()
+    private void onClickShop()
+    {
+        ControllerShop.Instance.Enable();
+    }
+
+    private void onClickHome()
+    {
+        Disable();
+    }
+
+    private void onPlayClick()
     {
         ControllerMainMenu.Instance.StartGame();
     }
