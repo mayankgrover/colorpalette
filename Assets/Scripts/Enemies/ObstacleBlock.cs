@@ -52,6 +52,7 @@ public class ObstacleBlock: MonoBehaviour
     {
         if(isTweening == false)
         {
+            isTweening = true;
             iTween.ScaleTo(gameObject, new Hashtable() {
                 { "x", transform.localScale.x * 1.25f },
                 { "y", transform.localScale.y * 1.25f },

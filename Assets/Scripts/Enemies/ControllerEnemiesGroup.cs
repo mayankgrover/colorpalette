@@ -77,20 +77,16 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     private void SpawnStars()
     {
-        obstacles.ForEach(obstacle => obstacle.SetStatus(false));
+        //obstacles.ForEach(obstacle => obstacle.SetStatus(false));
+        obstacles.ForEach(obstacle => obstacle.SetStatus(true));
 
-        int firstStar  = GetRandomStarIndex();
-        int secondStar = GetRandomStarIndex();
-        while (secondStar == firstStar) secondStar = GetRandomStarIndex();
+        //int firstStar  = GetRandomStarIndex();
+        //int secondStar = GetRandomStarIndex();
+        //while (secondStar == firstStar) secondStar = GetRandomStarIndex();
 
-        obstacles[firstStar].SetStatus(true);
-        obstacles[secondStar].SetStatus(true);
-        StarsSpawned = 2;
-
-        //if (childStrips.Count > 0) {
-        //    childStrips[UnityEngine.Random.Range(0, childStrips.Count)].SetObstacle(true);
-        //    StarsSpawned++;
-        //}
+        //obstacles[firstStar].SetStatus(true);
+        //obstacles[secondStar].SetStatus(true);
+        //StarsSpawned = 2;
     }
 
     private int GetRandomStarIndex() {
