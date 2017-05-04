@@ -17,7 +17,7 @@ public class ChildColorStrip: ColorStrip
         base.ResetColor(colorIndex);
         isCrossedByPlayer = false;
         stripView.transform.localScale = Vector3.one;
-        SetObstacle(false); 
+        //SetObstacle(false); 
         //Debug.Log("[ChildStrip] group:" + enemyGroup.wave + " strip: " + strip + " ChildColor:" + colorIndex, gameObject);
     }
 }

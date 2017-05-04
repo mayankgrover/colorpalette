@@ -41,14 +41,14 @@ public class ColorStrip : MonoBehaviour {
 
     private SpriteRenderer sprite;
     private int myColorIndex;
-    private ObstacleBlock obstacle;
+    //private ObstacleBlock obstacle;
     private iTween tween;
 
     protected GameObject stripView;
 
     protected virtual void Awake() {
         sprite = GetComponent<SpriteRenderer>();
-        obstacle = transform.GetChild(0).GetComponent<ObstacleBlock>();
+        //obstacle = transform.GetChild(0).GetComponent<ObstacleBlock>();
         enemyGroup = GetComponentInParent<ControllerEnemiesGroup>();
         childStrips = GetComponentsInChildren<ChildColorStrip>().ToList();
         SetupStripView();
@@ -91,7 +91,7 @@ public class ColorStrip : MonoBehaviour {
         isCrossedByPlayer = false;
         stripView.transform.localScale = Vector3.one;
         ResetColor();
-        SetObstacle(false);
+        //SetObstacle(false);
     }
 
     private void ShrinkStrip()
@@ -99,12 +99,12 @@ public class ColorStrip : MonoBehaviour {
         iTween.ScaleTo(stripView, Vector3.zero, 0.5f);
     }
 
-    public void SetObstacle(bool status)
-    {
-        if(obstacle != null) {
-            obstacle.SetStatus(status);
-        }
-    }
+    //public void SetObstacle(bool status)
+    //{
+    //    if(obstacle != null) {
+    //        obstacle.SetStatus(status);
+    //    }
+    //}
 
     protected virtual void ResetColor(int colorIndex = -1)
     {

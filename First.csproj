@@ -126,6 +126,7 @@
     <Compile Include="Assets\Commons\Scripts\Singletons\Singleton.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\LoadViewUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\RandomNumber.cs" />
+    <Compile Include="Assets\Commons\Scripts\Util\TestSettings.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\ZoomUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Views\IView.cs" />
     <Compile Include="Assets\Scripts\Analytics\ServiceAnalytics.cs" />

@@ -30,6 +30,7 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     private List<ColorStrip> strips = new List<ColorStrip>();
     private List<ChildColorStrip> childStrips = new List<ChildColorStrip>();
+    private List<ObstacleBlock> obstacles = new List<ObstacleBlock>();
 
     private bool CheckIfAllStripsCrossed()
     {
@@ -47,48 +48,49 @@ public class ControllerEnemiesGroup: MonoBehaviour
         transform.position = position;
     }
 
+    public void AddObstacle(ObstacleBlock obstacle)
+    {
+        if(obstacles.Contains(obstacle) == false) {
+            obstacles.Add(obstacle);
+        }
+    }
+
     public void AddStrip(ColorStrip strip)
     {
-        if(!strips.Contains(strip)) {
+        if(strips.Contains(strip) == false) {
             strips.Add(strip);
         }
     }
 
     public void AddChildStrip(ChildColorStrip childStrip)
     {
-        if(!childStrips.Contains(childStrip)) {
+        if(childStrips.Contains(childStrip) == false) {
             childStrips.Add(childStrip);
         }
     }
 
     public void ResetStrips()
     {
-        //CancelTweens();
-        StarsSpawned = 0;
         strips.ForEach(strip => strip.ResetStrip());
         SpawnStars();
     }
 
-    //private void CancelTweens()
-    //{
-    //    strips.ForEach(strip => strip.CancelTweens());
-    //}
-
     private void SpawnStars()
     {
+        obstacles.ForEach(obstacle => obstacle.SetStatus(false));
+
         int firstStar  = GetRandomStarIndex();
         int secondStar = GetRandomStarIndex();
         while (secondStar == firstStar) secondStar = GetRandomStarIndex();
 
-        strips[firstStar].SetObstacle(true);
-        strips[secondStar].SetObstacle(true);
+        obstacles[firstStar].SetStatus(true);
+        obstacles[secondStar].SetStatus(true);
         StarsSpawned = 2;
 
-        if (childStrips.Count > 0) {
-            childStrips[UnityEngine.Random.Range(0, childStrips.Count)].SetObstacle(true);
-            StarsSpawned++;
-        }
-        //Debug.Log("[Stars] first:" + firstStar + " second:" + secondStar + " total:" + StarsSpawned);
+        //if (childStrips.Count > 0) {
+        //    childStrips[UnityEngine.Random.Range(0, childStrips.Count)].SetObstacle(true);
+        //    StarsSpawned++;
+        //}
     }
 
     private int GetRandomStarIndex() {

@@ -6,6 +6,7 @@ using System.Collections;
 
 public class ObstacleBlock: MonoBehaviour
 {
+    private ControllerEnemiesGroup enemyGroup;
     private SpriteRenderer sprite;
     private ObstacleType currentType;
     private float pulsatingSpeed;
@@ -14,6 +15,9 @@ public class ObstacleBlock: MonoBehaviour
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        enemyGroup = GetComponentInParent<ControllerEnemiesGroup>();
+        enemyGroup.AddObstacle(this);
+
         iTween.Init(gameObject);
     }
 

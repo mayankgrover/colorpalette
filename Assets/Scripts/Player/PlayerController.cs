@@ -1,4 +1,5 @@
 ﻿using Commons.Services;
+using Commons.Util;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -104,9 +105,9 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.CompareTag("ColorStrip")) {
-            //Debug.LogError("player hit strip");
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
-            if (strip.myColor == Colors.Instance.GameColors[myColorIndex])
+            if (!TestSettings.Instance.CanPlayerDie || 
+                 strip.myColor == Colors.Instance.GameColors[myColorIndex])
             {
                 strip.PlayerMatchedColor();
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
