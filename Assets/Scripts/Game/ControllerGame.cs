@@ -1,7 +1,4 @@
 ﻿using Commons.Ads;
-using Commons.Popups;
-using Commons.Services;
-using Commons.SideScrolling;
 using Commons.Singleton;
 using System;
 using UnityEngine;
