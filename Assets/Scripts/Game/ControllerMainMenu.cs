@@ -10,6 +10,10 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
     [SerializeField] private Button playButton;
     [SerializeField] private Button shopButton;
 
+    [SerializeField] private Text score;
+    [SerializeField] private Text coins;
+    [SerializeField] private Text highScore;
+
     public Action GameStarted;
     public Action GameEnded;
 
@@ -18,6 +22,18 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
         base.Awake();
         playButton.onClick.AddListener(onClickPlay);
         shopButton.onClick.AddListener(onClickShop);
+
+        OnEnabled += UpdateUI;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        PlayerProfile.Instance.OnBestScoreUpdated += UpdateUI;
+        PlayerProfile.Instance.OnDeathsUpdated += UpdateUI;
+        PlayerProfile.Instance.OnCoinsUpdated += UpdateUI;
+        UpdateUI();
     }
 
     private void onClickShop()
@@ -41,6 +57,13 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
     {
         if (GameEnded != null) GameEnded();
         Enable();
+    }
+    
+    private void UpdateUI()
+    {
+        coins.text = PlayerProfile.Instance.Coins.ToString() + "c";
+        score.text = PlayerProfile.Instance.CurrentScore.ToString();
+        highScore.text = "BEST: " + PlayerProfile.Instance.BestScore.ToString();  
     }
 
     private void RewardableVideoResult(ShowResult rewardableVideoResult)

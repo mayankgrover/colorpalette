@@ -23,7 +23,7 @@ namespace Commons.Services
         {
             text = text != string.Empty ? text :
                 string.Format(
-                    StringConstants.SHARE_TEXT, ControllerScore.Instance.currentScore, 
+                    StringConstants.SHARE_TEXT, PlayerProfile.Instance.CurrentScore, 
                     PlayerProfile.Instance.BestScore, storeLink
                 );
 

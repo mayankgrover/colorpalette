@@ -32,6 +32,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         ControllerEnemies.Instance.ClearedLevel += ClearedLevel;
 
         ColorsToUse = minColorsToUse;
+        Disable();
     }
 
     private void ClearedLevel()
@@ -48,10 +49,12 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private void GameEnded()
     {
+        //Debug.Log("ControllerGame OnGameEnd");
         IsGamePaused = false;
         IsGameOnGoing = false;
         ColorsToUse = minColorsToUse;
         ControllerScore.Instance.SetExtraLifeStatus(false);
+        Disable();
     }
 
     public void ResumeGame()
@@ -69,6 +72,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         IsGameOnGoing = true;
         ColorsToUse = minColorsToUse;
         ControllerScore.Instance.SetExtraLifeStatus(IsExtraLifeAvailable());
+        Enable();
     }
 
     private bool IsExtraLifeAvailable()

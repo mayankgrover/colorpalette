@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5035280}
   - component: {fileID: 11453332}
   - component: {fileID: 11439932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4774787173445158}
   - component: {fileID: 96688580364926354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -130,6 +130,7 @@
     <Compile Include="Assets\Commons\Scripts\Util\ZoomUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Views\IView.cs" />
     <Compile Include="Assets\Scripts\Analytics\ServiceAnalytics.cs" />
+    <Compile Include="Assets\Scripts\Camera\ControllerGameCamera.cs" />
     <Compile Include="Assets\Scripts\Camera\ControllerScrollingBackground.cs" />
     <Compile Include="Assets\Scripts\Camera\LookAtPlayer.cs" />
     <Compile Include="Assets\Scripts\Colors\Colors.cs" />

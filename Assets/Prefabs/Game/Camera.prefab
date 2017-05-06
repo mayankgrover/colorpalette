@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 451718}
   - component: {fileID: 2052886}
   - component: {fileID: 11432996}
-  - component: {fileID: 81748471562331424}
+  - component: {fileID: 114751691734811424}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.69, z: -1.5}
+  m_LocalPosition: {x: -0, y: 0.6, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,7 +39,7 @@ Camera:
   m_GameObject: {fileID: 177726}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -52,16 +52,16 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 1
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 768
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
@@ -88,10 +88,14 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 177726}
   m_IsPrefabParent: 1
---- !u!81 &81748471562331424
-AudioListener:
+--- !u!114 &114751691734811424
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177726}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f4ec9fc43e27840a9ba206d934c61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

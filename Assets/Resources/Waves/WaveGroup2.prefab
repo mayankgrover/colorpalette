@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - component: {fileID: 22401548}
   - component: {fileID: 11458530}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WaveGroup2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 6178172}
   - component: {fileID: 5065988}
   - component: {fileID: 11438346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6170656}
   - component: {fileID: 5001424}
   - component: {fileID: 11428668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MiddleObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 6180428}
   - component: {fileID: 5064564}
   - component: {fileID: 11479182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 6192384}
   - component: {fileID: 5092036}
   - component: {fileID: 11447352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MiddleObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 21227592}
   - component: {fileID: 11437826}
   - component: {fileID: 6147024}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColorStrip (5)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 6134634}
   - component: {fileID: 5049424}
   - component: {fileID: 11477804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 21248606}
   - component: {fileID: 11439954}
   - component: {fileID: 6123622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColorStrip (3)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 6192604}
   - component: {fileID: 5062926}
   - component: {fileID: 11421402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 21280804}
   - component: {fileID: 6142894}
   - component: {fileID: 11463268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ChildColorStrip (7)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 21212330}
   - component: {fileID: 11489066}
   - component: {fileID: 6141024}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColorStrip (2)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 6117748}
   - component: {fileID: 5068638}
   - component: {fileID: 11477104}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 21258380}
   - component: {fileID: 6140064}
   - component: {fileID: 11424918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColorStrip (8)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 6146698}
   - component: {fileID: 5013056}
   - component: {fileID: 11439274}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 21295580}
   - component: {fileID: 11462448}
   - component: {fileID: 6132902}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColorStrip (1)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 21248726}
   - component: {fileID: 11456606}
   - component: {fileID: 6150652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColorStrip
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 21287768}
   - component: {fileID: 6146190}
   - component: {fileID: 11489894}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ChildColorStrip (9)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 6198346}
   - component: {fileID: 5032990}
   - component: {fileID: 11417940}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightObstacle
   m_TagString: ObstacleBlock
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 21245420}
   - component: {fileID: 11470640}
   - component: {fileID: 6125500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColorStrip (4)
   m_TagString: ColorStrip
   m_Icon: {fileID: 0}
@@ -1906,7 +1906,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4191216250119054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1921,7 +1921,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4187716086927392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Strips
   m_TagString: Untagged
   m_Icon: {fileID: 0}

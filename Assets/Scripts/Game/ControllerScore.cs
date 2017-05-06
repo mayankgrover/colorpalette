@@ -6,66 +6,38 @@ using System;
 public class ControllerScore : MonoSingleton<ControllerScore> {
 
     [SerializeField] private Text score;
-    [SerializeField] private Text highScore;
     [SerializeField] private Text bonusScore;
-    [SerializeField] private Text coins;
-    [SerializeField] private Text deaths;
+    //[SerializeField] private Text coins;
     [SerializeField] private Image extraLife;
+    [SerializeField] private Camera canvasCamera;
+    [SerializeField] private Camera gameCamera;
 
-    public float currentScore { get; private set; }
-    private new Camera camera;
+    private float currentScore;
 
     protected override void Start()
     {
         base.Start();
-        camera = Camera.main;
-
         UpdateScoreView();
-        UpdateHighScore();
         UpdateCoins();
-        UpdateDeaths();
         SetExtraLifeStatus(false);
 
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
-        ControllerMainMenu.Instance.GameEnded += OnGameEnd;
-
-        PlayerProfile.Instance.OnBestScoreUpdated += UpdateHighScore;
-        PlayerProfile.Instance.OnDeathsUpdated += UpdateDeaths;
-        PlayerProfile.Instance.OnCoinsUpdated += UpdateCoins;
+        //ControllerMainMenu.Instance.GameEnded += OnGameEnd;
     }
-
-    //void FixedUpdate()
-    //{
-    //if (ControllerGame.Instance.IsGameOnGoing && !ControllerGame.Instance.IsGamePaused) {
-    //    currentScore += Time.fixedDeltaTime;
-    //    UpdateScoreView();
-    //}
-    //}
 
     private void UpdateCoins()
     {
-        coins.text = PlayerProfile.Instance.Coins + "c";
-    }
-
-    private void UpdateDeaths()
-    {
-        deaths.text = "DEATHS: " + PlayerProfile.Instance.Deaths;
+        //coins.text = PlayerProfile.Instance.Coins + "c";
     }
 
     private void OnGameEnd()
     {
+        Debug.Log("ControllerScore OnGameEnd");
         PlayerProfile.Instance.UpdateBestScore(currentScore);
-        highScore.gameObject.SetActive(true);
-    }
-
-    private void UpdateHighScore()
-    {
-        highScore.text = "BEST: " + PlayerProfile.Instance.BestScore.ToString(); // "0.00") + "s";
     }
 
     public void SetExtraLifeStatus(bool status)
     {
-        //Debug.Log("extra life status: " + status);
         extraLife.gameObject.SetActive(status);
     }
 
@@ -73,14 +45,15 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     {
         currentScore += score;
         UpdateScoreView();
+        PlayerProfile.Instance.UpdateBestScore(currentScore);
     }
 
     public void BonusScore(Vector3 position, int reward)
     {
-        Vector3 screenPos = camera.WorldToScreenPoint(position);
-        screenPos.y += 40f;
+        Vector3 viewPortPos = gameCamera.WorldToScreenPoint(position);
+        viewPortPos.y += 40f;
         bonusScore.text = "+" + reward + "c";
-        bonusScore.transform.position = screenPos;
+        bonusScore.rectTransform.anchoredPosition3D = viewPortPos;
         bonusScore.gameObject.SetActive(true);
         Invoke("DisableBonusScore", 1.5f);
     }
@@ -93,13 +66,13 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
     private void OnGameStarted()
     {
         currentScore = 0f;
-        highScore.gameObject.SetActive(false);
         UpdateScoreView();
     }
 
     private void UpdateScoreView()
     {
-        score.text = currentScore.ToString(); // "0.00 s");
+        PlayerProfile.Instance.UpdateScore(currentScore);
+        score.text = currentScore.ToString();
     }
 
 }

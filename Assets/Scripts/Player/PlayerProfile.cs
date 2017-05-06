@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerProfile : MonoSingleton<PlayerProfile>
 {
+    private float currentScore;
     private float best;
     private int coins;
     private int deaths;
@@ -13,6 +14,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     private int autoWatchAds;
     private int characterId;
 
+    public Action OnScoreUpdated;
     public Action OnBestScoreUpdated;
     public Action OnCoinsUpdated;
     public Action OnDeathsUpdated;
@@ -29,6 +31,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public long GamesPlayed { get { return games; } }
     public long FreeGiftTick { get { return freeGiftTicks; } }
     public float BestScore { get { return best; } }
+    public float CurrentScore { get { return currentScore; } }
     public int Coins { get { return coins; } }
     public int Deaths { get { return deaths; } }
     public int SelectedCharacterId { get { return characterId; } }
@@ -65,6 +68,12 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         PlayerPrefs.SetInt(StringConstants.AUTO_WATCH_AD, autoWatchAds);
         PlayerPrefs.Save();
         if (OnAutoWatchAdsUpdated != null) OnAutoWatchAdsUpdated();
+    }
+
+    public void UpdateScore(float score)
+    {
+        currentScore = score;
+        if (OnScoreUpdated != null) OnScoreUpdated();
     }
 
     public void UpdateBestScore(float score)

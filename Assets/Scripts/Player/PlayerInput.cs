@@ -14,7 +14,7 @@ public class PlayerInput: MonoBehaviour, IPointerClickHandler, IDragHandler, IEn
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     private void OnGameEnded()

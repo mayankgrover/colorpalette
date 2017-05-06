@@ -14,8 +14,8 @@ public class ControllerScrollingBackground : MonoBehaviour
     {
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
-        ControllerGame.Instance.GamePaused += OnGamePaued;
-        ControllerGame.Instance.GameResumed += OnGameResumed;
+        //ControllerGame.Instance.GamePaused += OnGamePaued;
+        //ControllerGame.Instance.GameResumed += OnGameResumed;
 
         scroll.Disable();
     }

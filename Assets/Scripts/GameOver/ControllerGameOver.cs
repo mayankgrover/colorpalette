@@ -68,12 +68,13 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
 
     private void UpdateScores()
     {
-        score.text = ControllerScore.Instance.currentScore.ToString();
+        score.text = PlayerProfile.Instance.CurrentScore.ToString();
         highScore.text = PlayerProfile.Instance.BestScore.ToString();
     }
 
     private void OnGameEnded()
     {
+        //Debug.Log("ControllerGameOver OnGameEnd");
         //controllerNextGift.Show();
         //if(ServiceAds.Instance.IsRewardableAdReady()) {
         //    controllerWatchAd.Show();

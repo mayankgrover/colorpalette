@@ -41,35 +41,36 @@ public class ColorStrip : MonoBehaviour {
 
     private SpriteRenderer sprite;
     private int myColorIndex;
-    //private ObstacleBlock obstacle;
     private iTween tween;
 
     protected GameObject stripView;
+    private Vector3 defScale;
 
     protected virtual void Awake() {
         sprite = GetComponent<SpriteRenderer>();
-        //obstacle = transform.GetChild(0).GetComponent<ObstacleBlock>();
         enemyGroup = GetComponentInParent<ControllerEnemiesGroup>();
         childStrips = GetComponentsInChildren<ChildColorStrip>().ToList();
+        defScale = gameObject.transform.localScale;
         SetupStripView();
         RegisterEvents();
     }
 
     private void SetupStripView()
     {
-        stripView = new GameObject();
-        stripView.transform.SetParent(transform);
-        stripView.transform.localPosition = Vector3.zero;
-        stripView.transform.localScale = Vector3.one;
+        stripView = gameObject;
+        //stripView = new GameObject();
+        //stripView.transform.SetParent(transform);
+        //stripView.transform.localPosition = Vector3.zero;
+        //stripView.transform.localScale = Vector3.one;
 
-        SpriteRenderer childSprite = stripView.AddComponent<SpriteRenderer>();
-        childSprite.sprite = sprite.sprite;
-        childSprite.color = sprite.color;
-        childSprite.material = sprite.material;
-        childSprite.sortingLayerID = sprite.sortingLayerID;
-        childSprite.sortingOrder = sprite.sortingOrder;
-        sprite.enabled = false; 
-        sprite = childSprite;
+        //SpriteRenderer childSprite = stripView.AddComponent<SpriteRenderer>();
+        //childSprite.sprite = sprite.sprite;
+        //childSprite.color = sprite.color;
+        //childSprite.material = sprite.material;
+        //childSprite.sortingLayerID = sprite.sortingLayerID;
+        //childSprite.sortingOrder = sprite.sortingOrder;
+        //sprite.enabled = false; 
+        //sprite = childSprite;
     }
 
     public void CancelTweens()
@@ -89,22 +90,14 @@ public class ColorStrip : MonoBehaviour {
         //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
         CancelTweens();
         isCrossedByPlayer = false;
-        stripView.transform.localScale = Vector3.one;
+        stripView.transform.localScale = defScale;
         ResetColor();
-        //SetObstacle(false);
     }
 
     private void ShrinkStrip()
     {
         iTween.ScaleTo(stripView, Vector3.zero, 0.5f);
     }
-
-    //public void SetObstacle(bool status)
-    //{
-    //    if(obstacle != null) {
-    //        obstacle.SetStatus(status);
-    //    }
-    //}
 
     protected virtual void ResetColor(int colorIndex = -1)
     {

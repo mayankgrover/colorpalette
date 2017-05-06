@@ -23,7 +23,7 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
     public void ReportPlayerDied()
     {
         Dictionary<string, object> param = new Dictionary<string, object> {
-                { "score", GetScoreCategory(ControllerScore.Instance.currentScore) },
+                { "score", GetScoreCategory(PlayerProfile.Instance.CurrentScore) },
                 { "waves_cleared", ControllerEnemies.Instance.WavesCleared },
                 { "stars_collected", ControllerEnemies.Instance.StarsCollected },
                 { "stars_spawned", ControllerEnemies.Instance.StarsSpawned },
