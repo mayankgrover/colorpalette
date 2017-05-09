@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Commons.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -57,29 +58,26 @@ public class ColorStrip : MonoBehaviour {
 
     private void SetupStripView()
     {
-        stripView = gameObject;
-        //stripView = new GameObject();
-        //stripView.transform.SetParent(transform);
-        //stripView.transform.localPosition = Vector3.zero;
-        //stripView.transform.localScale = Vector3.one;
+        //stripView = gameObject;
+        stripView = new GameObject();
+        stripView.transform.SetParent(transform);
+        stripView.transform.localPosition = Vector3.zero;
+        stripView.transform.localScale = Vector3.one;
+        stripView.layer = gameObject.layer;
 
-        //SpriteRenderer childSprite = stripView.AddComponent<SpriteRenderer>();
-        //childSprite.sprite = sprite.sprite;
-        //childSprite.color = sprite.color;
-        //childSprite.material = sprite.material;
-        //childSprite.sortingLayerID = sprite.sortingLayerID;
-        //childSprite.sortingOrder = sprite.sortingOrder;
-        //sprite.enabled = false; 
-        //sprite = childSprite;
+        SpriteRenderer childSprite = stripView.AddComponent<SpriteRenderer>();
+        childSprite.sprite = sprite.sprite;
+        childSprite.color = sprite.color;
+        childSprite.material = sprite.material;
+        childSprite.sortingLayerID = sprite.sortingLayerID;
+        childSprite.sortingOrder = sprite.sortingOrder;
+        sprite.enabled = false;
+        sprite = childSprite;
     }
 
     public void CancelTweens()
     {
-        tween = stripView.GetComponent<iTween>();
-        if(tween != null && tween.isRunning) {
-            //Debug.Log("[Strip] Tween group:" + enemyGroup.wave + " strip: " + strip, gameObject);
-            Destroy(tween);
-        }
+        TweenUtil.CancelPendingTweens(stripView);
     }
 
     protected virtual void RegisterEvents() {
@@ -90,7 +88,7 @@ public class ColorStrip : MonoBehaviour {
         //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
         CancelTweens();
         isCrossedByPlayer = false;
-        stripView.transform.localScale = defScale;
+        stripView.transform.localScale = Vector3.one;  //defScale;
         ResetColor();
     }
 

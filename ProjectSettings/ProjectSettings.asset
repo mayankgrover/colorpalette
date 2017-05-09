@@ -122,14 +122,14 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.unforgiving.colors
-  bundleVersion: 1.0.5
+  bundleVersion: 1.0.6
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   protectGraphicsMemory: 0
-  AndroidBundleVersionCode: 105
-  AndroidMinSdkVersion: 9
+  AndroidBundleVersionCode: 106
+  AndroidMinSdkVersion: 14
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2

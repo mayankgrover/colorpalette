@@ -98,7 +98,7 @@ public class ControllerShop: MonoSingleton<ControllerShop>
 
     private void onSelectCharacter(int id)
     {
-        Debug.Log("SelectCharacter:" + id);
+        //Debug.Log("SelectCharacter:" + id);
         ShopCharacterData prevSelected = GetShopCharacterData(PlayerProfile.Instance.SelectedCharacterId);
         ShopCharacterData newSelected = GetShopCharacterData(id);
         prevSelected.IsSelected = false;
