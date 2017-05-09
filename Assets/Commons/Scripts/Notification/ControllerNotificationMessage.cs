@@ -11,37 +11,39 @@ namespace Commons.Notification
     public class ControllerNotificationMessage: MonoSingleton <ControllerNotificationMessage>
     {
         [SerializeField] private Text text;
-
-        private Vector3 defPosition;
         private Hashtable tweenOptions;
 
         protected override void Awake()
         {
             base.Awake();
-            defPosition = transform.position;
-            iTween.Init(gameObject);
+            iTween.Init(text.gameObject);
 
             tweenOptions = new Hashtable();
             tweenOptions["scale"] = Vector3.one;
-            tweenOptions["time"] = 2f;
+            tweenOptions["time"] = 1.5f;
             tweenOptions["oncomplete"] = "onTweenComplete";
             tweenOptions["easetype"] = iTween.EaseType.easeOutExpo;
         }
 
         public void ShowMessage(string message, float duration = 1.5f)
         {
-            TweenUtil.CancelPendingTweens(gameObject);
+            TweenUtil.CancelPendingTweens(text.gameObject);
+            StopAllCoroutines();
+
             text.text = message;
-            transform.localScale = Vector3.one * 0.5f;
+            text.transform.localScale = Vector3.one * 0.1f;
             tweenOptions["time"] = duration;
+
             Enable();
-            StartCoroutine(PlayTween(gameObject));
+            StartCoroutine(PlayTween(text.gameObject, duration));
         }
 
-        private IEnumerator PlayTween(GameObject gameObject)
+        private IEnumerator PlayTween(GameObject gameObject, float duration)
         {
             yield return new WaitForEndOfFrame();
             iTween.ScaleTo(gameObject, tweenOptions);
+            yield return new WaitForSeconds(duration);
+            Disable();
         }
 
         private void onTweenComplete()

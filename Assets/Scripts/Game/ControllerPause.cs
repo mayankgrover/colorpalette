@@ -22,11 +22,13 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void OnClickPause()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         OnClick(paused: true);
     }
 
     private void OnClickResume()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         OnClick(paused: false);
     }
 

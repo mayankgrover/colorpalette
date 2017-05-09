@@ -6,6 +6,7 @@ using System;
 using UnityEngine.UI;
 
 using PlayerPrefs = ZPlayerPrefs;
+using Commons.Services;
 
 public class ControllerShop: MonoSingleton<ControllerShop>
 {
@@ -28,6 +29,7 @@ public class ControllerShop: MonoSingleton<ControllerShop>
 
     private void onBackClick()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         Disable();
     }
 

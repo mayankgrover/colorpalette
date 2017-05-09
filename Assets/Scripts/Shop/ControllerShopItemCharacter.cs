@@ -1,5 +1,6 @@
 ﻿
 using Commons.Notification;
+using Commons.Services;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,6 +56,7 @@ public class ControllerShopItemCharacter: MonoBehaviour
 
     private void OnButtonClick()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         if (IsPurchased) {
             UpdateSelectedCharacter();
         }

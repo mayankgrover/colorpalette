@@ -38,6 +38,7 @@ public class ControllerMainMenu : MonoSingleton<ControllerMainMenu>
 
     private void onClickShop()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ControllerShop.Instance.Enable();
     }
 

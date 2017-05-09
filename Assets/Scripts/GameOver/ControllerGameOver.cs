@@ -35,16 +35,19 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
 
     private void onClickShop()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ControllerShop.Instance.Enable();
     }
 
     private void onClickHome()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         Disable();
     }
 
     private void onPlayClick()
     {
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ControllerMainMenu.Instance.StartGame();
     }
 
