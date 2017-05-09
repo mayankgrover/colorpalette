@@ -176,9 +176,8 @@
     <Compile Include="Assets\Commons\Editor\Scripts\EditorPlayerPrefs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
-    <None Include="Assets\Plugins\ToonShaderPackage\Shaders\TSF.shader" />
-    <None Include="Assets\Plugins\ToonShaderPackage\Shaders\TSFOutline.shader" />
+    <None Include="Assets\Commons\ExternalTools\EncryptPlayerPrefs\Readme\readme_ZPlayerPrefs.txt" />
+    <None Include="Assets\Commons\ExternalTools\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
