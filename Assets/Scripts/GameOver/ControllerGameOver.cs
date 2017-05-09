@@ -75,7 +75,7 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
     private void OnGameEnded()
     {
         //Debug.Log("ControllerGameOver OnGameEnd");
-        //controllerNextGift.Show();
+        controllerNextGift.Show();
         //if(ServiceAds.Instance.IsRewardableAdReady()) {
         //    controllerWatchAd.Show();
         //}

@@ -1,4 +1,5 @@
 ﻿
+using Commons.Notification;
 using Commons.Services;
 using System;
 using UnityEngine;
@@ -65,9 +66,11 @@ public class ControllerNextGift: ControllerBaseGameOverElement
         //Debug.Log("[NextGift] now: " + DateTime.Now);
         PlayerProfile.Instance.UpdateCoins(reward);
         PlayerProfile.Instance.UpdateFreeGiftTimestamp(DateTime.Now.Ticks);
-        ControllerScore.Instance.BonusScore(Vector3.zero, reward);
+        //ControllerScore.Instance.BonusScore(transform.position, reward);
+        ControllerNotificationMessage.Instance.ShowMessage(reward + " coins rewarded!");
         ServiceAnalytics.Instance.ReportClaimFreeReward(true);
         nextFreeGift = DateTime.Now + freeGiftDuration;
-        Hide();
+        //Hide();
+        Show();
     }
 }

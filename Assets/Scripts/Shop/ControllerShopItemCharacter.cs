@@ -1,4 +1,5 @@
 ﻿
+using Commons.Notification;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -67,7 +68,8 @@ public class ControllerShopItemCharacter: MonoBehaviour
 
     private void NotEnoughCoins()
     {
-        Debug.LogError("Not enough coins:" + Cost + " balance:" + PlayerProfile.Instance.Coins);
+        //Debug.LogError("Not enough coins:" + Cost + " balance:" + PlayerProfile.Instance.Coins);
+        ControllerNotificationMessage.Instance.ShowMessage("Not enough coins to buy this character!");
     }
 
     private void BuyPlayerCharacter()

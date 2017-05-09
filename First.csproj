@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -121,6 +123,7 @@
     <Compile Include="Assets\Commons\ExternalTools\iTween\Sample\RotateSample.cs" />
     <Compile Include="Assets\Commons\ExternalTools\iTween\Sample\SampleInfo.cs" />
     <Compile Include="Assets\Commons\ExternalTools\iTween\iTween.cs" />
+    <Compile Include="Assets\Commons\Scripts\Notification\ControllerNotificationMessage.cs" />
     <Compile Include="Assets\Commons\Scripts\Popups\ControllerBasePopup.cs" />
     <Compile Include="Assets\Commons\Scripts\Popups\ControllerPopupManager.cs" />
     <Compile Include="Assets\Commons\Scripts\Services\ServiceAds.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Assets\Commons\Scripts\Util\LoadViewUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\RandomNumber.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\TestSettings.cs" />
+    <Compile Include="Assets\Commons\Scripts\Util\TweenUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\ZoomUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Views\IView.cs" />
     <Compile Include="Assets\Scripts\Analytics\ServiceAnalytics.cs" />

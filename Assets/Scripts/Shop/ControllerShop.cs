@@ -5,6 +5,8 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
+using PlayerPrefs = ZPlayerPrefs;
+
 public class ControllerShop: MonoSingleton<ControllerShop>
 {
     [SerializeField] private Button backButton;

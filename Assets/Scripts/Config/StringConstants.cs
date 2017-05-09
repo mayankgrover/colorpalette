@@ -13,8 +13,8 @@ public static class StringConstants
 
     // UI Strings 
     public static string GAMEOVER_WATCH_AD = "Free Coins ";
-    public static string NEXT_FREE_GIFT = "Free gift in ";
-    public static string FREE_GIFT_AVAILABLE = "Claim Gift";
+    public static string NEXT_FREE_GIFT = "FREE GIFT IN ";
+    public static string FREE_GIFT_AVAILABLE = "CLAIM FREE GIFT";
 
     // Analytics 
     public static string ANALYTICS_GAME_OVER = "Game_Over";
