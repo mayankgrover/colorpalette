@@ -84,7 +84,7 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         if (PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 &&
             controllerRateUs.IsAlreadyRated == false) {
             controllerRateUs.Show();
-        }
+        } else controllerRateUs.Hide();
 
         // SS is now taken when the share button is clicked
         //if (ServiceSharing.Instance.IsScreenshotAvailable)

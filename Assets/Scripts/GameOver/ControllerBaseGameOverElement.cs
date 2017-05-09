@@ -10,7 +10,7 @@ public class ControllerBaseGameOverElement : MonoBehaviour
     }
 
     protected virtual void Start() {
-        Hide();
+        //Hide();
         SetText();
         RegisterClickHandler();
     }
@@ -25,6 +25,7 @@ public class ControllerBaseGameOverElement : MonoBehaviour
 
     public virtual void Hide()
     {
+        //Debug.Log("Disable:" + gameObject.name);
         gameObject.SetActive(false);
     }
 }

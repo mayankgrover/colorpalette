@@ -47,7 +47,8 @@ public class ControllerShopItemCharacter: MonoBehaviour
     {
         sprite.sprite = data.Image;
         cost.text = data.Cost + "c";
-        isPurchased.enabled = !data.IsPurchased;
+        //isPurchased.enabled = !data.IsPurchased;
+        isPurchased.gameObject.SetActive(!data.IsPurchased);
         isSelected.enabled = data.IsSelected;
     }
 

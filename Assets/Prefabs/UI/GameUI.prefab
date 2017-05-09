@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 11497888}
   - component: {fileID: 22208692}
   - component: {fileID: 11473948}
+  - component: {fileID: 114690573614175906}
   m_Layer: 5
   m_Name: ButtonResume
   m_TagString: Untagged
@@ -975,6 +976,23 @@ MonoBehaviour:
   m_EffectColor: {r: 0.99264705, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -2.5}
   m_UseGraphicAlpha: 1
+--- !u!114 &114690573614175906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b4dbf86d4b2244fa0f60dc6c5c1456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDisableRestart: 1
+  duration: 1.5
+  delay: 1
+  scaleFactor: 1.1
+  loopType: 2
+  easeType: 21
 --- !u!114 &114734276058714932
 MonoBehaviour:
   m_ObjectHideFlags: 1
