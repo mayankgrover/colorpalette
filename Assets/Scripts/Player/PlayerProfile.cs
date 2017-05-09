@@ -1,7 +1,8 @@
 ﻿
 using Commons.Singleton;
 using System;
-using UnityEngine;
+
+using PlayerPrefs = ZPlayerPrefs;
 
 public class PlayerProfile : MonoSingleton<PlayerProfile>
 {
@@ -40,7 +41,13 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     protected override void Awake()
     {
         base.Awake();
+        InitializePlayerPrefs();
         LoadPlayerProfile();
+    }
+
+    private void InitializePlayerPrefs()
+    {
+        PlayerPrefs.Initialize("3YpIWkOfD!KtPqfyq", "Qe3IrH1sk");
     }
 
     private void LoadPlayerProfile()
