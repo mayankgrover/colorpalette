@@ -124,6 +124,7 @@
     <Compile Include="Assets\Commons\Scripts\SideScrolling\ScrollBackground.cs" />
     <Compile Include="Assets\Commons\Scripts\Singletons\MonoSingleton.cs" />
     <Compile Include="Assets\Commons\Scripts\Singletons\Singleton.cs" />
+    <Compile Include="Assets\Commons\Scripts\Tweens\TweenEffectPulsating.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\LoadViewUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\RandomNumber.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\TestSettings.cs" />
