@@ -19,7 +19,7 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         base.Start();
         UpdateScoreView();
         UpdateCoins();
-        SetExtraLifeStatus(false);
+        //SetExtraLifeStatus(false);
 
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         //ControllerMainMenu.Instance.GameEnded += OnGameEnd;

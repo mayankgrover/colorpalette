@@ -77,16 +77,13 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private bool IsExtraLifeAvailable()
     {
-        bool status = PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReady();
-        //Debug.Log("IsExtraLifeAvailable: " +  status + " AutoWatch:" + PlayerProfile.Instance.AutoWatchAds + 
-        //    " AdReady:" + ServiceAds.Instance.IsRewardableAdReady());
-        return status;
+        return PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReadyUnity();
     }
 
     public void PlayerDied()
     {
         if( !playerAlreadyRevived && 
-            ServiceAds.Instance.IsRewardableAdReady() && 
+            ServiceAds.Instance.IsRewardableAdReadyUnity() && 
             PlayerProfile.Instance.AutoWatchAds)
         {
             playerAlreadyRevived = true;
@@ -98,7 +95,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
         } else {
             ControllerMainMenu.Instance.EndGame();
             ServiceAnalytics.Instance.ReportPlayerDied();
-            if (PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReady()) {
+            if (PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReadyUnity()) {
                 ServiceAds.Instance.ShowRewardableVideo(WatchAdAfterGameFinished);
             }
         }

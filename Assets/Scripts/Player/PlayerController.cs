@@ -105,14 +105,17 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.CompareTag("ColorStrip")) {
+
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
-            if (!TestSettings.Instance.CanPlayerDie || 
+            if ( TestSettings.Instance.CanPlayerDie == false || 
                  strip.myColor == Colors.Instance.GameColors[myColorIndex])
             {
                 strip.PlayerMatchedColor();
                 ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
                 ControllerScore.Instance.AddScore();
-            } else {
+            }
+            else if(isPlayerDead == false)
+            {
                 isPlayerDead = true;
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
                 StartCoroutine(DelayPlayerDeath());

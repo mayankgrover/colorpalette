@@ -7,6 +7,7 @@ using PlayerPrefs = ZPlayerPrefs;
 public class PlayerProfile : MonoSingleton<PlayerProfile>
 {
     private float currentScore;
+    private int coinsEarned; //during the current game 
     private float best;
     private int coins;
     private int deaths;
@@ -29,6 +30,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         ControllerMainMenu.Instance.GameStarted += IncrementGamesPlayed;
     }
 
+    public int CoinsEarnedLastGame { get { return coinsEarned; } }
     public long GamesPlayed { get { return games; } }
     public long FreeGiftTick { get { return freeGiftTicks; } }
     public float BestScore { get { return best; } }
@@ -43,6 +45,17 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         base.Awake();
         InitializePlayerPrefs();
         LoadPlayerProfile();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        ControllerMainMenu.Instance.GameStarted += onGameStarted;
+    }
+
+    private void onGameStarted()
+    {
+        coinsEarned = 0;
     }
 
     private void InitializePlayerPrefs()
@@ -95,6 +108,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public void UpdateCoins(int coins)
     {
         this.coins += coins;
+        coinsEarned += coins;
         SaveCoins();
         if (OnCoinsUpdated != null) OnCoinsUpdated();
     }

@@ -9,10 +9,8 @@ namespace Commons.Ads
 {
     public class ServiceAds: MonoSingleton<ServiceAds>
     {
-        public bool IsRewardableAdReady()
-        {
-            return Advertisement.IsReady(rewardedVideo) ||
-                RewardBasedVideoAd.Instance.IsLoaded();
+        public bool IsRewardableAdReady() {
+            return IsRewardableAdReadyUnity() || IsRewardableAdReadyAdMob();
         }
 
         protected override void Awake()
@@ -41,7 +39,11 @@ namespace Commons.Ads
         private static string rewardedVideo = "rewardedVideo";
         private static string nonrewardVideo = "video";
 
-        private bool ShowRewardableVideoUnity(Action<ShowResult> RewardableVideoResult)
+        public bool IsRewardableAdReadyUnity() {
+            return Advertisement.IsReady(rewardedVideo);
+        }
+
+        public bool ShowRewardableVideoUnity(Action<ShowResult> RewardableVideoResult)
         {
             if(Advertisement.IsReady(rewardedVideo)) {
                 Advertisement.Show(rewardedVideo, new ShowOptions { resultCallback = RewardableVideoResult });
@@ -70,6 +72,11 @@ namespace Commons.Ads
         private static string adMobAppleID   = "ca-app-pub-9171749308188503/3846349671";
 
         private Action<ShowResult> rewardableVideoResultCallback;
+
+        public bool IsRewardableAdReadyAdMob()
+        {
+            return RewardBasedVideoAd.Instance.IsLoaded();
+        }
 
         private string GetAdUnitId()
         {
@@ -134,7 +141,7 @@ namespace Commons.Ads
             Debug.Log("AdMob video ad loaded");
         }
 
-        private bool ShowRewardableVideoAdMob(Action<ShowResult> RewardableVideoResult)
+        public bool ShowRewardableVideoAdMob(Action<ShowResult> RewardableVideoResult)
         {
             if(RewardBasedVideoAd.Instance.IsLoaded()) {
                 rewardableVideoResultCallback = RewardableVideoResult;

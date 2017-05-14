@@ -67,7 +67,7 @@ public class ControllerNextGift: ControllerBaseGameOverElement
         PlayerProfile.Instance.UpdateCoins(reward);
         PlayerProfile.Instance.UpdateFreeGiftTimestamp(DateTime.Now.Ticks);
         //ControllerScore.Instance.BonusScore(transform.position, reward);
-        ControllerNotificationMessage.Instance.ShowMessage(reward + " coins rewarded!");
+        ControllerNotificationMessage.Instance.ShowMessage(reward + "c rewarded!");
         ServiceAnalytics.Instance.ReportClaimFreeReward(true);
         nextFreeGift = DateTime.Now + freeGiftDuration;
         //Hide();

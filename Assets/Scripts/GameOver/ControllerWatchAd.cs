@@ -1,4 +1,5 @@
 ﻿using Commons.Ads;
+using Commons.Notification;
 using Commons.Services;
 using System;
 using UnityEngine;
@@ -6,10 +7,18 @@ using UnityEngine.Advertisements;
 
 public class ControllerWatchAd : ControllerBaseGameOverElement
 {
+    private int coinsReward {
+        get {
+            return PlayerProfile.Instance.CoinsEarnedLastGame < 15 ?
+                30 : 2 * PlayerProfile.Instance.CoinsEarnedLastGame;
+        }
+    }
+
     protected override void SetText()
     {
         base.SetText();
-        text.text = StringConstants.GAMEOVER_WATCH_AD;
+        //text.text = StringConstants.GAMEOVER_WATCH_AD;
+        text.text = "+" + coinsReward + "c";
     }
 
     protected override void RegisterClickHandler()
@@ -22,6 +31,12 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
     {
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ServiceAds.Instance.ShowRewardableVideo(RewardableAdResult);
+    }
+
+    public override void Show()
+    {
+        base.Show();
+        SetText();
     }
 
     private void RewardableAdResult(ShowResult result)
@@ -45,9 +60,11 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
 
     private void GivePlayerRewardForWatchingAd()
     {
-        int rewardCoins = UnityEngine.Random.Range(NumericConstants.MIN_REWARD_VIDEO_AD, NumericConstants.MAX_REWARD_VIDEO_AD);
+        //int rewardCoins = UnityEngine.Random.Range(NumericConstants.MIN_REWARD_VIDEO_AD, NumericConstants.MAX_REWARD_VIDEO_AD);
+        int rewardCoins = PlayerProfile.Instance.CoinsEarnedLastGame;
         Debug.Log("Reward for watching ad: " + rewardCoins);
         PlayerProfile.Instance.UpdateCoins(rewardCoins);
-        ControllerScore.Instance.BonusScore(Vector3.zero, rewardCoins);
+        ControllerNotificationMessage.Instance.ShowMessage(coinsReward + "c rewarded!");
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Bonus);
     }
 }

@@ -12,7 +12,7 @@ public static class StringConstants
     public static string SELECTED_CHARACTER = "Selected_Character";
 
     // UI Strings 
-    public static string GAMEOVER_WATCH_AD = "Free Coins ";
+    public static string GAMEOVER_WATCH_AD = "DOUBLE COINS";
     public static string NEXT_FREE_GIFT = "FREE GIFT IN ";
     public static string FREE_GIFT_AVAILABLE = "CLAIM FREE GIFT";
 
