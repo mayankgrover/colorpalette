@@ -49,7 +49,7 @@ public class ControllerNextGift: ControllerBaseGameOverElement
     private string GetNextGiftTimeDiff()
     {
         TimeSpan span = (nextFreeGift - DateTime.Now);
-        return (span.Minutes + 1) + " mins";
+        return (span.Minutes == 0 ? 1 : span.Minutes) + " mins";
     }
 
     private bool IsFreeGiftAvailable()
@@ -59,7 +59,7 @@ public class ControllerNextGift: ControllerBaseGameOverElement
 
     private void OnClaimFreeGift()
     {
-        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
+        ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Bonus);
         isGiftReadyButNotClaimed = false;
         int reward = UnityEngine.Random.Range(NumericConstants.MIN_REWARD_FREE_GIFT, NumericConstants.MAX_REWARD_FREE_GIFT);
         //Debug.Log("[NextGift] Reward: " + reward + "c");

@@ -13,13 +13,17 @@ namespace Commons.Tweens
         [SerializeField] private iTween.LoopType loopType;
         [SerializeField] private iTween.EaseType easeType;
 
+        private Vector3 localScale;
+
         private void Awake()
         {
+            localScale = transform.localScale;
             iTween.Init(gameObject);
         }
 
         private void OnEnable()
         {
+            transform.localScale = localScale;
             StartCoroutine(PlayAnimation(delay));
         }
 
@@ -30,8 +34,9 @@ namespace Commons.Tweens
 
         private void DestroyExistingTween()
         {
-            iTween tween = GetComponent<iTween>();
-            if (tween != null) Destroy(tween);
+            //iTween tween = GetComponent<iTween>();
+            //if (tween != null) Destroy(tween);
+            iTween.Stop(gameObject);
         }
 
         private IEnumerator PlayAnimation(float delayInSeconds = 0f)

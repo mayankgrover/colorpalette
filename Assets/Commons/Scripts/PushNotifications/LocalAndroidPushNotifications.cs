@@ -17,7 +17,7 @@ namespace Commons.PushNotifications
 
         public static void SendNotification(int id, TimeSpan delay, string title, string message)
         {
-            SendNotification(id, (int)delay.TotalSeconds, title, message, Color.white);
+            SendNotification(id, (int)delay.TotalSeconds, title, message, Color.grey);
         }
 
         public static void SendNotification(int id, long delay, string title, string message, Color32 bgColor, 

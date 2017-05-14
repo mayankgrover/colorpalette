@@ -45,6 +45,7 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
         {
             case ShowResult.Failed:
                 Debug.Log("[Gameover] Loading Ad failed.");
+                Hide();
                 break;
             case ShowResult.Skipped:
                 Debug.Log("[Gameover] Ad skipped, reward will not be given.");
@@ -52,6 +53,7 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
             case ShowResult.Finished:
                 Debug.Log("[Gameover] Ad watched, giving reward.");
                 GivePlayerRewardForWatchingAd();
+                Hide();
                 break;
         }
 
