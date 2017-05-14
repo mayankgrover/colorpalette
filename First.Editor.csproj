@@ -157,6 +157,33 @@
     <Reference Include="winrt">
       <HintPath>Assets\Plugins\UnityPurchasing\winrt\winrt.dll</HintPath>
     </Reference>
+    <Reference Include="Google.IOSResolver">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.IOSResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.JarResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MiniJson">
+      <HintPath>Assets\Firebase\Plugins\Google.MiniJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>Assets\Firebase\Plugins\Unity.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>Assets\Firebase\Plugins\Unity.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Editor">
+      <HintPath>Assets\Firebase\Editor\Firebase.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>Assets\Firebase\Plugins\Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Analytics">
+      <HintPath>Assets\Firebase\Plugins\Firebase.Analytics.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="First.Plugins.csproj">
@@ -174,11 +201,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Commons\Editor\Scripts\EditorPlayerPrefs.cs" />
+    <Compile Include="Assets\Firebase\Editor\AnalyticsDeps.cs" />
+    <Compile Include="Assets\Firebase\Editor\AppDeps.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Editor\AdMobDependencies.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Commons\ExternalTools\EncryptPlayerPrefs\Readme\readme_ZPlayerPrefs.txt" />
     <None Include="Assets\Commons\ExternalTools\iTween\ReadMe!\ReadMe!.txt" />
+    <None Include="Assets\Firebase\Editor\FirebaseAnalytics.txt" />
+    <None Include="Assets\Firebase\Plugins\link.xml" />
+    <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-analytics-unity\maven-metadata.xml" />
+    <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-app-unity\maven-metadata.xml" />
+    <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver.txt" />
+    <None Include="Assets\PlayServicesResolver\proguard-messaging-workaround.txt" />
+    <None Include="Assets\PlayServicesResolver\proguard-unity.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\Firebase\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\Firebase\res\values\google-services.xml" />
+    <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\firebase-analytics-unity-3.0.3\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\firebase-analytics-unity-3.0.3\R.txt" />
+    <None Include="Assets\Plugins\Android\firebase-analytics-unity-3.0.3\proguard.txt" />
+    <None Include="Assets\Plugins\Android\firebase-app-unity-3.0.3\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\firebase-app-unity-3.0.3\R.txt" />
+    <None Include="Assets\Plugins\Android\firebase-app-unity-3.0.3\proguard.txt" />
+    <None Include="Assets\Plugins\Android\firebase-common-10.2.4\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\firebase-common-10.2.4\proguard.txt" />
+    <None Include="Assets\Plugins\Android\firebase-iid-10.2.4\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\firebase-iid-10.2.4\proguard.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />

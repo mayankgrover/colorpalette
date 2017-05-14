@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="firebase_database_url" translatable="false">https://unforgiving-colors.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">298364747883</string>
+  <string name="google_storage_bucket" translatable="false">unforgiving-colors.appspot.com</string>
+  <string name="project_id" translatable="false">unforgiving-colors</string>
+  <string name="google_api_key" translatable="false">AIzaSyDiBkCSvGe19Grl8q6NAIfhdQD-9bPdZMU</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDiBkCSvGe19Grl8q6NAIfhdQD-9bPdZMU</string>
+  <string name="google_app_id" translatable="false">1:298364747883:android:d21823b4dfd2b595</string>
+  <string name="default_web_client_id" translatable="false">298364747883-gtl863335et7ueesk9totj4sc59862nh.apps.googleusercontent.com</string>
+</resources>
