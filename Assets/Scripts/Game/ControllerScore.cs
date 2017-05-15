@@ -50,10 +50,10 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
 
     public void BonusScore(Vector3 position, int reward)
     {
-        Vector3 viewPortPos = gameCamera.WorldToScreenPoint(position);
-        viewPortPos.y += 40f;
+        Vector3 viewPortPos = gameCamera.WorldToViewportPoint(position);
+        Vector3 canvasViewPoint = canvasCamera.ViewportToWorldPoint(viewPortPos);
         bonusScore.text = "+" + reward + "c";
-        bonusScore.rectTransform.anchoredPosition3D = viewPortPos;
+        bonusScore.rectTransform.position = canvasViewPoint;
         bonusScore.gameObject.SetActive(true);
         Invoke("DisableBonusScore", 1.5f);
     }

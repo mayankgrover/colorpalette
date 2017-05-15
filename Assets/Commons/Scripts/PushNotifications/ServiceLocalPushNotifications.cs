@@ -1,6 +1,5 @@
 ﻿using Commons.Singleton;
 using System;
-using UnityEngine;
 
 namespace Commons.PushNotifications
 {
@@ -8,26 +7,20 @@ namespace Commons.PushNotifications
     {
         public void ScheduleNotification(int id, TimeSpan delay, string title, string message)
         {
-            if(Application.platform == RuntimePlatform.Android)
-            {
-                LocalAndroidPushNotifications.SendNotification(id, delay, title, message);
-            }
-            else if(Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                // TODO implement iOS local notification 
-            }
+#if UNITY_ANDROID
+            LocalAndroidPushNotifications.SendNotification(id, delay, title, message);
+#elif UNITY_IOS
+            LocalApplePushNotification.SendNotification(id, delay, title, message);
+#endif
         }
 
         public void CancelNotification(int id)
         {
-            if(Application.platform == RuntimePlatform.Android)
-            {
-                LocalAndroidPushNotifications.CancelNotification(id);
-            }
-            else if(Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                // TODO implement iOS local notification 
-            }
+#if UNITY_ANDROID
+            LocalAndroidPushNotifications.CancelNotification(id);
+#elif UNITY_IOS
+            LocalApplePushNotification.CancelNotification(id);
+#endif
         }
 
         //public void CancelNotification3()

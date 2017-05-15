@@ -25,11 +25,11 @@ public static class NumericConstants
     public static int PN_DAY_5_ID = 1003;
     public static int PN_FREE_GIFT_ID = 2001;
 
-    public static TimeSpan PN_DAY_2 = new TimeSpan(days: 1, hours: 0, minutes: 0, seconds: 0);
-    public static TimeSpan PN_DAY_3 = new TimeSpan(days: 2, hours: 0, minutes: 0, seconds: 0);
-    public static TimeSpan PN_DAY_5 = new TimeSpan(days: 4, hours: 0, minutes: 0, seconds: 0);
+    //public static TimeSpan PN_DAY_2 = new TimeSpan(days: 1, hours: 0, minutes: 0, seconds: 0);
+    //public static TimeSpan PN_DAY_3 = new TimeSpan(days: 2, hours: 0, minutes: 0, seconds: 0);
+    //public static TimeSpan PN_DAY_5 = new TimeSpan(days: 4, hours: 0, minutes: 0, seconds: 0);
 
-    //public static TimeSpan PN_DAY_2 = new TimeSpan(days: 0, hours: 0, minutes: 0, seconds: 20);
-    //public static TimeSpan PN_DAY_3 = new TimeSpan(days: 0, hours: 0, minutes: 0, seconds: 40);
-    //public static TimeSpan PN_DAY_5 = new TimeSpan(days: 0, hours: 0, minutes: 0, seconds: 60);
+    public static TimeSpan PN_DAY_2 = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 0);
+    public static TimeSpan PN_DAY_3 = new TimeSpan(days: 0, hours: 0, minutes: 2, seconds: 0);
+    public static TimeSpan PN_DAY_5 = new TimeSpan(days: 0, hours: 0, minutes: 4, seconds: 0);
 }

@@ -20,6 +20,6 @@ public class ControllerRententionNotifications: MonoBehaviour
 
     private void ScheduleDayNotification(int id, string title, string msg, TimeSpan span)
     {
-        ServiceLocalPushNotifications.Instance.ScheduleNotification( id, span, title, msg);
+        ServiceLocalPushNotifications.Instance.ScheduleNotification(id, span, title, msg);
     }
 }

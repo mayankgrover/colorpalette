@@ -34,7 +34,7 @@ public static class StringConstants
     public static string PN_DAY_2_MSG   = "Did you know you can play without internet on the train or in a underground nuclear bunker, just saying :)";
 
     public static string PN_DAY_3_TITLE = "Its just coz they love you!";
-    public static string PN_DAY_3_MSG   = "Colors becoming Unforgiving especially when they sense you don't love them anymore!";
+    public static string PN_DAY_3_MSG   = "Colors become Unforgiving especially when they sense you don't love them anymore. Come back!";
 
     public static string PN_DAY_5_TITLE = "Colors gone missing!";
     public static string PN_DAY_5_MSG   = "Its been so long that now all there is left are just shades of grey :'(";

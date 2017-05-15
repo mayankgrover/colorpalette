@@ -28,7 +28,6 @@ public class ObstacleBlock: MonoBehaviour
             int reward = ControllerObstacles.Instance.GetObstacleReward(currentType);
             ControllerEnemies.Instance.StarCollected();
             PlayerProfile.Instance.UpdateCoins(reward);
-            //ControllerScore.Instance.AddScore(NumericConstants.COINS_FOR_STAR);
             ControllerScore.Instance.BonusScore(gameObject.transform.position, reward);
             ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Bonus);
             gameObject.SetActive(false);
