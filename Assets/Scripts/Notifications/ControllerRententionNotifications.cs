@@ -11,7 +11,6 @@ public class ControllerRententionNotifications: MonoBehaviour
         ScheduleDayNotification(NumericConstants.PN_DAY_2_ID, StringConstants.PN_DAY_2_TITLE, 
             StringConstants.PN_DAY_2_MSG, NumericConstants.PN_DAY_2);
 
-
         ScheduleDayNotification(NumericConstants.PN_DAY_3_ID, StringConstants.PN_DAY_3_TITLE, 
             StringConstants.PN_DAY_3_MSG, NumericConstants.PN_DAY_3);
 

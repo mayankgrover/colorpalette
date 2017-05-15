@@ -1,5 +1,6 @@
 ﻿
 using Commons.Notification;
+using Commons.PushNotifications;
 using Commons.Services;
 using System;
 using UnityEngine;
@@ -11,6 +12,12 @@ public class ControllerNextGift: ControllerBaseGameOverElement
 
     private bool isGiftReadyButNotClaimed = false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        CancelFreeGiftPushNotification();
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -19,6 +26,33 @@ public class ControllerNextGift: ControllerBaseGameOverElement
         //Debug.Log("LastGift: " + (new DateTime(PlayerProfile.Instance.FreeGiftTick)).ToString());
         //Debug.Log("NextFreeGift: " + nextFreeGift.ToString());
         //Debug.Log("FreeGiftDuration: " + freeGiftDuration.ToString());
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if(pause == true) {
+            ScheduleFreeGiftPushNotification();
+        } else {
+            CancelFreeGiftPushNotification();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        ScheduleFreeGiftPushNotification();
+    }
+
+    private void ScheduleFreeGiftPushNotification()
+    {
+        //Debug.Log("ScheduleFreeGiftPushNotification: " + GetNextGiftTimeDiff());
+        ServiceLocalPushNotifications.Instance.ScheduleNotification(NumericConstants.PN_FREE_GIFT_ID,
+            GetNextGiftTimeSpan(), StringConstants.PN_FREE_GIFT_TITLE, StringConstants.PN_FREE_GIFT_MSG);
+    }
+
+    private void CancelFreeGiftPushNotification()
+    {
+        //Debug.Log("CancelFreeGiftPushNotification");
+        ServiceLocalPushNotifications.Instance.CancelNotification(NumericConstants.PN_FREE_GIFT_ID);
     }
 
     protected override void RegisterClickHandler()
@@ -49,10 +83,15 @@ public class ControllerNextGift: ControllerBaseGameOverElement
     private string GetNextGiftTimeDiff()
     {
         TimeSpan span = (nextFreeGift - DateTime.Now);
-        return (span.Minutes == 0 ? 1 : span.Minutes) + " mins";
+        return span.Hours + "H " + (span.Minutes == 0 ? 1 : span.Minutes) + "M";
     }
 
-    private bool IsFreeGiftAvailable()
+    private TimeSpan GetNextGiftTimeSpan()
+    {
+        return (nextFreeGift - DateTime.Now);
+    }
+
+    public bool IsFreeGiftAvailable()
     {
         return nextFreeGift <= DateTime.Now;
     }

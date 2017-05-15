@@ -756,92 +756,92 @@ MonoBehaviour:
     IsPurchased: 1
     IsSelected: 1
   - Id: 2
-    Cost: 10
+    Cost: 150
     Image: {fileID: 21300000, guid: 011dfdc6421d87543ac3b9d7669177d9, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 3
-    Cost: 15
+    Cost: 150
     Image: {fileID: 21300000, guid: 0c842ea9e5c4e434bb965ea3f3a0b6a1, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 4
-    Cost: 20
+    Cost: 150
     Image: {fileID: 21300000, guid: dcf4e97b6ca1040488a767c98f1edd87, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 5
-    Cost: 25
+    Cost: 150
     Image: {fileID: 21300000, guid: b55e59539853c8045a6ed96ddcbbf048, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 6
-    Cost: 30
+    Cost: 150
     Image: {fileID: 21300000, guid: ad878ee13e0ba4b458992a9156ae655b, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 7
-    Cost: 35
+    Cost: 150
     Image: {fileID: 21300000, guid: 532b3c3a709d2e440a36f9c0648cbb11, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 8
-    Cost: 40
+    Cost: 150
     Image: {fileID: 21300000, guid: 1ae9892c07d16b946a37bb9636cd8760, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 9
-    Cost: 45
+    Cost: 150
     Image: {fileID: 21300000, guid: c38cb905348e808478e4324fb44c0abb, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 10
-    Cost: 50
+    Cost: 150
     Image: {fileID: 21300000, guid: 20984a3d5f50af04aab8e58d4f7167de, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 11
-    Cost: 60
+    Cost: 150
     Image: {fileID: 21300000, guid: c2493a209e4bea3419894372772d74ee, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 12
-    Cost: 70
+    Cost: 150
     Image: {fileID: 21300000, guid: 0073fbb1528b7954fbf9514729451f65, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 13
-    Cost: 80
+    Cost: 150
     Image: {fileID: 21300000, guid: bc1981dbdb4516543ab5b10d39f5ca11, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 14
-    Cost: 90
+    Cost: 150
     Image: {fileID: 21300000, guid: 7c431b06b6f452c4ab731ddb0a5b3266, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 15
-    Cost: 100
+    Cost: 150
     Image: {fileID: 21300000, guid: d79de7c94899ea54e93ca553a8d29733, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 16
-    Cost: 110
+    Cost: 150
     Image: {fileID: 21300000, guid: a4ff66c25b54aa34eb09922d4d159b0b, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 17
-    Cost: 120
+    Cost: 150
     Image: {fileID: 21300000, guid: 3cb58d0e91ba12b49b193087e6c1802e, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 18
-    Cost: 130
+    Cost: 150
     Image: {fileID: 21300000, guid: d05d44c03f3c6dd408b1b310245f45d3, type: 3}
     IsPurchased: 0
     IsSelected: 0
   - Id: 19
-    Cost: 140
+    Cost: 150
     Image: {fileID: 21300000, guid: 334ea396fa26fae4cb398aaf5bbc2765, type: 3}
     IsPurchased: 0
     IsSelected: 0

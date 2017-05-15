@@ -18,6 +18,18 @@ namespace Commons.PushNotifications
             }
         }
 
+        public void CancelNotification(int id)
+        {
+            if(Application.platform == RuntimePlatform.Android)
+            {
+                LocalAndroidPushNotifications.CancelNotification(id);
+            }
+            else if(Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                // TODO implement iOS local notification 
+            }
+        }
+
         //public void CancelNotification3()
         //{
         //    LocalAndroidPushNotifications.CancelNotification(1003);

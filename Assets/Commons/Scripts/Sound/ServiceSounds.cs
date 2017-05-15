@@ -30,12 +30,40 @@ namespace Commons.Services
 
         [SerializeField] private List<SoundPair> audioClips;
 
+        private bool isMute = false;
+        public bool IsMute { get { return isMute; } }
+
+        protected override void Start()
+        {
+            base.Start();
+            LoadSoundSetting();
+        }
+
+        private void LoadSoundSetting()
+        {
+            isMute = PlayerPrefs.GetInt(StringConstants.MUTE_STATUS, 0) == 1 ? 
+                true : false;
+        }
+
+        private void SaveSoundSetting()
+        {
+            PlayerPrefs.SetInt(StringConstants.MUTE_STATUS, isMute == true ? 1 : 0);
+        }
+
         public void PlaySoundEffect(SoundEffect sfx)
         {
             SoundPair pair = audioClips.Find(x => x.effect == sfx);
             if (pair.clip != null) {
                 soundEffects.PlayOneShot(pair.clip);
             }
+        }
+
+        public void SetMute(bool status)
+        {
+            isMute = status;
+            if (soundEffects != null) soundEffects.mute = status;
+            if (backgroundMusic != null) backgroundMusic.mute = status;
+            SaveSoundSetting();
         }
     }
 }

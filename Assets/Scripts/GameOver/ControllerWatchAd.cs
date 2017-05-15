@@ -53,7 +53,6 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
             case ShowResult.Finished:
                 Debug.Log("[Gameover] Ad watched, giving reward.");
                 GivePlayerRewardForWatchingAd();
-                Hide();
                 break;
         }
 

@@ -9,7 +9,8 @@ public static class StringConstants
     public static string FREE_GIFT_TICKS = "Free_Gift_Ticks";
     public static string AUTO_WATCH_AD = "Auto_Watch_Ad";
     public static string RATE_US = "Rate_Us";
-    public static string SELECTED_CHARACTER = "Selected_Character";
+    public static string MUTE_STATUS = "Mute_Status";
+    public static string SELECTED_CHARACTER = "Selected_Char";
 
     // UI Strings 
     public static string GAMEOVER_WATCH_AD = "DOUBLE COINS";
@@ -23,7 +24,10 @@ public static class StringConstants
     public static string ANALYTICS_AUTO_WATCH_POPUP = "Auto_Ad_Popup";
 
     // Sharing
-    public static string SHARE_TEXT = "Scored:{0} High Score:{1} in #UnforgivingColors. Can you beat that? {2}";
+    public static string SHARE_TEXT = "Scored:{0} HighScore:{1} in #UnforgivingColors. Can you beat that? {2}";
+    public static string TWITTER_USERNAME = "unforgivecolors";
+    public static string TWITTER_APP_URL = "twitter://user?screen_name={0}";
+    public static string TWITTER_WEB_URL = "http://www.twitter.com/{0}";  
 
     // Local PN
     public static string PN_DAY_2_TITLE = "Internet is soo overrated"; 
@@ -34,4 +38,7 @@ public static class StringConstants
 
     public static string PN_DAY_5_TITLE = "Colors gone missing!";
     public static string PN_DAY_5_MSG   = "Its been so long that now all there is left are just shades of grey :'(";
+
+    public static string PN_FREE_GIFT_TITLE = "Unforgiving Colors";
+    public static string PN_FREE_GIFT_MSG = "Free tressure gift is waiting for you";
 }

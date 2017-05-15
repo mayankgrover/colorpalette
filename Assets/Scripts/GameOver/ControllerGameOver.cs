@@ -89,17 +89,28 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         UpdateScores();
         UpdateCoins();
 
-        controllerNextGift.Show();
-        controllerShare.Show();
+        int elements = UnityEngine.Random.Range(1, 3);
 
-        if (ServiceAds.Instance.IsRewardableAdReady()) {
+        if (ServiceAds.Instance.IsRewardableAdReady() && PlayerProfile.Instance.GamesPlayed >= 3) {
+            elements--;
             controllerWatchAd.Show();
         }
 
         if (PlayerProfile.Instance.GamesPlayed % NumericConstants.GAMES_FOR_RATE_US_REMINDER == 0 &&
-            controllerRateUs.IsAlreadyRated == false && alternateRateUs == true) {
+            ServiceRateUs.Instance.IsAlreadyRated == false) {
+            elements--;
             controllerRateUs.Show();
-        } else controllerRateUs.Hide();
+        }
+        else {
+            elements--;
+            controllerShare.Show();
+        }
+
+        if (elements > 0 || controllerNextGift.IsFreeGiftAvailable())
+        {
+            elements--;
+            controllerNextGift.Show();
+        }
 
         alternateRateUs = !alternateRateUs;
         Enable();

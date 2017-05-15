@@ -144,11 +144,15 @@
     <Compile Include="Assets\Commons\Scripts\PushNotifications\LocalAndroidPushNotifications.cs" />
     <Compile Include="Assets\Commons\Scripts\PushNotifications\ServiceLocalPushNotifications.cs" />
     <Compile Include="Assets\Commons\Scripts\Services\ServiceAds.cs" />
+    <Compile Include="Assets\Commons\Scripts\Services\ServiceRateUs.cs" />
     <Compile Include="Assets\Commons\Scripts\Services\ServiceSharing.cs" />
-    <Compile Include="Assets\Commons\Scripts\Services\ServiceSounds.cs" />
+    <Compile Include="Assets\Commons\Scripts\SocialMedia\ControllerButtonTwitter.cs" />
+    <Compile Include="Assets\Commons\Scripts\Sound\ControllerSound.cs" />
+    <Compile Include="Assets\Commons\Scripts\Sound\ServiceSounds.cs" />
     <Compile Include="Assets\Commons\Scripts\SideScrolling\ScrollBackground.cs" />
     <Compile Include="Assets\Commons\Scripts\Singletons\MonoSingleton.cs" />
     <Compile Include="Assets\Commons\Scripts\Singletons\Singleton.cs" />
+    <Compile Include="Assets\Commons\Scripts\Tweens\TweenChangingColorUI.cs" />
     <Compile Include="Assets\Commons\Scripts\Tweens\TweenEffectPulsating.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\LoadViewUtil.cs" />
     <Compile Include="Assets\Commons\Scripts\Util\RandomNumber.cs" />
