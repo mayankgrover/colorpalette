@@ -82,8 +82,8 @@ public class PostBuildProcessor
         // Here we go: Set 'Enable Modules' to YES to prevent errors using @import syntax
         Debug.Log("Enabling modules: CLANG_ENABLE_MODULES = YES");
         proj.AddBuildProperty(target, "CLANG_ENABLE_MODULES", "YES");
-        proj.AddBuildProperty(target, "OTHER_LDFLAGS", "-ObjC");
-        proj.AddBuildProperty(target, "OTHER_LDFLAGS", "$(inherited)");
+        proj.AddBuildProperty(target, "OTHER_LDFLAGS", "-ObjC $(inherited)");
+        proj.AddBuildProperty(target, "ENABLE_BITCODE", "NO");
 
         // Write PBXProject object back to the file
         proj.WriteToFile(projPath);
