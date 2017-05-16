@@ -72,9 +72,17 @@ public class PostBuildProcessor
         // This is the Xcode target in the generated project
         string target = proj.TargetGuidByName("Unity-iPhone");
 
+        // Firebase Analytics, Google AdMob modules 
+        proj.AddFrameworkToProject(target, "FirebaseAnalytics.framework", false);
+        proj.AddFrameworkToProject(target, "FirebaseCore.framework", false);
+        proj.AddFrameworkToProject(target, "FirebaseInstanceID.framework", false);
+        proj.AddFrameworkToProject(target, "GoogleToolboxForMac.framework", false);
+        proj.AddFrameworkToProject(target, "GoogleMobileAds.framework", false);
+
         // Here we go: Set 'Enable Modules' to YES to prevent errors using @import syntax
         Debug.Log("Enabling modules: CLANG_ENABLE_MODULES = YES");
         proj.AddBuildProperty(target, "CLANG_ENABLE_MODULES", "YES");
+        proj.AddBuildProperty(target, "OTHER_LDFLAGS", "-ObjC");
 
         // Write PBXProject object back to the file
         proj.WriteToFile(projPath);
