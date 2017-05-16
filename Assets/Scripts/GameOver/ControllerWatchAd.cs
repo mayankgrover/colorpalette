@@ -2,17 +2,13 @@
 using Commons.Notification;
 using Commons.Services;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
 public class ControllerWatchAd : ControllerBaseGameOverElement
 {
-    private int coinsReward {
-        get {
-            return PlayerProfile.Instance.CoinsEarnedLastGame < 15 ?
-                30 : 2 * PlayerProfile.Instance.CoinsEarnedLastGame;
-        }
-    }
+    private int coinsReward;
 
     protected override void SetText()
     {
@@ -36,7 +32,14 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
     public override void Show()
     {
         base.Show();
+        UpdateReward();
         SetText();
+    }
+
+    private void UpdateReward()
+    {
+        coinsReward = PlayerProfile.Instance.CoinsEarnedLastGame < 15 ?
+                30 : 2 * PlayerProfile.Instance.CoinsEarnedLastGame;
     }
 
     private void RewardableAdResult(ShowResult result)
@@ -53,6 +56,7 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
             case ShowResult.Finished:
                 Debug.Log("[Gameover] Ad watched, giving reward.");
                 GivePlayerRewardForWatchingAd();
+                //StartCoroutine(GivePlayerRewardForWatchingAd());
                 break;
         }
 
@@ -61,10 +65,11 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
 
     private void GivePlayerRewardForWatchingAd()
     {
+        //yield return new WaitForSecondsRealtime(1f);
         //int rewardCoins = UnityEngine.Random.Range(NumericConstants.MIN_REWARD_VIDEO_AD, NumericConstants.MAX_REWARD_VIDEO_AD);
-        int rewardCoins = PlayerProfile.Instance.CoinsEarnedLastGame;
-        Debug.Log("Reward for watching ad: " + rewardCoins);
-        PlayerProfile.Instance.UpdateCoins(rewardCoins);
+        //int rewardCoins = PlayerProfile.Instance.CoinsEarnedLastGame;
+        Debug.Log("Reward for watching ad: " + coinsReward);
+        PlayerProfile.Instance.UpdateCoins(coinsReward);
         ControllerNotificationMessage.Instance.ShowMessage(coinsReward + "c rewarded!");
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Bonus);
     }

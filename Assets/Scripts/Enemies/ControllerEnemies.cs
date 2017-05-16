@@ -6,8 +6,8 @@ using System.Collections;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
-    private const int defaultGroupIndex = -1;
-    private int enemyGroupIndex = defaultGroupIndex;
+    private int defaultGroupIndex = -1;
+    private int enemyGroupIndex;
     private float nextPosition;
 
     public Action ClearedLevel;
@@ -21,6 +21,12 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     public int StarsSpawned { get; private set; }
     public Wave DeathWave { get; set; }
     public Strip DeathStrip { get; set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        enemyGroupIndex = defaultGroupIndex;
+    }
 
     protected override void Start()
     {
@@ -78,11 +84,12 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     private void GameEnded()
     {
         DeathWave = activeGroup.wave;
-        HideActiveGroup();
         //StartCoroutine(HideActiveGroupWithDelay(activeGroup));
+        if (WavesCleared > 0) defaultGroupIndex = 0;
         enemyGroupIndex = defaultGroupIndex;
         MoveStrips(-transform.position.y);
         ResetStrips();
+        HideActiveGroup();
     }
 
     private void HideActiveGroup()
