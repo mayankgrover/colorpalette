@@ -28,7 +28,7 @@ public class PostBuildProcessor
     public static void OnPostprocessBuildiOS (string exportPath)
     {
         Debug.Log("[UNITY_CLOUD_BUILD] OnPostprocessBuildiOS");
-        ProcessPostBuild(BuildTarget.iPhone,exportPath);
+        ProcessPostBuild(BuildTarget.iOS,exportPath);
     }
 #endif
 
