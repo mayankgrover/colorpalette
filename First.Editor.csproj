@@ -133,6 +133,33 @@
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Firebase.Editor">
+      <HintPath>Assets\Firebase\Editor\Firebase.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Analytics">
+      <HintPath>Assets\Firebase\Plugins\Firebase.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>Assets\Firebase\Plugins\Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MiniJson">
+      <HintPath>Assets\Firebase\Plugins\Google.MiniJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>Assets\Firebase\Plugins\Unity.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>Assets\Firebase\Plugins\Unity.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.IOSResolver">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.IOSResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.JarResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.VersionHandler.dll</HintPath>
+    </Reference>
     <Reference Include="ConsoleE">
       <HintPath>Assets\Plugins\ConsoleE\Editor\ConsoleE.dll</HintPath>
     </Reference>
@@ -157,33 +184,6 @@
     <Reference Include="winrt">
       <HintPath>Assets\Plugins\UnityPurchasing\winrt\winrt.dll</HintPath>
     </Reference>
-    <Reference Include="Google.IOSResolver">
-      <HintPath>Assets\PlayServicesResolver\Editor\Google.IOSResolver.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.JarResolver">
-      <HintPath>Assets\PlayServicesResolver\Editor\Google.JarResolver.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-      <HintPath>Assets\PlayServicesResolver\Editor\Google.VersionHandler.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.MiniJson">
-      <HintPath>Assets\Firebase\Plugins\Google.MiniJson.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Compat">
-      <HintPath>Assets\Firebase\Plugins\Unity.Compat.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Tasks">
-      <HintPath>Assets\Firebase\Plugins\Unity.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Firebase.Editor">
-      <HintPath>Assets\Firebase\Editor\Firebase.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Firebase.App">
-      <HintPath>Assets\Firebase\Plugins\Firebase.App.dll</HintPath>
-    </Reference>
-    <Reference Include="Firebase.Analytics">
-      <HintPath>Assets\Firebase\Plugins\Firebase.Analytics.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="First.Plugins.csproj">
@@ -201,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Commons\Editor\Scripts\EditorPlayerPrefs.cs" />
+    <Compile Include="Assets\Commons\Editor\Scripts\PostBuildProcessor.cs" />
     <Compile Include="Assets\Firebase\Editor\AnalyticsDeps.cs" />
     <Compile Include="Assets\Firebase\Editor\AppDeps.cs" />
     <Compile Include="Assets\GoogleMobileAds\Editor\AdMobDependencies.cs" />

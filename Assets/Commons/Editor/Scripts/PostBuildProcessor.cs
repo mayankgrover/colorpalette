@@ -15,7 +15,7 @@ using System.Linq;
 
 // More info : https://forum.unity3d.com/threads/ios-cloud-build-error-use-of-import-when-modules-are-disabled.330706/
 
-public class PostBuildProcessor : MonoBehaviour
+public class PostBuildProcessor
 {
     /**
      * Runs when Post-Export method has been set to
