@@ -3,29 +3,28 @@ using System;
 using Commons.Singleton;
 using UnityEngine.Advertisements;
 using UnityEngine;
-using GoogleMobileAds.Api;
 
 namespace Commons.Ads
 {
     public class ServiceAds: MonoSingleton<ServiceAds>
     {
         public bool IsRewardableAdReady() {
-            return IsRewardableAdReadyUnity() || IsRewardableAdReadyAdMob();
+            return IsRewardableAdReadyUnity();
         }
 
         protected override void Awake()
         {
             base.Start();
-            LoadRewardableVideoAd();
-            RegisterAdMobEvents();
+            //LoadRewardableVideoAd();
+            //RegisterAdMobEvents();
         }
 
         public void ShowRewardableVideo(Action<ShowResult> RewardableVideoResult)
         {
-            if (RewardBasedVideoAd.Instance.IsLoaded() && ShowRewardableVideoAdMob(RewardableVideoResult)) {
-                Debug.Log("Showing google admob video ad");
-            }
-            else if (Advertisement.IsReady(rewardedVideo) && ShowRewardableVideoUnity(RewardableVideoResult)) {
+            //if (RewardBasedVideoAd.Instance.IsLoaded() && ShowRewardableVideoAdMob(RewardableVideoResult)) {
+            //    Debug.Log("Showing google admob video ad");
+            //}
+            if (Advertisement.IsReady(rewardedVideo) && ShowRewardableVideoUnity(RewardableVideoResult)) {
                 Debug.Log("Showing unity video ad");
             }
             else {
@@ -65,6 +64,7 @@ namespace Commons.Ads
 
         #endregion UNITY ADS 
 
+        /*
         #region GOOGLE ADMOB
 
         private static string adMobEditorID = "unused";
@@ -151,6 +151,7 @@ namespace Commons.Ads
             return false;
         }
 
-#endregion GOOGLE ADMOB
+        #endregion GOOGLE ADMOB
+        */
     }
 }

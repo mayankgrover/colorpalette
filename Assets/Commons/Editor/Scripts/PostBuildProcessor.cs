@@ -39,7 +39,7 @@ public class PostBuildProcessor
     [PostProcessBuild]
     public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
     {
-#if !UNITY_CLOUD_BUILD
+#if UNITY_CLOUD_BUILD
         Debug.Log("[LOCAL BUILD] OnPostprocessBuild");
         ProcessPostBuild(buildTarget, path);
 #endif
