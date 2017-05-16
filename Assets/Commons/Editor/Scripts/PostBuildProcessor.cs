@@ -83,6 +83,7 @@ public class PostBuildProcessor
         Debug.Log("Enabling modules: CLANG_ENABLE_MODULES = YES");
         proj.AddBuildProperty(target, "CLANG_ENABLE_MODULES", "YES");
         proj.AddBuildProperty(target, "OTHER_LDFLAGS", "-ObjC");
+        proj.AddBuildProperty(target, "OTHER_LDFLAGS", "$(inherited)");
 
         // Write PBXProject object back to the file
         proj.WriteToFile(projPath);
