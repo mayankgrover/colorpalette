@@ -3,14 +3,20 @@ using UnityEngine;
 
 namespace Commons.Services
 {
+    [RequireComponent(typeof(NativeShare))]
     public class ServiceSharing: MonoSingleton<ServiceSharing>
     {
-        [SerializeField] private NativeShare nativeShare;
-
         public bool IsScreenshotAvailable { get; private set; }
 
+        private NativeShare nativeShare;
         private static string storeLinkAndroid = "https://goo.gl/RIyVIB";
         private static string storeLinkApple = "https://goo.gl/LbgyY4";
+
+        protected override void Awake()
+        {
+            base.Awake();
+            nativeShare = GetComponent<NativeShare>();
+        }
 
         private string storeLink =
 #if UNITY_ANDROID
