@@ -7,6 +7,13 @@ namespace Commons.PushNotifications
 {
     public class LocalApplePushNotification
     {
+        public static void RegisterForPushNotifications(bool registerRemotePN = false)
+        {
+            NotificationServices.RegisterForNotifications(
+                NotificationType.Alert | NotificationType.Badge | NotificationType.Sound,
+                registerForRemote: registerRemotePN);
+        }
+
         public static void SendNotification(int id, TimeSpan delay, string title, string message)
         {
             LocalNotification notification = new LocalNotification();

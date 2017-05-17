@@ -5,6 +5,14 @@ namespace Commons.PushNotifications
 {
     public class ServiceLocalPushNotifications: MonoSingleton<ServiceLocalPushNotifications>
     {
+#if UNITY_IOS 
+        protected override void Awake()
+        {
+            base.Awake();
+            LocalApplePushNotification.RegisterForPushNotifications(false);
+        }
+#endif
+
         public void ScheduleNotification(int id, TimeSpan delay, string title, string message)
         {
 #if UNITY_ANDROID
