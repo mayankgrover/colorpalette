@@ -153,6 +153,11 @@ public static class ZPlayerPrefs
         PlayerPrefs.SetString(Encrypt(key, strPassword), Encrypt(value, strPassword));
     }
 
+    internal static void SetInt(object tUTORIAL_STATUS, bool status)
+    {
+        throw new NotImplementedException();
+    }
+
     /////////////////////////////////////////////////////////////////
     // Help Function
     /////////////////////////////////////////////////////////////////

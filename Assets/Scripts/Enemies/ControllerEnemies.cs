@@ -40,7 +40,9 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void GameStarted()
     {
-        randomizeWaves = PlayerProfile.Instance.IsTutorialCleared;
+        randomizeWaves = PlayerProfile.Instance.IsTutorialCleared && 
+            PlayerProfile.Instance.GamesPlayed >= 5;
+
         ResetAnalyticsStats();
         SelectNextGroup();
         ResetStrips();
@@ -145,10 +147,10 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             nextGroupIndex = randomizeWaves ?
                 GetRandomizedNextGroup(enemyGroupIndex) :
                 GetSequentialNextGroup(enemyGroupIndex) ;
-            Debug.Log("Tut cleared, nextGroup: " + nextGroupIndex + " rnadomize:"+ randomizeWaves);
+            //Debug.Log("Tut cleared, nextGroup: " + nextGroupIndex + " rnadomize:"+ randomizeWaves);
         }
         else {
-            Debug.Log("Tut not cleared, next group: " + tutorialGroupIndex);
+            //Debug.Log("Tut not cleared, next group: " + tutorialGroupIndex);
             nextGroupIndex = tutorialGroupIndex;
         }
 
@@ -162,7 +164,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     {
         int nextGroupIndex = currentGroupIndex;
         while(nextGroupIndex == currentGroupIndex) {
-            Debug.Log("randomize finding another group:" + nextGroupIndex);
+            //Debug.Log("randomize finding another group:" + nextGroupIndex);
             nextGroupIndex = UnityEngine.Random.Range(defaultGroupIndex, enemyGroups.Length);
         }
         return nextGroupIndex;

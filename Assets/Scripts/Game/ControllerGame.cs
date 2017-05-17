@@ -22,6 +22,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
     {
         base.Awake();
         Input.backButtonLeavesApp = true;
+        Application.targetFrameRate = 60;
     }
 
     protected override void Start()

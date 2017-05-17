@@ -15,6 +15,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     private long freeGiftTicks;
     private int autoWatchAds;
     private int characterId;
+    private bool isTutorialCleared;
 
     public Action OnScoreUpdated;
     public Action OnBestScoreUpdated;
@@ -41,7 +42,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public bool AutoWatchAds { get { return autoWatchAds == 1; } }
 
     public bool IsTutorialCleared { get {
-            return PlayerPrefs.GetInt(StringConstants.TUTORIAL_STATUS, 0) == 0 ? false : true;
+            return isTutorialCleared;
         }
     }
 
@@ -56,6 +57,13 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     {
         base.Start();
         ControllerMainMenu.Instance.GameStarted += onGameStarted;
+        ControllerMainMenu.Instance.GameEnded += onGameEnded;
+    }
+
+    private void onGameEnded()
+    {
+        SaveCoins();
+        SaveBestScore();
     }
 
     private void onGameStarted()
@@ -77,6 +85,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         characterId = PlayerPrefs.GetInt(StringConstants.SELECTED_CHARACTER, 1);
         autoWatchAds = PlayerPrefs.GetInt(StringConstants.AUTO_WATCH_AD, 0);
         freeGiftTicks = long.Parse(PlayerPrefs.GetString(StringConstants.FREE_GIFT_TICKS, "" + DateTime.MinValue.Ticks));
+        isTutorialCleared = PlayerPrefs.GetInt(StringConstants.TUTORIAL_STATUS, 0) == 0 ? false : true;
     }
 
     public void UpdateSelectedCharacter(int id)
@@ -105,7 +114,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     {
         if(score > best) {
             best = score;
-            SaveBestScore();
+            //SaveBestScore();
             if (OnBestScoreUpdated != null) OnBestScoreUpdated();
         }
     }
@@ -114,7 +123,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     {
         this.coins += coins;
         coinsEarned += coins;
-        SaveCoins();
+        //SaveCoins();
         if (OnCoinsUpdated != null) OnCoinsUpdated();
     }
 
@@ -127,6 +136,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
 
     internal void TutorialCleared(bool status)
     {
+        isTutorialCleared = status;
         PlayerPrefs.SetInt(StringConstants.TUTORIAL_STATUS, status == true ? 1 : 0);
         PlayerPrefs.Save();
     }
@@ -136,7 +146,6 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         games++;
         PlayerPrefs.SetInt(StringConstants.GAMES_PLAYED, games);
         PlayerPrefs.Save();
-        //Debug.Log("Games played:" + games);
     }
 
     public void IncrementDeaths()
@@ -148,8 +157,8 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
 
     private void SaveDeaths()
     {
-        PlayerPrefs.SetInt(StringConstants.DEATHS, deaths);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetInt(StringConstants.DEATHS, deaths);
+        //PlayerPrefs.Save();
     }
 
     private void SaveCoins()
