@@ -42,6 +42,8 @@ public class ControllerEnemiesGroup: MonoBehaviour
         return false;
     }
 
+    public bool IsTutorialWave { get { return wave == Wave.Tutorial; } }
+
     public void Initialize(Vector3 position, Transform parent)
     {
         transform.SetParent(parent);

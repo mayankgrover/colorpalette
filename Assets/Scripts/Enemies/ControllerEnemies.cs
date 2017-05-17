@@ -6,10 +6,11 @@ using System.Collections;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
-    private int defaultGroupIndex = 0;
-    private int tutorialGroupIndex = -1;
+    private int defaultGroupIndex = 1;
+    private int tutorialGroupIndex = 0;
     private int enemyGroupIndex;
     private float nextPosition;
+    private bool randomizeWaves = false;
 
     public Action ClearedLevel;
     public Action ForceClearedLevel;
@@ -39,6 +40,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void GameStarted()
     {
+        randomizeWaves = PlayerProfile.Instance.IsTutorialCleared;
         ResetAnalyticsStats();
         SelectNextGroup();
         ResetStrips();
@@ -86,7 +88,6 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     {
         DeathWave = activeGroup.wave;
         //StartCoroutine(HideActiveGroupWithDelay(activeGroup));
-        if (WavesCleared > 0) defaultGroupIndex = 0;
         enemyGroupIndex = defaultGroupIndex;
         MoveStrips(-transform.position.y);
         ResetStrips();
@@ -117,8 +118,8 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     {
         if(activeGroup != null && activeGroup.IsGroupCleared)
         {
+            if (activeGroup.IsTutorialWave) TutorialCleared();
             WavesCleared++;
-            if (enemyGroupIndex == (int)Wave.Tutorial) TutorialCleared();
             HideActiveGroup();
             if (ClearedLevel != null) {
                 ClearedLevel();
@@ -139,15 +140,41 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void SelectNextGroup()
     {
-        enemyGroupIndex++;
         int nextGroupIndex = enemyGroupIndex;
-        if(enemyGroupIndex >= enemyGroups.Length) {
-            nextGroupIndex = UnityEngine.Random.Range(1, enemyGroups.Length);
+        if (PlayerProfile.Instance.IsTutorialCleared) {
+            nextGroupIndex = randomizeWaves ?
+                GetRandomizedNextGroup(enemyGroupIndex) :
+                GetSequentialNextGroup(enemyGroupIndex) ;
+            Debug.Log("Tut cleared, nextGroup: " + nextGroupIndex + " rnadomize:"+ randomizeWaves);
         }
-        activeGroup = enemyGroups[nextGroupIndex];
+        else {
+            Debug.Log("Tut not cleared, next group: " + tutorialGroupIndex);
+            nextGroupIndex = tutorialGroupIndex;
+        }
+
+        enemyGroupIndex = nextGroupIndex;
+        activeGroup = enemyGroups[enemyGroupIndex];
         DeathWave = activeGroup.wave; // hack
         UpdateNextPosition();
-        //Debug.Log("[Enemies] next activeGroup: " + nextGroupIndex);
+    }
+
+    private int GetRandomizedNextGroup(int currentGroupIndex)
+    {
+        int nextGroupIndex = currentGroupIndex;
+        while(nextGroupIndex == currentGroupIndex) {
+            Debug.Log("randomize finding another group:" + nextGroupIndex);
+            nextGroupIndex = UnityEngine.Random.Range(defaultGroupIndex, enemyGroups.Length);
+        }
+        return nextGroupIndex;
+    }
+
+    private int GetSequentialNextGroup(int currentGroupIndex)
+    {
+        int nextGroupIndex = currentGroupIndex + 1;
+        if (nextGroupIndex >= enemyGroups.Length) {
+            nextGroupIndex = UnityEngine.Random.Range(2, enemyGroups.Length);
+        }
+        return nextGroupIndex;
     }
 
     private void MoveStrips(float nextPosition)
