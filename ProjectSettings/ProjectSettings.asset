@@ -122,7 +122,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.unforgiving.colors
-  bundleVersion: 1.0.6
+  bundleVersion: 1.0.7
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -136,7 +136,7 @@ PlayerSettings:
   stripEngineCode: 1
   iPhoneStrippingLevel: 3
   iPhoneScriptCallOptimization: 0
-  iPhoneBuildNumber: 106
+  iPhoneBuildNumber: 107
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0

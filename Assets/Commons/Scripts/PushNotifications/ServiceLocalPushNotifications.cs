@@ -1,5 +1,6 @@
 ﻿using Commons.Singleton;
 using System;
+using UnityEngine;
 
 namespace Commons.PushNotifications
 {
@@ -9,6 +10,7 @@ namespace Commons.PushNotifications
         protected override void Awake()
         {
             base.Awake();
+            Debug.Log("registering for push notification on ios");
             LocalApplePushNotification.RegisterForPushNotifications(false);
         }
 #endif
