@@ -41,4 +41,6 @@ public static class StringConstants
 
     public static string PN_FREE_GIFT_TITLE = "Unforgiving Colors";
     public static string PN_FREE_GIFT_MSG = "Free tressure gift is waiting for you";
+
+    public static string TUTORIAL_STATUS = "Tutorial_Completed";
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum Wave
 {
-    None,
+    Tutorial, // Tutorial
     Wave1,
     Wave2,
     Wave3,

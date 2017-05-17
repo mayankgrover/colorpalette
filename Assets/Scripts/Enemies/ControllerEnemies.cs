@@ -6,7 +6,8 @@ using System.Collections;
 
 public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 {
-    private int defaultGroupIndex = -1;
+    private int defaultGroupIndex = 0;
+    private int tutorialGroupIndex = -1;
     private int enemyGroupIndex;
     private float nextPosition;
 
@@ -25,7 +26,6 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
     protected override void Awake()
     {
         base.Awake();
-        enemyGroupIndex = defaultGroupIndex;
     }
 
     protected override void Start()
@@ -33,6 +33,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         base.Start();
         ControllerMainMenu.Instance.GameStarted += GameStarted;
         ControllerMainMenu.Instance.GameEnded += GameEnded;
+        enemyGroupIndex = PlayerProfile.Instance.IsTutorialCleared ? defaultGroupIndex : tutorialGroupIndex;
         LoadAllEnemyGroups();
     }
 
@@ -49,7 +50,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         WavesCleared = 0;
         StarsCollected = 0;
         StarsSpawned = 0;
-        DeathWave = Wave.None;
+        DeathWave = Wave.Tutorial;
         DeathStrip = Strip.None;
     }
 
@@ -117,6 +118,7 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
         if(activeGroup != null && activeGroup.IsGroupCleared)
         {
             WavesCleared++;
+            if (enemyGroupIndex == (int)Wave.Tutorial) TutorialCleared();
             HideActiveGroup();
             if (ClearedLevel != null) {
                 ClearedLevel();
@@ -128,6 +130,11 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             ResetStrips();
             ShowActiveGroup();
         }
+    }
+
+    private void TutorialCleared()
+    {
+        PlayerProfile.Instance.TutorialCleared(true);
     }
 
     private void SelectNextGroup()

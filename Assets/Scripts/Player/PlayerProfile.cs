@@ -40,6 +40,11 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public int SelectedCharacterId { get { return characterId; } }
     public bool AutoWatchAds { get { return autoWatchAds == 1; } }
 
+    public bool IsTutorialCleared { get {
+            return PlayerPrefs.GetInt(StringConstants.TUTORIAL_STATUS, 0) == 0 ? false : true;
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -117,6 +122,12 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     {
         freeGiftTicks = ticks;
         PlayerPrefs.SetString(StringConstants.FREE_GIFT_TICKS, ticks.ToString());
+        PlayerPrefs.Save();
+    }
+
+    internal void TutorialCleared(bool status)
+    {
+        PlayerPrefs.SetInt(StringConstants.TUTORIAL_STATUS, status == true ? 1 : 0);
         PlayerPrefs.Save();
     }
 

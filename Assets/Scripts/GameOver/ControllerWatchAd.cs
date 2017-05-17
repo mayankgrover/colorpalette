@@ -27,6 +27,7 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
     {
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         ServiceAds.Instance.ShowRewardableVideo(RewardableAdResult);
+        Hide();
     }
 
     public override void Show()
@@ -59,8 +60,6 @@ public class ControllerWatchAd : ControllerBaseGameOverElement
                 //StartCoroutine(GivePlayerRewardForWatchingAd());
                 break;
         }
-
-        Hide();
     }
 
     private void GivePlayerRewardForWatchingAd()
