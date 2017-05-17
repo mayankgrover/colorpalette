@@ -157,8 +157,8 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
 
     private void SaveDeaths()
     {
-        //PlayerPrefs.SetInt(StringConstants.DEATHS, deaths);
-        //PlayerPrefs.Save();
+        PlayerPrefs.SetInt(StringConstants.DEATHS, deaths);
+        PlayerPrefs.Save();
     }
 
     private void SaveCoins()
