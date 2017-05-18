@@ -24,11 +24,12 @@ namespace Commons.Ads
             //if (RewardBasedVideoAd.Instance.IsLoaded() && ShowRewardableVideoAdMob(RewardableVideoResult)) {
             //    Debug.Log("Showing google admob video ad");
             //}
+
             if (Advertisement.IsReady(rewardedVideo) && ShowRewardableVideoUnity(RewardableVideoResult)) {
                 Debug.Log("Showing unity video ad");
             }
             else {
-                Debug.LogWarning("no ad available");
+                //Debug.LogWarning("no ad available");
                 RewardableVideoResult(ShowResult.Failed);
             }
         }

@@ -95,9 +95,12 @@ public class ControllerGame: MonoSingleton<ControllerGame>
             Invoke("ResumeGameWithExtraLife", 2f);
         } else {
             ControllerMainMenu.Instance.EndGame();
-            ServiceAnalytics.Instance.ReportPlayerDied();
+
             if (PlayerProfile.Instance.AutoWatchAds && ServiceAds.Instance.IsRewardableAdReadyUnity()) {
                 ServiceAds.Instance.ShowRewardableVideo(WatchAdAfterGameFinished);
+            }
+            else {
+                ServiceAnalytics.Instance.ReportPlayerDied(false);
             }
         }
     }
@@ -110,7 +113,8 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private void WatchAdAfterGameFinished(ShowResult result)
     {
-        Debug.Log("[ReviveAd] result: " + result);
+        //Debug.Log("[ReviveAd] result: " + result);
+        ServiceAnalytics.Instance.ReportPlayerDied(result == ShowResult.Finished);
     }
 
     public void PauseGame()

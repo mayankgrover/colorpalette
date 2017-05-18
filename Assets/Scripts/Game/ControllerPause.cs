@@ -22,7 +22,7 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void OnClickPause()
     {
-        Debug.Log("on click pause");
+        //Debug.Log("on click pause");
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         OnClick(paused: true);
     }
@@ -83,7 +83,7 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void GamePaused()
     {
-        Debug.Log("game paused:" + isPaused);
+        //Debug.Log("game paused:" + isPaused);
         UpdateUI();
         ControllerGame.Instance.PauseGame();
     }

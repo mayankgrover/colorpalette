@@ -20,7 +20,7 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
         //Debug.Log("Result: " + result);
     }
 
-    public void ReportPlayerDied()
+    public void ReportPlayerDied(bool isAdShown)
     {
         Dictionary<string, object> param = new Dictionary<string, object> {
                 { "score", GetScoreCategory(PlayerProfile.Instance.CurrentScore) },
@@ -30,6 +30,10 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
                 { "death_wave", ControllerEnemies.Instance.DeathWave.ToString() },
                 { "death_strip", ControllerEnemies.Instance.DeathStrip.ToString() }
         };
+
+        if(PlayerProfile.Instance.AutoWatchAds == true) {
+            param.Add("ad_shown", isAdShown);
+        }
         AnalyticsResult result = Analytics.CustomEvent(StringConstants.ANALYTICS_GAME_OVER, param);
         //Debug.Log("[Analytic-PlayerDied] " + DebugPrint(param));
         //Debug.Log("Result: " + result);
@@ -37,7 +41,7 @@ public class ServiceAnalytics : MonoSingleton<ServiceAnalytics>
 
     public void ReportClaimFreeReward(bool status)
     {
-        Debug.Log("[Analutic-FreeReward] claim: " + status);
+        //Debug.Log("[Analutic-FreeReward] claim: " + status);
         Analytics.CustomEvent(StringConstants.ANALYTICS_CLAIM_FREE_REWARD, 
             new Dictionary<string, object> {
                 { "claim_free_reward", status }
