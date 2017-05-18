@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     int myColorIndex = 0;
     SpriteRenderer sprite;
 
-    float defPlayerSpeed = 0.50f;
+    float defPlayerSpeed = 0.475f;
     float playerSpeedInc = 0.025f;
     float currPlayerSpeed = 0f;
     float rotationSpeed = 1f;
