@@ -504,6 +504,9 @@ PlayerSettings:
   vrEditorSettings: {}
   cloudServicesEnabled:
     Build: 1
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   cloudProjectId: f5892f21-2539-47d2-9bcf-4c1fbf0ef356
   projectName: Unforgiving Colors
