@@ -8,8 +8,8 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 {
     [SerializeField] private Button btnPause;
     [SerializeField] private Button btnResume;
+    [SerializeField] private GameObject panelResume;
 
-    private GameObject panelResume;
     private bool isPaused = false;
 
     protected override void Awake()
@@ -17,11 +17,12 @@ public class ControllerPause: MonoSingleton<ControllerPause>
         base.Awake();
         btnPause.onClick.AddListener(OnClickPause);
         btnResume.onClick.AddListener(OnClickResume);
-        panelResume = btnResume.transform.parent.gameObject;
+        //panelResume = btnResume.transform.parent.gameObject;
     }
 
     private void OnClickPause()
     {
+        Debug.Log("on click pause");
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.UI_Button_Click);
         OnClick(paused: true);
     }
@@ -38,13 +39,12 @@ public class ControllerPause: MonoSingleton<ControllerPause>
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
         UpdateUI();
-        gameObject.SetActive(false);
+        panelResume.gameObject.SetActive(false);
     }
 
     private void OnApplicationPause(bool pause)
     {
         if(isPaused == false) {
-            //Debug.Log("#pause:" + isPaused);
             isPaused = true;
             GamePaused();
         }
@@ -77,12 +77,13 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void UpdateUI()
     {
-        btnPause.gameObject.SetActive(isPaused == false);
+        //btnPause.gameObject.SetActive(isPaused == false);
         panelResume.gameObject.SetActive(isPaused == true);
     }
 
     private void GamePaused()
     {
+        Debug.Log("game paused:" + isPaused);
         UpdateUI();
         ControllerGame.Instance.PauseGame();
     }

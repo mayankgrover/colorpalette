@@ -6,6 +6,7 @@ using System;
 public class ControllerScore : MonoSingleton<ControllerScore> {
 
     [SerializeField] private Text score;
+    [SerializeField] private Text coins;
     [SerializeField] private Text bonusScore;
     //[SerializeField] private Text coins;
     [SerializeField] private Image extraLife;
@@ -22,12 +23,13 @@ public class ControllerScore : MonoSingleton<ControllerScore> {
         //SetExtraLifeStatus(false);
 
         ControllerMainMenu.Instance.GameStarted += OnGameStarted;
+        PlayerProfile.Instance.OnCoinsUpdated += UpdateCoins;
         //ControllerMainMenu.Instance.GameEnded += OnGameEnd;
     }
 
     private void UpdateCoins()
     {
-        //coins.text = PlayerProfile.Instance.Coins + "c";
+        coins.text = PlayerProfile.Instance.Coins + "c";
     }
 
     private void OnGameEnd()
