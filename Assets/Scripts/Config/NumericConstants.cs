@@ -9,8 +9,8 @@ public static class NumericConstants
     public static int SECONDS_FOR_STAR = 3;
 
     public static int FREE_GIFT_CYCLE_SECONDS = 3600 * 4;
-    public static int MIN_REWARD_FREE_GIFT = 10;
-    public static int MAX_REWARD_FREE_GIFT = 20;
+    public static int MIN_REWARD_FREE_GIFT = 35;
+    public static int MAX_REWARD_FREE_GIFT = 50;
 
     public static float REVIVE_COUNTDOWN_SECONDS = 5;
 
