@@ -1,7 +1,8 @@
 ﻿
 using Commons.Singleton;
 using System;
-
+using System.Globalization;
+using UnityEngine;
 using PlayerPrefs = ZPlayerPrefs;
 
 public class PlayerProfile : MonoSingleton<PlayerProfile>
@@ -12,7 +13,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     private int coins;
     private int deaths;
     private int games;
-    private long freeGiftTicks;
+    private DateTime freeGiftTime;
     private int autoWatchAds;
     private int characterId;
     private bool isTutorialCleared;
@@ -33,7 +34,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
 
     public int CoinsEarnedLastGame { get { return coinsEarned; } }
     public long GamesPlayed { get { return games; } }
-    public long FreeGiftTick { get { return freeGiftTicks; } }
+    public long FreeGiftTick { get { return freeGiftTime.ToLocalTime().Ticks; } }
     public float BestScore { get { return best; } }
     public float CurrentScore { get { return currentScore; } }
     public int Coins { get { return coins; } }
@@ -84,7 +85,14 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         games = PlayerPrefs.GetInt(StringConstants.GAMES_PLAYED, 0);
         characterId = PlayerPrefs.GetInt(StringConstants.SELECTED_CHARACTER, 1);
         autoWatchAds = PlayerPrefs.GetInt(StringConstants.AUTO_WATCH_AD, 0);
-        freeGiftTicks = long.Parse(PlayerPrefs.GetString(StringConstants.FREE_GIFT_TICKS, "" + DateTime.MinValue.Ticks));
+
+        if(PlayerPrefs.HasKey(StringConstants.FREE_GIFT_TICKS) == true &&
+            DateTime.TryParse(PlayerPrefs.GetString(StringConstants.FREE_GIFT_TICKS), out freeGiftTime)) {
+            // do nothing we already have read the time
+        }
+        else freeGiftTime = DateTime.MinValue;
+
+        Debug.Log("[read] Last time:" + freeGiftTime);
         isTutorialCleared = PlayerPrefs.GetInt(StringConstants.TUTORIAL_STATUS, 0) == 0 ? false : true;
     }
 
@@ -127,11 +135,12 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         if (OnCoinsUpdated != null) OnCoinsUpdated();
     }
 
-    public void UpdateFreeGiftTimestamp(long ticks)
+    public void UpdateFreeGiftTimestamp(DateTime time)
     {
-        freeGiftTicks = ticks;
-        PlayerPrefs.SetString(StringConstants.FREE_GIFT_TICKS, ticks.ToString());
+        freeGiftTime = time;
+        PlayerPrefs.SetString(StringConstants.FREE_GIFT_TICKS, time.ToUniversalTime().ToString());
         PlayerPrefs.Save();
+        Debug.Log("[save] Last time:" + freeGiftTime.ToUniversalTime().ToString());
     }
 
     internal void TutorialCleared(bool status)

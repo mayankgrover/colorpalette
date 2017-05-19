@@ -61,8 +61,8 @@ public class ControllerGameOver : MonoSingleton<ControllerGameOver>
         ControllerMainMenu.Instance.GameEnded += OnGameEnded;
         PlayerProfile.Instance.OnCoinsUpdated += UpdateCoins;
         Disable();
-    }
 
+    } 
     private void OnGameStarted()
     {
         controllerWatchAd.Hide();

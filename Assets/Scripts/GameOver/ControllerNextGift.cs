@@ -101,15 +101,11 @@ public class ControllerNextGift: ControllerBaseGameOverElement
         ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Bonus);
         isGiftReadyButNotClaimed = false;
         int reward = UnityEngine.Random.Range(NumericConstants.MIN_REWARD_FREE_GIFT, NumericConstants.MAX_REWARD_FREE_GIFT);
-        //Debug.Log("[NextGift] Reward: " + reward + "c");
-        //Debug.Log("[NextGift] now: " + DateTime.Now);
         PlayerProfile.Instance.UpdateCoins(reward);
-        PlayerProfile.Instance.UpdateFreeGiftTimestamp(DateTime.Now.Ticks);
-        //ControllerScore.Instance.BonusScore(transform.position, reward);
+        PlayerProfile.Instance.UpdateFreeGiftTimestamp(DateTime.Now);
         ControllerNotificationMessage.Instance.ShowMessage(reward + "c rewarded!");
         ServiceAnalytics.Instance.ReportClaimFreeReward(true);
         nextFreeGift = DateTime.Now + freeGiftDuration;
-        //Hide();
         Show();
     }
 }
