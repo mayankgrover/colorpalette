@@ -188,7 +188,9 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
 
     private void ResetStrips()
     {
-        //Debug.Log("Colors to use: " + ControllerGame.Instance.ColorsToUse);
-        if (activeGroup != null) activeGroup.ResetStrips();
+        if (activeGroup != null) {
+            Debug.Log("Reset activeGroup: " + activeGroup.wave);
+            activeGroup.ResetStrips();
+        }
     }
 }

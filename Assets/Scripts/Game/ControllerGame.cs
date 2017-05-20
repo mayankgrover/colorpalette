@@ -113,7 +113,7 @@ public class ControllerGame: MonoSingleton<ControllerGame>
 
     private void WatchAdAfterGameFinished(ShowResult result)
     {
-        //Debug.Log("[ReviveAd] result: " + result);
+        Debug.Log("[ReviveAd] result: " + result);
         ControllerMainMenu.Instance.EndGame();
         ServiceAnalytics.Instance.ReportPlayerDied(result == ShowResult.Finished);
     }

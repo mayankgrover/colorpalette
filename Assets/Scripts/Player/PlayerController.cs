@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour {
                 isPlayerDead = true;
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
                 StartCoroutine(DelayPlayerDeath());
+                Debug.Log("[PlayerDeath] myColor:" + Colors.Instance.GameColors[myColorIndex] + 
+                    " stripColor:" + strip.myColor);
             }
         }
     }

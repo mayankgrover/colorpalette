@@ -77,13 +77,12 @@ public class ControllerPause: MonoSingleton<ControllerPause>
 
     private void UpdateUI()
     {
-        //btnPause.gameObject.SetActive(isPaused == false);
         panelResume.gameObject.SetActive(isPaused == true);
     }
 
     private void GamePaused()
     {
-        //Debug.Log("game paused:" + isPaused);
+        Debug.Log("[ControllerPause] game paused:" + isPaused);
         UpdateUI();
         ControllerGame.Instance.PauseGame();
     }
@@ -92,5 +91,6 @@ public class ControllerPause: MonoSingleton<ControllerPause>
     {
         isPaused = false;
         UpdateUI();
+        Debug.Log("[ControllerPause] reset:" + isPaused);
     }
 }

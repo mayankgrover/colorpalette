@@ -10,6 +10,7 @@ public class ControllerGameCamera: MonoBehaviour
     private void Awake()
     {
         gameCamera = GetComponent<Camera>();
+        gameCamera.enabled = false;
     }
 
     private void Start()
@@ -19,27 +20,29 @@ public class ControllerGameCamera: MonoBehaviour
 
         ControllerGame.Instance.GamePaused += onGamePaused;
         ControllerGame.Instance.GameResumed += onGameResumed;
-
-        gameObject.SetActive(false);
     }
 
     private void onGameResumed()
     {
+        Debug.Log("[GameCam] Resume - enabled");
         gameCamera.enabled = true;
     }
 
     private void onGamePaused()
     {
+        Debug.Log("[GameCam] Paused - disabled");
         gameCamera.enabled = false;
     }
 
     private void onGameStarted()
     {
-        gameObject.SetActive(true);
+        Debug.Log("[GameCam] Start - enabled");
+        gameCamera.enabled = true;
     }
 
     private void onGameEnded()
     {
-        gameObject.SetActive(false);
+        Debug.Log("[GameCam] End - disabled");
+        gameCamera.enabled = false;
     }
 }

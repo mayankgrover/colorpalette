@@ -79,16 +79,7 @@ public class ControllerEnemiesGroup: MonoBehaviour
 
     private void SpawnStars()
     {
-        //obstacles.ForEach(obstacle => obstacle.SetStatus(false));
         obstacles.ForEach(obstacle => obstacle.SetStatus(true));
-
-        //int firstStar  = GetRandomStarIndex();
-        //int secondStar = GetRandomStarIndex();
-        //while (secondStar == firstStar) secondStar = GetRandomStarIndex();
-
-        //obstacles[firstStar].SetStatus(true);
-        //obstacles[secondStar].SetStatus(true);
-        //StarsSpawned = 2;
     }
 
     private int GetRandomStarIndex() {
@@ -96,12 +87,12 @@ public class ControllerEnemiesGroup: MonoBehaviour
     }
 
     public void Show() {
-        //Debug.Log("Showing group:" + wave);
+        Debug.Log("Showing group:" + wave);
         gameObject.SetActive(true);
     }
 
     public void Hide() {
-        //Debug.Log("Hiding group:" + wave);
+        Debug.Log("Hiding group:" + wave);
         gameObject.SetActive(false);
     }
 }
