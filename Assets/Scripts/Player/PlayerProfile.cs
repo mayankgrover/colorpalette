@@ -92,7 +92,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
         }
         else freeGiftTime = DateTime.MinValue;
 
-        Debug.Log("[read] Last time:" + freeGiftTime);
+        Debug.Log("[Profile] Last free gift time:" + freeGiftTime);
         isTutorialCleared = PlayerPrefs.GetInt(StringConstants.TUTORIAL_STATUS, 0) == 0 ? false : true;
     }
 

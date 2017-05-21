@@ -85,7 +85,7 @@ public class ColorStrip : MonoBehaviour {
     }
 
     public virtual void ResetStrip() {
-        Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
+        //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
         CancelTweens();
         isCrossedByPlayer = false;
         stripView.transform.localScale = Vector3.one;  //defScale;
@@ -100,7 +100,7 @@ public class ColorStrip : MonoBehaviour {
     protected virtual void ResetColor(int colorIndex = -1)
     {
         colorIndex = colorIndex != -1 ? colorIndex : UnityEngine.Random.Range(0, 10000) % ControllerGame.Instance.ColorsToUse;
-        Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " color:" + colorIndex, gameObject);
+        //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " color:" + colorIndex, gameObject);
         myColorIndex = colorIndex;
         myColor = Colors.Instance.GameColors[colorIndex];
         sprite.color = myColor;

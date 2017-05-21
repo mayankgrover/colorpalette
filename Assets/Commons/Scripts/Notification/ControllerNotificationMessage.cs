@@ -23,6 +23,8 @@ namespace Commons.Notification
             tweenOptions["time"] = 1.5f;
             tweenOptions["oncomplete"] = "onTweenComplete";
             tweenOptions["easetype"] = iTween.EaseType.easeOutExpo;
+
+            Disable();
         }
 
         public void ShowMessage(string message, float duration = 1.5f)
