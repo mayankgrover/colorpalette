@@ -131,7 +131,7 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     {
         this.coins += coins;
         coinsEarned += coins;
-        //SaveCoins();
+        SaveCoins();
         if (OnCoinsUpdated != null) OnCoinsUpdated();
     }
 
