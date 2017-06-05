@@ -104,9 +104,15 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.CompareTag("ColorStrip")) {
-
+        if(collider.gameObject.CompareTag("ColorStrip"))
+        {
             ColorStrip strip = collider.gameObject.GetComponent<ColorStrip>();
+            if(!strip.gameObject.activeInHierarchy || !strip.IsSpriteEnabled)
+            {
+                Debug.LogError("[BarProblem] Strip:" + strip.strip + " Active:" + strip.gameObject.activeInHierarchy +
+                    " Sprite:" + strip.IsSpriteEnabled);
+            }
+
             if ( TestSettings.Instance.CanPlayerDie == false || 
                  strip.myColor == Colors.Instance.GameColors[myColorIndex])
             {

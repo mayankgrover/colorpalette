@@ -20,7 +20,7 @@ namespace Test
 
         private void onClickAddCoins()
         {
-            PlayerProfile.Instance.UpdateCoins(100);
+            PlayerProfile.Instance.UpdateCoins(500);
         }
     }
 }

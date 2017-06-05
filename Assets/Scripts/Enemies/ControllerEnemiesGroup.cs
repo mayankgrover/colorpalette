@@ -87,12 +87,12 @@ public class ControllerEnemiesGroup: MonoBehaviour
     }
 
     public void Show() {
-        Debug.Log("Showing group:" + wave);
+        //Debug.Log("Showing group:" + wave);
         gameObject.SetActive(true);
     }
 
     public void Hide() {
-        Debug.Log("Hiding group:" + wave);
+        //Debug.Log("Hiding group:" + wave);
         gameObject.SetActive(false);
     }
 }

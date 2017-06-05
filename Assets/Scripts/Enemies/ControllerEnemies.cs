@@ -123,9 +123,10 @@ public class ControllerEnemies : MonoSingleton<ControllerEnemies>
             if (activeGroup.IsTutorialWave) TutorialCleared();
             WavesCleared++;
             HideActiveGroup();
+
+            ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Level_Cleared);
             if (ClearedLevel != null) {
                 ClearedLevel();
-                ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Level_Cleared);
             }
 
             MoveStrips(nextPosition);

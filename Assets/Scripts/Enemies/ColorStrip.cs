@@ -45,20 +45,20 @@ public class ColorStrip : MonoBehaviour {
     private iTween tween;
 
     protected GameObject stripView;
-    private Vector3 defScale;
 
-    protected virtual void Awake() {
+    public bool IsSpriteEnabled { get { return stripView.transform.localScale != Vector3.zero; } }
+
+    protected virtual void Awake()
+    {
         sprite = GetComponent<SpriteRenderer>();
         enemyGroup = GetComponentInParent<ControllerEnemiesGroup>();
         childStrips = GetComponentsInChildren<ChildColorStrip>().ToList();
-        defScale = gameObject.transform.localScale;
         SetupStripView();
         RegisterEvents();
     }
 
     private void SetupStripView()
     {
-        //stripView = gameObject;
         stripView = new GameObject();
         stripView.transform.SetParent(transform);
         stripView.transform.localPosition = Vector3.zero;
@@ -85,7 +85,7 @@ public class ColorStrip : MonoBehaviour {
     }
 
     public virtual void ResetStrip() {
-        //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
+        //Debug.Log("[ResetStrip] group:" + enemyGroup.wave + " strip: " + strip, gameObject);
         CancelTweens();
         isCrossedByPlayer = false;
         stripView.transform.localScale = Vector3.one;  //defScale;
@@ -99,7 +99,8 @@ public class ColorStrip : MonoBehaviour {
 
     protected virtual void ResetColor(int colorIndex = -1)
     {
-        colorIndex = colorIndex != -1 ? colorIndex : UnityEngine.Random.Range(0, 10000) % ControllerGame.Instance.ColorsToUse;
+        colorIndex = colorIndex != -1 ? colorIndex : UnityEngine.Random.Range(0, 10000) % 
+            ControllerGame.Instance.ColorsToUse;
         //Debug.Log("[Strip] group:" + enemyGroup.wave + " strip: " + strip + " color:" + colorIndex, gameObject);
         myColorIndex = colorIndex;
         myColor = Colors.Instance.GameColors[colorIndex];
