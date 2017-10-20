@@ -4,14 +4,16 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
+    public Color MyColor { get { return Colors.Instance.GameColors[myColorIndex]; } }
 
     new Rigidbody2D rigidbody;
     int myColorIndex = 0;
     SpriteRenderer sprite;
 
-    float defPlayerSpeed = 0.475f;
-    float playerSpeedInc = 0.025f;
+    float defPlayerSpeed = 0f; // 0.475f;
+    float playerSpeedInc = 0f; // 0.025f;
     float currPlayerSpeed = 0f;
     float rotationSpeed = 1f;
 
@@ -113,7 +115,7 @@ public class PlayerController : MonoBehaviour {
                     " Sprite:" + strip.IsSpriteEnabled);
             }
 
-            if ( TestSettings.Instance.CanPlayerDie == false || 
+            if ( TestSettings.Instance.CanPlayerDie == false ||
                  strip.myColor == Colors.Instance.GameColors[myColorIndex])
             {
                 strip.PlayerMatchedColor();
@@ -125,10 +127,29 @@ public class PlayerController : MonoBehaviour {
                 isPlayerDead = true;
                 ControllerEnemies.Instance.DeathStrip = strip.strip;
                 StartCoroutine(DelayPlayerDeath());
-                Debug.Log("[PlayerDeath] myColor:" + Colors.Instance.GameColors[myColorIndex] + 
+                Debug.Log("[PlayerDeath] myColor:" + Colors.Instance.GameColors[myColorIndex] +
                     " stripColor:" + strip.myColor);
             }
         }
+        //else if(collider.gameObject.CompareTag("ColorCircle"))
+        //{
+        //    CircularColor circular = collider.gameObject.GetComponent<CircularColor>();
+        //    if(circular.gameObject.activeInHierarchy)
+        //    {
+        //        if(circular.myColor == Colors.Instance.GameColors[myColorIndex])
+        //        {
+        //            circular.StartPlaying();
+        //            ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_Success);
+        //            ControllerScore.Instance.AddScore();
+        //        }
+        //        else if(isPlayerDead == false)
+        //        {
+        //            StartCoroutine(DelayPlayerDeath());
+        //            Debug.Log("[PlayerDeath] myColor:" + Colors.Instance.GameColors[myColorIndex] +
+        //                " circularColor:" + circular.myColor);
+        //        }
+        //    }
+        //}
     }
 
     private IEnumerator DelayPlayerDeath()
@@ -162,7 +183,7 @@ public class PlayerController : MonoBehaviour {
             IncreasePlayerSpeed();
         }
     }
-        
+
     public void ChangeColor() {
         if (isPlayerDead == false) {
             ServiceSounds.Instance.PlaySoundEffect(SoundEffect.Game_PlayerClick);

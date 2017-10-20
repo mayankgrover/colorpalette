@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4569043953225266}
   - component: {fileID: 20590541331600880}
+  - component: {fileID: 81269955790790970}
   m_Layer: 0
   m_Name: CanvasCamera
   m_TagString: MainCamera
@@ -70,7 +71,16 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 0
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!81 &81269955790790970
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1806359635541656}
+  m_Enabled: 1

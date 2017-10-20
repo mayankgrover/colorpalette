@@ -16,7 +16,7 @@ namespace Commons.Services
         {
             PlayerPrefs.SetString(StringConstants.RATE_US, Application.version);
             #if UNITY_ANDROID
-                Application.OpenURL("market://details?id=" + Application.bundleIdentifier);
+                Application.OpenURL("market://details?id=" + Application.identifier);
             #elif UNITY_IOS
                 Application.OpenURL("itms-apps://itunes.apple.com/app/id" + 1229341633);
             #endif

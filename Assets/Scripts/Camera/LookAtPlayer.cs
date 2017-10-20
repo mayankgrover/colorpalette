@@ -10,7 +10,7 @@ public class LookAtPlayer: MonoBehaviour
     private bool lookAtY = true;
 
     private float offsetX = 0f;
-    private float offsetY = 0.65f;
+    private float offsetY = 0f; // 0.65f;
 
     private void Awake()
     {

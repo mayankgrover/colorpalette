@@ -8,7 +8,7 @@ using PlayerPrefs = ZPlayerPrefs;
 public class PlayerProfile : MonoSingleton<PlayerProfile>
 {
     private float currentScore;
-    private int coinsEarned; //during the current game 
+    private int coinsEarned; //during the current game
     private float best;
     private int coins;
     private int deaths;
@@ -40,7 +40,8 @@ public class PlayerProfile : MonoSingleton<PlayerProfile>
     public int Coins { get { return coins; } }
     public int Deaths { get { return deaths; } }
     public int SelectedCharacterId { get { return characterId; } }
-    public bool AutoWatchAds { get { return autoWatchAds == 1; } }
+    //public bool AutoWatchAds { get { return autoWatchAds == 1; } }
+    public bool AutoWatchAds { get { return false; } }
 
     public bool IsTutorialCleared { get {
             return isTutorialCleared;
